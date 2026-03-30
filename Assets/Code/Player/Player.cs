@@ -15,7 +15,7 @@ namespace Code.Player
         private void Update()
         {
             Debug.Log("update");
-            rb.linearVelocity = rb.velocity;
+            rb.linearVelocity = rb.linearVelocity;
         }
     }
 }
