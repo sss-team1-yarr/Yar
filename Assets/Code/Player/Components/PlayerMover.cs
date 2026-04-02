@@ -9,15 +9,15 @@ namespace Code.Player.Components
         [SerializeField] private Rigidbody2D rb;
 
         private float _moveInput; 
-        
-        public void Jump(float multiplier = 3f)
-        {
-            rb.AddForceY(jumpForce * multiplier, ForceMode2D.Impulse);
-        }
 
         public void SetMoveInput(float value)
         {
             _moveInput = value;
+        }
+        
+        public void Jump(float multiplier = 3f)
+        {
+            rb.AddForceY(jumpForce * multiplier, ForceMode2D.Impulse);
         }
     
         private void FixedUpdate() {
