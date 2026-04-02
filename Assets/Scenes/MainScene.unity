@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201182655}
   - component: {fileID: 201182656}
+  - component: {fileID: 201182657}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -192,6 +193,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea647f86fbe6b9a4395aab47d84163b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.InputReceiver
+--- !u!114 &201182657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201182654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1afb385900434499febda9a7450ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.InputReceiver
 --- !u!1 &273909525
@@ -310,9 +323,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 646734940}
-  - component: {fileID: 646734943}
   - component: {fileID: 646734942}
   - component: {fileID: 646734941}
+  - component: {fileID: 646734943}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -420,12 +433,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 646734939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b3dfdf41e1abf48801565c82510de7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f7bdd86e94b413292b9f7ab2c2e9b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Player
   speed: 0
   rb: {fileID: 646734942}
-  input: {fileID: 201182656}
+  input: {fileID: 201182657}
 --- !u!1 &792417316
 GameObject:
   m_ObjectHideFlags: 0
