@@ -5,8 +5,8 @@ namespace Code.Player.Components
     public class PlayerMover : MonoBehaviour
     {
         [SerializeField] private float speed;
-        [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float jumpForce;
+        [SerializeField] private Rigidbody2D rb;
 
         private float _moveInput; 
         

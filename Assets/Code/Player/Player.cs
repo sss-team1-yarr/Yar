@@ -7,7 +7,6 @@ namespace Code.Player
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private float speed;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private InputReceiver input;
         [SerializeField] private PlayerMover playerMover;
@@ -20,6 +19,11 @@ namespace Code.Player
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
         }
+        
+        private void Update()
+        {
+            rb.linearVelocity = rb.linearVelocity;
+        }
 
         private void HandleMoveInput(float obj)
         {
@@ -31,12 +35,7 @@ namespace Code.Player
             if(contactChecker.IsGrounded)
                 playerMover.Jump();
         }
-
-        private void Update()
-        {
-            rb.linearVelocity = rb.linearVelocity;
-        }
-
+        
         private void OnDestroy()
         {
             input.OnJumpInput -= HandleJump;
