@@ -12,7 +12,7 @@ namespace Code.Player.Components
         
         public void Jump(float multiplier = 3f)
         {
-            rb.linearVelocity = rb.linearVelocity.normalized * speed * multiplier;
+            rb.AddForceY(jumpForce * multiplier, ForceMode2D.Impulse);
         }
 
         public void SetMoveInput(float value)
