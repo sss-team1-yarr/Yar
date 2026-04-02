@@ -159,7 +159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 201182655}
-  - component: {fileID: 201182656}
   - component: {fileID: 201182657}
   m_Layer: 0
   m_Name: Input
@@ -183,18 +182,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 646734940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &201182656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201182654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea647f86fbe6b9a4395aab47d84163b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.InputReceiver
 --- !u!114 &201182657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 201182654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1afb385900434499febda9a7450ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: ea647f86fbe6b9a4395aab47d84163b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.InputReceiver
 --- !u!1 &273909525
@@ -433,12 +420,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 646734939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f7bdd86e94b413292b9f7ab2c2e9b35, type: 3}
+  m_Script: {fileID: 11500000, guid: b6b3dfdf41e1abf48801565c82510de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Player
   speed: 0
   rb: {fileID: 646734942}
-  input: {fileID: 201182657}
+  input: {fileID: 0}
 --- !u!1 &792417316
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 919807180}
+  - component: {fileID: 919807181}
   m_Layer: 0
   m_Name: DummyEnemy
   m_TagString: Untagged
@@ -712,6 +700,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &919807181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919807179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d356b10c068dace4e938e00f202892b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
 --- !u!1 &1177184724
 GameObject:
   m_ObjectHideFlags: 0
