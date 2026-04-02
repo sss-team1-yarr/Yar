@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Code.Player.Components;
+using System;
+using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace Code.Player
 {
@@ -6,15 +9,34 @@ namespace Code.Player
     {
         [SerializeField] private float speed;
         [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private InputReceiver input;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            input.OnJumpInput += HandleJump;
+            input.OnMoveInput += HandleMoveInput;
+        }
+
+        private void HandleMoveInput(float obj)
+        {
+
+        }
+
+        private void HandleJump()
+        {
+
         }
 
         private void Update()
         {
             rb.linearVelocity = rb.linearVelocity;
+        }
+
+        private void OnDestroy()
+        {
+            input.OnJumpInput -= HandleJump;
+            input.OnMoveInput -= HandleMoveInput;
         }
     }
 }
