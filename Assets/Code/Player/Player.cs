@@ -10,6 +10,8 @@ namespace Code.Player
         [SerializeField] private float speed;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private InputReceiver input;
+        [SerializeField] private PlayerMover playerMover;
+        
 
         private void Awake()
         {
@@ -20,12 +22,12 @@ namespace Code.Player
 
         private void HandleMoveInput(float obj)
         {
-
+            playerMover.SetMoveInput(obj);
         }
 
         private void HandleJump()
         {
-
+            playerMover.Jump();
         }
 
         private void Update()
