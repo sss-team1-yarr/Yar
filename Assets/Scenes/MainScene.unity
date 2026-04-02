@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193382076}
   - component: {fileID: 193382077}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 193382075}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.343, y: -0.152, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,8 +196,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1162468599
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1459458051413904079, guid: 3accdbde4e56f5c4e9cfa311b8cef55f, type: 3}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201182655}
   - component: {fileID: 201182656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 646734941}
   - component: {fileID: 646734943}
   - component: {fileID: 646734944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,6 +422,7 @@ Transform:
   - {fileID: 193382076}
   - {fileID: 1177184725}
   - {fileID: 201182655}
+  - {fileID: 1015725205}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &646734941
@@ -458,7 +459,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12503499, y: -0.4403398}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -468,7 +469,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1630886, y: 2.0763865}
   m_EdgeRadius: 0
 --- !u!50 &646734942
 Rigidbody2D:
@@ -513,6 +514,7 @@ MonoBehaviour:
   rb: {fileID: 646734942}
   input: {fileID: 201182656}
   playerMover: {fileID: 646734944}
+  contactChecker: {fileID: 1015725206}
 --- !u!114 &646734944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +659,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11d0520644863d4e9de0b012aea4e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
+--- !u!1 &1015725204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015725205}
+  - component: {fileID: 1015725206}
+  m_Layer: 6
+  m_Name: ContactChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1015725205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015725204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 646734940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1015725206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015725204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92782d3c9b8c406b9b43b97b29209742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.ContactChecker
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  size: {x: 0.8, y: 0.3}
+  offset: {x: -0.1, y: -1.5}
+  rb: {fileID: 646734942}
 --- !u!1 &1083141742
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +720,7 @@ GameObject:
   - component: {fileID: 1083141745}
   - component: {fileID: 1083141744}
   - component: {fileID: 1083141743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mossy - FloatingPlatforms_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,8 +818,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1711003337
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3758862390733383049, guid: 6a58b983e5d9391408845e84a7a52490, type: 3}
@@ -804,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177184725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}

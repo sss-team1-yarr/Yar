@@ -11,6 +11,7 @@ namespace Code.Player
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private InputReceiver input;
         [SerializeField] private PlayerMover playerMover;
+        [SerializeField] private ContactChecker contactChecker;
         
 
         private void Awake()
@@ -27,7 +28,8 @@ namespace Code.Player
 
         private void HandleJump()
         {
-            playerMover.Jump();
+            if(contactChecker.IsGrounded)
+                playerMover.Jump();
         }
 
         private void Update()
