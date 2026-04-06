@@ -8,7 +8,8 @@ namespace Code.Player.Components
         [SerializeField] private float jumpForce;
         [SerializeField] private Rigidbody2D rb;
 
-        private float _moveInput; 
+        private float _moveInput;
+        public Vector2 Velocity => rb.linearVelocity;
 
         public void SetMoveInput(float value)
         {
