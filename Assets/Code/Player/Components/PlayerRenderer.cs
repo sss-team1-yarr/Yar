@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerRenderer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Transform playerTransform;
 
     public void SetFloatValue(int hash, float value)
     {
@@ -16,6 +17,6 @@ public class PlayerRenderer : MonoBehaviour
 
     public void SetFlip(bool isRight) 
     {
-        transform.eulerAngles = new Vector3(0f, isRight ? 0f : 180f, 0f);
+        playerTransform.transform.eulerAngles = new Vector3(0f, isRight ? 0f : 180f, 0f);
     }
 }

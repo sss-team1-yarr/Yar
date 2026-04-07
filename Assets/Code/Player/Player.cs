@@ -20,6 +20,7 @@ namespace Code.Player
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 
 
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -31,21 +32,7 @@ namespace Code.Player
         {
             playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(playerMover.Velocity.x));
             playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
-
-            //bool isSeeRight = true;
-            //if (Keyboard.current.aKey.wasPressedThisFrame && isSeeRight)
-            //{
-            //    playerRenderer.SetFlip(true);
-            //    isSeeRight = false;
-            //    Debug.Log("turned");
-            //}
-            //if (Keyboard.current.dKey.wasPressedThisFrame && !isSeeRight)
-            //{
-            //    playerRenderer.SetFlip(true);
-            //    isSeeRight= true;
-            //    Debug.Log("turned");
-
-            //}
+            if (!Mathf.Approximately(input.testVariable.x, 0f)) playerRenderer.SetFlip(input.testVariable.x > 0);
         }
 
         private void HandleMoveInput(float obj)
@@ -58,7 +45,8 @@ namespace Code.Player
             if(contactChecker.IsGrounded)
                 playerMover.Jump();
         }
-        
+
+
         private void OnDestroy()
         {
             input.OnJumpInput -= HandleJump;
