@@ -18,8 +18,8 @@ namespace Code.Player
 
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
-
-
+        
+        
 
         private void Awake()
         {
