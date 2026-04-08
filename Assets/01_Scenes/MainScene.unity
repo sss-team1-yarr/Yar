@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 61308854}
   - component: {fileID: 61308853}
   - component: {fileID: 61308852}
+  - component: {fileID: 61308855}
   m_Layer: 0
   m_Name: SampleParticle
   m_TagString: Untagged
@@ -164,6 +165,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f0652159f88c10c46a3e620ed97078e3, type: 2}
+  - {fileID: 2100000, guid: a70f76428e09bf54ab689bba2cadad13, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -234,7 +236,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -300,7 +302,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.4
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -353,7 +355,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 90
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2927,7 +2929,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -4176,13 +4178,13 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5011,8 +5013,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 646734940}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61308855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61308851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f62ad433924fa28c4ee8d87f4dab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.Boom
+  player: {fileID: 646734939}
 --- !u!1 &193382075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,7 +5402,6 @@ Transform:
   - {fileID: 1177184725}
   - {fileID: 201182655}
   - {fileID: 1015725205}
-  - {fileID: 61308854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &646734941
@@ -5480,6 +5494,7 @@ MonoBehaviour:
   playerMover: {fileID: 1177184726}
   contactChecker: {fileID: 1015725206}
   playerRenderer: {fileID: 193382079}
+  vfx: {fileID: 61308853}
 --- !u!1 &711593090
 GameObject:
   m_ObjectHideFlags: 0
@@ -12808,3 +12823,4 @@ SceneRoots:
   - {fileID: 711593092}
   - {fileID: 1626225244}
   - {fileID: 1306396272}
+  - {fileID: 61308854}
