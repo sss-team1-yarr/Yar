@@ -26,7 +26,6 @@ namespace _03_Code.Player
         
         private void Update()
         {
-            playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(playerMover.Velocity.x));
             playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
             if (!Mathf.Approximately(input.testVariable.x, 0f)) playerRenderer.SetFlip(input.testVariable.x > 0);
         }
@@ -34,6 +33,7 @@ namespace _03_Code.Player
         private void HandleMoveInput(float obj)
         {
             playerMover.SetMoveInput(obj);
+            playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(obj));
         }
 
         private void HandleJump()
