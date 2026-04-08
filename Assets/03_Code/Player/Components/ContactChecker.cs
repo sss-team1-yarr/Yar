@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
-namespace _03_Code.Player.Components
-{
-    public class ContactChecker : MonoBehaviour
-    {
+namespace _03_Code.Player.Components {
+    public class ContactChecker : MonoBehaviour {
         [SerializeField] private LayerMask targetLayer;
         [SerializeField] private Vector2 size;
         [SerializeField] private Vector2 offset;
@@ -11,14 +9,12 @@ namespace _03_Code.Player.Components
 
         public bool IsGrounded { get; private set; }
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() {
             IsGrounded = Physics2D.OverlapBox(rb.position + offset, size, 0f, targetLayer);
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireCube(transform.position+(Vector3)offset, size);
+        private void OnDrawGizmos() {
+            Gizmos.DrawWireCube(transform.position + (Vector3)offset, size);
         }
     }
 }

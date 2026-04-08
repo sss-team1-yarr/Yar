@@ -2,7 +2,7 @@
 
 namespace _03_Code.Interface {
     public interface IDamageable{
-        
+        DamageResult ApplyDamage(DamageInfo info);
     }
 
     public struct DamageInfo {
