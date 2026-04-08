@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace _03_Code.Items {
     public interface IItem {
-        ItemSO Data { get; }
         bool CanUse { get; }
         Transform transform { get; }
 

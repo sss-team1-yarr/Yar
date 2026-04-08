@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace _03_Code.Items {
     public abstract class Item : MonoBehaviour, IItem {
-        [field: SerializeField] public ItemSO Data { get; private set; }
         public abstract bool CanUse { get; }
 
 
