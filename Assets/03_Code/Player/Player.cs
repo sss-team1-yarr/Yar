@@ -9,19 +9,15 @@ namespace _03_Code.Player {
         [SerializeField] private PlayerMover playerMover;
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private PlayerRenderer playerRenderer;
-        [SerializeField] private ParticleSystem vfx;
-        
 
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 
-        private bool _isJumpKeyPressed;
 
         private void Awake() {
             rb = GetComponent<Rigidbody2D>();
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
-            input.OnSkill1Input += HandleSkill1Input;
         }
 
         private void Update() {
@@ -39,15 +35,10 @@ namespace _03_Code.Player {
                 playerMover.Jump();
         }
 
-        private void HandleSkill1Input() {
-            vfx.Play();
-            Destroy(gameObject);
-        }
 
         private void OnDestroy() {
             input.OnJumpInput -= HandleJump;
             input.OnMoveInput -= HandleMoveInput;
-            input.OnSkill1Input -= HandleSkill1Input;
         }
     }
 }
