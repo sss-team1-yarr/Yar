@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Code.Player.Components
+namespace _03_Code.Player.Components
 {
     public class ContactChecker : MonoBehaviour
     {

@@ -1,12 +1,8 @@
-﻿using Code.Player.Components;
-using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+﻿using _03_Code.Player.Components;
+using Code.Player.Components;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace Code.Player
+namespace _03_Code.Player
 {
     public class Player : MonoBehaviour
     {
@@ -30,14 +26,14 @@ namespace Code.Player
         
         private void Update()
         {
-            playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(playerMover.Velocity.x));
             playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
-            if (!Mathf.Approximately(input.testVariable.x, 0f)) playerRenderer.SetFlip(input.testVariable.x > 0);
         }
 
         private void HandleMoveInput(float obj)
         {
             playerMover.SetMoveInput(obj);
+            playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(obj));
+            if (!Mathf.Approximately(obj, 0f)) playerRenderer.SetFlip(obj > 0);
         }
 
         private void HandleJump()
