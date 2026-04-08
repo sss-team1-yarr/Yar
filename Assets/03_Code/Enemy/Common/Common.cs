@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Enemy.Common
+namespace _03_Code.Enemy.Common
 {
     public class Common : MonoBehaviour
     {

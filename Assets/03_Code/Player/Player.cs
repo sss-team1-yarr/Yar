@@ -1,12 +1,8 @@
-﻿using Code.Player.Components;
-using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+﻿using _03_Code.Player.Components;
+using Code.Player.Components;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace Code.Player
+namespace _03_Code.Player
 {
     public class Player : MonoBehaviour
     {
