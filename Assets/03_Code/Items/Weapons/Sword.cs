@@ -6,7 +6,6 @@ using UnityEngine;
 namespace _03_Code.Items.Weapons {
     public class Sword : Weapon {
         [SerializeField] private InputReceiver input;
-        [SerializeField] private float swingAngle = 120f;
         [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private float damageRadius = 1.5f;
