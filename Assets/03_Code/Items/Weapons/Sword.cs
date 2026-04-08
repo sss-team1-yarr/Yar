@@ -1,100 +1,93 @@
 using _03_Code.Interface;
-using _03_Code.Items;
-using _03_Code.Items.Weapons;
-using _03_Code.Player;
 using _3_Code.Player.Components;
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class Sword : Weapon
-{
-    [SerializeField] private InputReceiver input;
-    [SerializeField] private float swingAngle = 120f;
-    [SerializeField] private float cooldown = 0.2f;
-    [SerializeField] ParticleSystem vfx;
-    [SerializeField] private float damageRadius = 1.5f;
-    [SerializeField] private Vector2 damageOffset;
-    [SerializeField] private float damageAmount;
-    [SerializeField] private float knockbackForce;
-    [SerializeField] private ContactFilter2D targetFilter;
-    [SerializeField] private CinemachineImpulseSource impulseSource;
-
-
-    private Collider2D[] _hitBuffer = new Collider2D[10];
-    private Player _owner;
-    private bool _isHoldingKey;
-    private bool _isUpperAttack;
-    private float _lastAttackTime;
-
-    public override bool CanUse => Time.time - _lastAttackTime >= cooldown;
-
-
-    public override void Use(ItemUsingContext context)
+namespace _03_Code.Items.Weapons {
+    public class Sword : Weapon
     {
-        base.Use(context);
-        if (context.Input == 0)
+        [SerializeField] private InputReceiver input;
+        [SerializeField] private float swingAngle = 120f;
+        [SerializeField] private float cooldown = 0.2f;
+        [SerializeField] private ParticleSystem vfx;
+        [SerializeField] private float damageRadius = 1.5f;
+        [SerializeField] private Vector2 damageOffset;
+        [SerializeField] private float damageAmount;
+        [SerializeField] private float knockbackForce;
+        [SerializeField] private ContactFilter2D targetFilter;
+        [SerializeField] private CinemachineImpulseSource impulseSource;
+
+
+        private readonly Collider2D[] _hitBuffer = new Collider2D[10];
+        private Player.Player _owner;
+        private bool _isHoldingKey;
+        private bool _isUpperAttack;
+        private float _lastAttackTime;
+
+        public override bool CanUse => Time.time - _lastAttackTime >= cooldown;
+
+
+        public override void Use(ItemUsingContext context)
         {
-            _isHoldingKey = context.Pressed; 
+            base.Use(context);
+            if (context.Input == 0)
+            {
+                _isHoldingKey = context.Pressed; 
+            }
         }
-    }
 
-    public override void HoldItem(ItemUsingContext context)
-    {
-        base.HoldItem(context); 
-        _owner = context.User;
-    }
-
-    private void Update()
-    {
-        CalcRotation();
-        Attack();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        if (_owner)
+        public override void HoldItem(ItemUsingContext context)
         {
-            bool isRight = input.moveDir.x > 0;
+            base.HoldItem(context); 
+            _owner = context.User;
+        }
 
-            Vector3 attackPoint = _owner.transform.position; 
+        private void Update()
+        {
+            CalcRotation();
+            Attack();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            if (!_owner) return;
+            var isRight = input.moveDir.x > 0;
+
+            var attackPoint = _owner.transform.position; 
             attackPoint += (Vector3)input.moveDir.normalized * damageOffset.x;
             Vector3 rotatedDirection = new Vector2(-input.moveDir.y * (isRight ? -1 : 1),
                 input.moveDir.x * (isRight ? 1 : -1)).normalized; 
             attackPoint += rotatedDirection * damageOffset.y;
             Gizmos.DrawWireSphere(attackPoint, damageRadius);
-
         }
-    }
-    private void Attack()
-    {
-        if (!_isHoldingKey || !CanUse) return;
-        _lastAttackTime = Time.time; 
-        _isUpperAttack = !_isUpperAttack; 
-
-        Vector2 direction = input.moveDir;
-        float rotation = 45f - Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
-
-        vfx.Emit(new ParticleSystem.EmitParams
+        private void Attack()
         {
-            rotation = rotation
-        }, 1);
+            if (!_isHoldingKey || !CanUse) return;
+            _lastAttackTime = Time.time; 
+            _isUpperAttack = !_isUpperAttack; 
 
+            var direction = input.moveDir;
+            var rotation = 45f - Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
 
-        bool isRight = direction.x > 0;
-
-        Vector3 attackPoint = _owner.transform.position; 
-        attackPoint += (Vector3)input.moveDir.normalized * damageOffset.x;
-        Vector3 rotatedDirection = new Vector2(-input.moveDir.y * (isRight ? -1 : 1),
-            input.moveDir.x * (isRight ? 1 : -1)).normalized; 
-        attackPoint += rotatedDirection * damageOffset.y;
-
-
-        int cnt = Physics2D.OverlapCircle(attackPoint, damageRadius, targetFilter, _hitBuffer); 
-        for (int i = 0; i < cnt; i++)
-        {
-            if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) 
+            vfx.Emit(new ParticleSystem.EmitParams
             {
+                rotation = rotation
+            }, 1);
+
+
+            var isRight = direction.x > 0;
+
+            var attackPoint = _owner.transform.position; 
+            attackPoint += (Vector3)input.moveDir.normalized * damageOffset.x;
+            Vector3 rotatedDirection = new Vector2(-input.moveDir.y * (isRight ? -1 : 1),
+                input.moveDir.x * (isRight ? 1 : -1)).normalized; 
+            attackPoint += rotatedDirection * damageOffset.y;
+
+
+            var cnt = Physics2D.OverlapCircle(attackPoint, damageRadius, targetFilter, _hitBuffer); 
+            for (var i = 0; i < cnt; i++) {
+                if (!_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) continue;
                 if (ReferenceEquals(damageable, _owner)) continue; 
                 DamageResult result = damageable.ApplyDamage(new DamageInfo
                 {
@@ -108,19 +101,19 @@ public class Sword : Weapon
                 }
             }
         }
-    }
 
-    private void CalcRotation()
-    {
-        Vector2 direction = input.moveDir;
-        bool isRight = direction.x > 0;
-        int dir = isRight ^ _isUpperAttack ? 1 : -1;
+        private void CalcRotation()
+        {
+            var direction = input.moveDir;
+            var isRight = direction.x > 0;
+            var dir = isRight ^ _isUpperAttack ? 1 : -1;
 
-        transform.localScale = new Vector3(1f, dir, 1f);
+            transform.localScale = new Vector3(1f, dir, 1f);
 
-        float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
-        float swing = swingAngle * (dir); 
+            var rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
+            var swing = swingAngle * (dir); 
 
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation + swing);
+            transform.rotation = Quaternion.Euler(0f, 0f, rotation + swing);
+        }
     }
 }
