@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public delegate void OnMove();
 public delegate void OnJump();
 
-namespace Code.Player.Components
+namespace _3_Code.Player.Components
 {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions
     {

@@ -1,8 +1,8 @@
 ﻿using _03_Code.Player.Components;
-using Code.Player.Components;
+using _3_Code.Player.Components;
 using UnityEngine;
 
-namespace Code.Player
+namespace _03_Code.Player
 {
     public class Player : MonoBehaviour
     {

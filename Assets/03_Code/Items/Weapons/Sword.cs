@@ -1,5 +1,8 @@
-using Code.Player;
-using Code.Player.Components;
+using _03_Code.Interface;
+using _03_Code.Items;
+using _03_Code.Items.Weapons;
+using _03_Code.Player;
+using _3_Code.Player.Components;
 using Unity.Cinemachine;
 using UnityEngine;
 

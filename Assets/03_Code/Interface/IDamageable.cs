@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Interface {
+namespace _03_Code.Interface {
     public interface IDamageable{
         
     }
