@@ -9,7 +9,7 @@ public delegate void OnJump();
 namespace _3_Code.Player.Components {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions {
         private Controls _controls;
-        public event Action OnAttackInput;
+        public event Action<int, bool> OnAttackInput;
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
 
@@ -30,7 +30,9 @@ namespace _3_Code.Player.Components {
 
         public void OnAttack(InputAction.CallbackContext context) {
             if (context.performed)
-                OnAttackInput?.Invoke();
+                OnAttackInput?.Invoke(0, true);
+            if (context.canceled)
+                OnAttackInput?.Invoke(0, false);
         }
         public void OnRun(InputAction.CallbackContext context) { }
         public void OnSkill1(InputAction.CallbackContext context) { }
