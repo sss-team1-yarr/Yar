@@ -1,5 +1,4 @@
 ﻿using _03_Code.Player.Components;
-using _3_Code.Player.Components;
 using UnityEngine;
 
 namespace _03_Code.Player {
@@ -9,15 +8,20 @@ namespace _03_Code.Player {
         [SerializeField] private PlayerMover playerMover;
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private PlayerRenderer playerRenderer;
+        [SerializeField] private ParticleSystem vfx;
+        
 
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 
+        private bool _isJumpKeyPressed;
 
         private void Awake() {
             rb = GetComponent<Rigidbody2D>();
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
+            input.OnSkill1Input += HandleSkill1Input;
+            input.OnAttackInput += HandleAttackInput;
         }
 
         private void Update() {
@@ -34,11 +38,20 @@ namespace _03_Code.Player {
             if (contactChecker.IsGrounded)
                 playerMover.Jump();
         }
+        
+        private void HandleAttackInput() {
+            
+        }
 
+        private void HandleSkill1Input() {
+            vfx.Play();
+            Destroy(gameObject);
+        }
 
         private void OnDestroy() {
             input.OnJumpInput -= HandleJump;
             input.OnMoveInput -= HandleMoveInput;
+            input.OnSkill1Input -= HandleSkill1Input;
         }
     }
 }
