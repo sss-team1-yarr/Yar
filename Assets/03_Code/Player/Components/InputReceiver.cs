@@ -2,17 +2,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public delegate void OnMove();
-
-public delegate void OnJump();
-
-public delegate void OnSkill1();
-
-namespace _3_Code.Player.Components {
+namespace _03_Code.Player.Components {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions {
         private Controls _controls;
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
+        public event Action OnAttackInput;
         public event Action OnSkill1Input;
 
         private void Awake() {
@@ -30,11 +25,14 @@ namespace _3_Code.Player.Components {
                 OnJumpInput?.Invoke();
         }
 
-        public void OnAttack(InputAction.CallbackContext context) {
+        public void OnRun(InputAction.CallbackContext context) {
             
         }
         
-        public void OnRun(InputAction.CallbackContext context) { }
+        public void OnAttack(InputAction.CallbackContext context) {
+            if (context.performed)
+                OnAttackInput?.Invoke();
+        }
 
         public void OnSkill1(InputAction.CallbackContext context) {
             OnSkill1Input?.Invoke();

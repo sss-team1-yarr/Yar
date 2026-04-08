@@ -1,5 +1,4 @@
 ﻿using _03_Code.Player.Components;
-using _3_Code.Player.Components;
 using UnityEngine;
 
 namespace _03_Code.Player {
@@ -22,6 +21,7 @@ namespace _03_Code.Player {
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
             input.OnSkill1Input += HandleSkill1Input;
+            input.OnAttackInput += HandleAttackInput;
         }
 
         private void Update() {
@@ -37,6 +37,10 @@ namespace _03_Code.Player {
         private void HandleJump() {
             if (contactChecker.IsGrounded)
                 playerMover.Jump();
+        }
+        
+        private void HandleAttackInput() {
+            
         }
 
         private void HandleSkill1Input() {
