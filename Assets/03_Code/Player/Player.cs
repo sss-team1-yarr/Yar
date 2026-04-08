@@ -2,7 +2,7 @@
 using Code.Player.Components;
 using UnityEngine;
 
-namespace _03_Code.Player
+namespace Code.Player
 {
     public class Player : MonoBehaviour
     {
