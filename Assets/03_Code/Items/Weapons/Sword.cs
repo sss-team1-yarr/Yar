@@ -37,7 +37,6 @@ namespace _03_Code.Items.Weapons {
         }
 
         private void Update() {
-            CalcRotation();
             Attack();
         }
 
