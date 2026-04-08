@@ -27,13 +27,13 @@ namespace _03_Code.Player
         private void Update()
         {
             playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
-            if (!Mathf.Approximately(input.testVariable.x, 0f)) playerRenderer.SetFlip(input.testVariable.x > 0);
         }
 
         private void HandleMoveInput(float obj)
         {
             playerMover.SetMoveInput(obj);
             playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(obj));
+            if (!Mathf.Approximately(obj, 0f)) playerRenderer.SetFlip(obj > 0);
         }
 
         private void HandleJump()

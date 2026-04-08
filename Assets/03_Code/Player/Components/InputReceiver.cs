@@ -13,8 +13,6 @@ namespace Code.Player.Components
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
 
-        public Vector2 testVariable;
-
         private void Awake()
         {
             _controls = new Controls();
@@ -25,7 +23,6 @@ namespace Code.Player.Components
         public void OnMove(InputAction.CallbackContext context)
         {
             OnMoveInput?.Invoke(context.ReadValue<Vector2>().x);
-            testVariable = context.ReadValue<Vector2>();
         }
         public void OnJump(InputAction.CallbackContext context)
         {
