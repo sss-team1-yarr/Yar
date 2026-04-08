@@ -13,6 +13,8 @@ namespace Code.Player.Components
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
 
+        public Vector2 moveDir;
+
         private void Awake()
         {
             _controls = new Controls();
@@ -22,8 +24,10 @@ namespace Code.Player.Components
         
         public void OnMove(InputAction.CallbackContext context)
         {
+            moveDir = context.ReadValue<Vector2>();
             OnMoveInput?.Invoke(context.ReadValue<Vector2>().x);
         }
+
         public void OnJump(InputAction.CallbackContext context)
         {
             if (context.performed)

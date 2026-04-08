@@ -34,6 +34,7 @@ namespace Code.Player
             playerMover.SetMoveInput(obj);
             playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(obj));
             if (!Mathf.Approximately(obj, 0f)) playerRenderer.SetFlip(obj > 0);
+            playerRenderer.SetFlip(input.moveDir.x > 0);
         }
 
         private void HandleJump()
