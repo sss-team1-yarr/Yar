@@ -57,7 +57,7 @@ namespace _03_Code.Items.Weapons {
             for (var i = 0; i < cnt; i++) {
                 if (!_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) continue;
                 if (ReferenceEquals(damageable, _owner)) continue;
-                var result = damageable.ApplyDamage(new DamageInfo {
+                damageable.ApplyDamage(new DamageInfo {
                     DamageAmount = damageAmount,
                     KnockbackForce = knockbackForce
                 });
