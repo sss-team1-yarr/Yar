@@ -1,6 +1,7 @@
 ﻿using _03_Code.Player.Components;
 using _3_Code.Player.Components;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace _03_Code.Player {
     public class Player : MonoBehaviour {
@@ -18,6 +19,7 @@ namespace _03_Code.Player {
             rb = GetComponent<Rigidbody2D>();
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
+            input.OnAttackInput += HandleAttackInput;
         }
 
         private void Update() {
@@ -34,7 +36,9 @@ namespace _03_Code.Player {
             if (contactChecker.IsGrounded)
                 playerMover.Jump();
         }
-
+        private void HandleAttackInput() {
+            
+        }
 
         private void OnDestroy() {
             input.OnJumpInput -= HandleJump;
