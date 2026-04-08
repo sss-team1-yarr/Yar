@@ -1,5 +1,4 @@
 using _03_Code.Interface;
-using _3_Code.Player.Components;
 using Unity.Cinemachine;
 using UnityEngine;
 
