@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2919037064216593032}
   - component: {fileID: 6641011705029364716}
   - component: {fileID: 8594949796717373743}
+  - component: {fileID: 1433505197861753455}
   m_Layer: 10
   m_Name: EXP
   m_TagString: Untagged
@@ -107,6 +108,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1433505197861753455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732848341737852482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364ddc13c79481549b50b958fee3c86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.Exp
+  rb: {fileID: 6641011705029364716}
+  moveSpeed: 12
 --- !u!1 &5150245618831432178
 GameObject:
   m_ObjectHideFlags: 0
