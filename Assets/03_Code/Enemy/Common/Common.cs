@@ -13,6 +13,7 @@ namespace _03_Code.Enemy.Common
         [SerializeField] private Transform playerTrm;
         [SerializeField] private int damage;
         [SerializeField] private HpManager hp;
+        [SerializeField] private PlayerRenderer playerRenderer;
 
         private Vector2 _moveDir;
 
@@ -20,7 +21,8 @@ namespace _03_Code.Enemy.Common
         {
             if(playerTrm == null) return;
             _moveDir = playerTrm.position - transform.position;
-            _moveDir.Normalize(); 
+            _moveDir.Normalize();
+            playerRenderer.SetFlip(_moveDir.x > 0);
         }
 
         private void FixedUpdate()
