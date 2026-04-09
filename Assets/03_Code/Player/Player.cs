@@ -49,7 +49,6 @@ namespace _03_Code.Player {
         }
         private void HandleSkill1Input() {
             vfx.Play();
-            Destroy(gameObject);
         }
 
         private void OnDestroy() {
