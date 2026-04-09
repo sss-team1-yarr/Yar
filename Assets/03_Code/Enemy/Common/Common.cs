@@ -1,4 +1,5 @@
 ﻿using System;
+using _03_Code.Player.Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -10,13 +11,10 @@ namespace _03_Code.Enemy.Common
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float moveSpeed = 2f;
         [SerializeField] private Transform playerTrm;
+        [SerializeField] private int damage;
+        [SerializeField] private HpManager hp;
 
         private Vector2 _moveDir;
-
-        private void Awake()
-        {
-            rb = GetComponent<Rigidbody2D>();
-        }
 
         private void Update()
         {
@@ -27,12 +25,12 @@ namespace _03_Code.Enemy.Common
 
         private void FixedUpdate()
         {
-            rb.linearVelocityX = _moveDir.x * moveSpeed; 
+            rb.linearVelocity = _moveDir * moveSpeed;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            //Destroy(collision.gameObject);
+            hp.UpdateHp(damage);
         }
     }
 }
