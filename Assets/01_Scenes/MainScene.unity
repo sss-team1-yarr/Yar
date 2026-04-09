@@ -5248,6 +5248,7 @@ GameObject:
   - component: {fileID: 271853554}
   - component: {fileID: 271853553}
   - component: {fileID: 271853558}
+  - component: {fileID: 271853559}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -5272,6 +5273,7 @@ MonoBehaviour:
   playerTrm: {fileID: 646734940}
   damage: 0
   hp: {fileID: 646734944}
+  playerRenderer: {fileID: 271853559}
 --- !u!61 &271853554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5441,6 +5443,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &271853559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271853552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b9780febf4d0742a8c09b558e81e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerRenderer
+  animator: {fileID: 271853558}
+  playerTransform: {fileID: 271853557}
 --- !u!1 &273909525
 GameObject:
   m_ObjectHideFlags: 0
