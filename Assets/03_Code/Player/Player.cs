@@ -51,7 +51,7 @@ namespace _03_Code.Player {
             });
         }
         private void HandleSkill1Input() {
-            var dam = 1 - hp.hp;
+            const int dam = 100;
             hp.UpdateHp(dam);
             vfx.Play();
         }
