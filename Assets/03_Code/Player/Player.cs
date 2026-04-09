@@ -52,7 +52,6 @@ namespace _03_Code.Player {
         private void HandleSkill1Input() {
             vfx.Play();
             impulseSource.GenerateImpulse(transform.position.normalized);
-            Destroy(gameObject);
         }
 
         private void OnDestroy() {

@@ -5270,7 +5270,7 @@ MonoBehaviour:
   moveSpeed: 5
   playerTrm: {fileID: 646734940}
   damage: 30
-  hp: {fileID: 646734944}
+  hp: {fileID: 0}
 --- !u!61 &271853554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5562,7 +5562,6 @@ GameObject:
   - component: {fileID: 646734942}
   - component: {fileID: 646734941}
   - component: {fileID: 646734943}
-  - component: {fileID: 646734944}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -5681,6 +5680,7 @@ MonoBehaviour:
   contactChecker: {fileID: 1015725206}
   playerRenderer: {fileID: 193382079}
   vfx: {fileID: 61308853}
+  impulseSource: {fileID: 711593091}
 --- !u!1 &711593090
 GameObject:
   m_ObjectHideFlags: 0
