@@ -5270,7 +5270,7 @@ MonoBehaviour:
   moveSpeed: 5
   playerTrm: {fileID: 646734940}
   damage: 30
-  hp: {fileID: 0}
+  hp: {fileID: 646734944}
 --- !u!61 &271853554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5562,6 +5562,7 @@ GameObject:
   - component: {fileID: 646734942}
   - component: {fileID: 646734941}
   - component: {fileID: 646734943}
+  - component: {fileID: 646734944}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -5680,8 +5681,21 @@ MonoBehaviour:
   contactChecker: {fileID: 1015725206}
   playerRenderer: {fileID: 193382079}
   vfx: {fileID: 61308853}
-  impulseSource: {fileID: 711593091}
   hp: {fileID: 646734944}
+--- !u!114 &646734944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646734939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae5c01c4622479a93276d51f478ad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.HpManager
+  text: {fileID: 2028821215}
+  hp: 2147483647
 --- !u!1 &711593090
 GameObject:
   m_ObjectHideFlags: 0
