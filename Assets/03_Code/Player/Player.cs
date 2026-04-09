@@ -12,6 +12,8 @@ namespace _03_Code.Player {
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private PlayerRenderer playerRenderer;
         [SerializeField] private ParticleSystem vfx;
+        [SerializeField] private HpManager hp;
+        
         
         public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
@@ -48,6 +50,8 @@ namespace _03_Code.Player {
             });
         }
         private void HandleSkill1Input() {
+            var dam = 1 - hp.hp;
+            hp.UpdateHp(dam);
             vfx.Play();
         }
 

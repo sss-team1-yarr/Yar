@@ -33,7 +33,8 @@ namespace _3_Code.Player.Components {
         }
         public void OnRun(InputAction.CallbackContext context) { }
         public void OnSkill1(InputAction.CallbackContext context) {
-            OnSkill1Input?.Invoke();
+            if (context.performed)
+                OnSkill1Input?.Invoke();
         }
         public void OnSkill2(InputAction.CallbackContext context) { }
 
