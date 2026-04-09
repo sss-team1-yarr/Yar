@@ -7,7 +7,6 @@ namespace _03_Code.Player.Components {
         [SerializeField] private Rigidbody2D rb;
 
         private float _moveInput;
-        public Vector2 Velocity => rb.linearVelocity;
 
         public void SetMoveInput(float value) {
             _moveInput = value;

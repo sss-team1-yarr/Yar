@@ -11,7 +11,7 @@ namespace _03_Code.Enemy.Common
         [SerializeField] private float moveSpeed = 2f;
         [SerializeField] private Transform playerTrm;
 
-        private Vector2 moveDir;
+        private Vector2 _moveDir;
 
         private void Awake()
         {
@@ -21,13 +21,13 @@ namespace _03_Code.Enemy.Common
         private void Update()
         {
             if(playerTrm == null) return;
-            moveDir = playerTrm.position - transform.position;
-            moveDir.Normalize(); 
+            _moveDir = playerTrm.position - transform.position;
+            _moveDir.Normalize(); 
         }
 
         private void FixedUpdate()
         {
-            rb.linearVelocityX = moveDir.x * moveSpeed; 
+            rb.linearVelocityX = _moveDir.x * moveSpeed; 
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
