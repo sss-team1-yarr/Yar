@@ -5563,9 +5563,9 @@ MonoBehaviour:
   UseCameraSpace: 1
   SignalCombinationMode: 1
   ReactionSettings:
-    m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    AmplitudeGain: 1
-    FrequencyGain: 1
+    m_SecondaryNoise: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
+    AmplitudeGain: 8
+    FrequencyGain: 8
     Duration: 3
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &646734939
@@ -5604,6 +5604,7 @@ Transform:
   - {fileID: 1177184725}
   - {fileID: 201182655}
   - {fileID: 1015725205}
+  - {fileID: 711593092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &646734941
@@ -5697,6 +5698,7 @@ MonoBehaviour:
   contactChecker: {fileID: 1015725206}
   playerRenderer: {fileID: 193382079}
   vfx: {fileID: 61308853}
+  impulseSource: {fileID: 711593091}
 --- !u!1 &711593090
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,7 +5730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
   ImpulseDefinition:
     ImpulseChannel: 1
-    ImpulseShape: 3
+    ImpulseShape: 2
     CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
@@ -5775,12 +5777,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711593090}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1398, y: 0.10853, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.1398, y: 0.108529985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 646734940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1015725204
 GameObject:
@@ -13295,7 +13297,6 @@ SceneRoots:
   - {fileID: 2022249982}
   - {fileID: 646734940}
   - {fileID: 273909528}
-  - {fileID: 711593092}
   - {fileID: 1626225244}
   - {fileID: 1306396272}
   - {fileID: 61308854}

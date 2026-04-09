@@ -1,6 +1,7 @@
 ﻿using _03_Code.Items;
 using _03_Code.Player.Components;
 using _3_Code.Player.Components;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -12,7 +13,8 @@ namespace _03_Code.Player {
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private PlayerRenderer playerRenderer;
         [SerializeField] private ParticleSystem vfx;
-        
+        [SerializeField] private CinemachineImpulseSource impulseSource;
+
         public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
@@ -49,6 +51,7 @@ namespace _03_Code.Player {
         }
         private void HandleSkill1Input() {
             vfx.Play();
+            impulseSource.GenerateImpulse(transform.position.normalized);
             Destroy(gameObject);
         }
 
