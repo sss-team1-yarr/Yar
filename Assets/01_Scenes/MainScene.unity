@@ -5680,6 +5680,7 @@ MonoBehaviour:
   contactChecker: {fileID: 1015725206}
   playerRenderer: {fileID: 193382079}
   vfx: {fileID: 61308853}
+  hp: {fileID: 646734944}
 --- !u!114 &646734944
 MonoBehaviour:
   m_ObjectHideFlags: 0
