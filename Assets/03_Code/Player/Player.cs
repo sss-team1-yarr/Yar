@@ -1,5 +1,8 @@
-﻿using _03_Code.Player.Components;
+﻿using _03_Code.Items;
+using _03_Code.Player.Components;
+using _3_Code.Player.Components;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace _03_Code.Player {
     public class Player : MonoBehaviour {
@@ -10,18 +13,17 @@ namespace _03_Code.Player {
         [SerializeField] private PlayerRenderer playerRenderer;
         [SerializeField] private ParticleSystem vfx;
         
-
+        public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 
-        private bool _isJumpKeyPressed;
 
         private void Awake() {
             rb = GetComponent<Rigidbody2D>();
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
-            input.OnSkill1Input += HandleSkill1Input;
             input.OnAttackInput += HandleAttackInput;
+            input.OnSkill1Input += HandleSkill1Input;
         }
 
         private void Update() {
@@ -38,11 +40,13 @@ namespace _03_Code.Player {
             if (contactChecker.IsGrounded)
                 playerMover.Jump();
         }
-        
-        private void HandleAttackInput() {
-            
+        private void HandleAttackInput(int btn, bool pressed) {
+            HoldingItem?.Use(new ItemUsingContext {
+                Input = btn,
+                Pressed = pressed,
+                User = this
+            });
         }
-
         private void HandleSkill1Input() {
             vfx.Play();
             Destroy(gameObject);
