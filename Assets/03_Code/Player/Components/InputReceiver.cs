@@ -8,6 +8,7 @@ namespace _3_Code.Player.Components {
         public event Action<int, bool> OnAttackInput;
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
+        public event Action OnRunInput;
         public event Action OnSkill1Input;
 
         private void Awake() {
@@ -31,7 +32,11 @@ namespace _3_Code.Player.Components {
             if (context.canceled)
                 OnAttackInput?.Invoke(0, false);
         }
-        public void OnRun(InputAction.CallbackContext context) { }
+
+        public void OnRun(InputAction.CallbackContext context) {
+            if (context.performed)
+                OnRunInput?.Invoke();
+        }
         public void OnSkill1(InputAction.CallbackContext context) {
             if (context.performed)
                 OnSkill1Input?.Invoke();

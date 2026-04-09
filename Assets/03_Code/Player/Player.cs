@@ -13,7 +13,8 @@ namespace _03_Code.Player {
         [SerializeField] private PlayerRenderer playerRenderer;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private HpManager hp;
-        
+        [SerializeField] private float dashPower;
+        [SerializeField] private PlayerMover pm;
         
         public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
@@ -21,8 +22,8 @@ namespace _03_Code.Player {
 
 
         private void Awake() {
-            rb = GetComponent<Rigidbody2D>();
             input.OnJumpInput += HandleJump;
+            input.OnRunInput += HandleRun;
             input.OnMoveInput += HandleMoveInput;
             input.OnAttackInput += HandleAttackInput;
             input.OnSkill1Input += HandleSkill1Input;
@@ -43,6 +44,11 @@ namespace _03_Code.Player {
             if (contactChecker.IsGrounded)
                 playerMover.Jump();
         }
+
+        private void HandleRun() {
+            pm.speed *= 2;
+        }
+        
         private void HandleAttackInput(int btn, bool pressed) {
             HoldingItem?.Use(new ItemUsingContext {
                 Input = btn,
@@ -63,7 +69,9 @@ namespace _03_Code.Player {
 
         private void OnDestroy() {
             input.OnJumpInput -= HandleJump;
+            input.OnRunInput -= HandleRun;
             input.OnMoveInput -= HandleMoveInput;
+            input.OnAttackInput -= HandleAttackInput;
             input.OnSkill1Input -= HandleSkill1Input;
         }
     }

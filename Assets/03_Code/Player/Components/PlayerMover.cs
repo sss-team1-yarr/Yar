@@ -2,10 +2,10 @@
 
 namespace _03_Code.Player.Components {
     public class PlayerMover : MonoBehaviour {
-        [SerializeField] private float speed;
         [SerializeField] private float jumpForce;
         [SerializeField] private Rigidbody2D rb;
 
+        public float speed;
         private float _moveInput;
 
         public void SetMoveInput(float value) {
