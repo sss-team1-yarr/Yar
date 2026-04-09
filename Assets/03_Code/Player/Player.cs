@@ -1,6 +1,8 @@
 ﻿using _03_Code.Items;
 using _03_Code.Player.Components;
 using _3_Code.Player.Components;
+using Microsoft.Win32.SafeHandles;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -13,6 +15,7 @@ namespace _03_Code.Player {
         [SerializeField] private PlayerRenderer playerRenderer;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private HpManager hp;
+        [SerializeField] private int explosion;
         
         
         public IItem HoldingItem { get; private set; }
@@ -51,8 +54,7 @@ namespace _03_Code.Player {
             });
         }
         private void HandleSkill1Input() {
-            const int dam = 100;
-            hp.UpdateHp(dam);
+            hp.UpdateHp(explosion);
             vfx.Play();
         }
 
