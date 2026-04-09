@@ -20,7 +20,7 @@ namespace _03_Code.Enemy.Common
 
         private void Update()
         {
-            playerTrm = GameObject.Find("Player").transform;
+            if(playerTrm == null) return;
             moveDir = playerTrm.position - transform.position;
             moveDir.Normalize(); 
         }
