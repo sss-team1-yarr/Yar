@@ -11,6 +11,7 @@ namespace _03_Code.Player {
         [SerializeField] private PlayerMover playerMover;
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private PlayerRenderer playerRenderer;
+        [SerializeField] private ParticleSystem vfx;
         
         public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
@@ -22,6 +23,7 @@ namespace _03_Code.Player {
             input.OnJumpInput += HandleJump;
             input.OnMoveInput += HandleMoveInput;
             input.OnAttackInput += HandleAttackInput;
+            input.OnSkill1Input += HandleSkill1Input;
         }
 
         private void Update() {
@@ -45,10 +47,15 @@ namespace _03_Code.Player {
                 User = this
             });
         }
+        private void HandleSkill1Input() {
+            vfx.Play();
+            Destroy(gameObject);
+        }
 
         private void OnDestroy() {
             input.OnJumpInput -= HandleJump;
             input.OnMoveInput -= HandleMoveInput;
+            input.OnSkill1Input -= HandleSkill1Input;
         }
     }
 }

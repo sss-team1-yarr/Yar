@@ -2,16 +2,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public delegate void OnMove();
-
-public delegate void OnJump();
-
 namespace _3_Code.Player.Components {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions {
         private Controls _controls;
         public event Action<int, bool> OnAttackInput;
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
+        public event Action OnSkill1Input;
 
         private void Awake() {
             _controls = new Controls();
@@ -35,7 +32,9 @@ namespace _3_Code.Player.Components {
                 OnAttackInput?.Invoke(0, false);
         }
         public void OnRun(InputAction.CallbackContext context) { }
-        public void OnSkill1(InputAction.CallbackContext context) { }
+        public void OnSkill1(InputAction.CallbackContext context) {
+            OnSkill1Input?.Invoke();
+        }
         public void OnSkill2(InputAction.CallbackContext context) { }
 
         private void OnDestroy() {
