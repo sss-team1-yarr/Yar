@@ -58,6 +58,7 @@ namespace _03_Code.Player {
 
         private void HandlePlayerDeath() {
             Destroy(gameObject);
+            Time.timeScale = 0;
         }
 
         private void OnDestroy() {
