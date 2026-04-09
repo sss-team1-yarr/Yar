@@ -13,12 +13,9 @@ namespace _03_Code.Exp {
             _playerTrm = GameObject.FindWithTag("Player");
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             _moveDir = _playerTrm.transform.position - transform.position;
             _moveDir.Normalize();
-        }
-
-        private void FixedUpdate() {
             rb.linearVelocity = _moveDir * moveSpeed;
         }
 

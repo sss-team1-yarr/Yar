@@ -1,6 +1,8 @@
 ﻿using _03_Code.Items;
 using _03_Code.Player.Components;
 using _3_Code.Player.Components;
+using Microsoft.Win32.SafeHandles;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -15,6 +17,8 @@ namespace _03_Code.Player {
         [SerializeField] private HpManager hp;
         [SerializeField] private float dashPower;
         [SerializeField] private PlayerMover pm;
+        [SerializeField] private int explosion;
+        
         
         public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
@@ -22,6 +26,7 @@ namespace _03_Code.Player {
 
 
         private void Awake() {
+            rb = GetComponent<Rigidbody2D>();
             input.OnJumpInput += HandleJump;
             input.OnRunInput += HandleRun;
             input.OnMoveInput += HandleMoveInput;
@@ -57,8 +62,7 @@ namespace _03_Code.Player {
             });
         }
         private void HandleSkill1Input() {
-            const int dam = 100;
-            hp.UpdateHp(dam);
+            hp.UpdateHp(explosion);
             vfx.Play();
         }
 
