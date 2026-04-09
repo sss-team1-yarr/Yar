@@ -30,6 +30,7 @@ namespace _03_Code.Player {
 
         private void Update() {
             playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
+            if(hp.hp <= 0) HandlePlayerDeath();
         }
 
         private void HandleMoveInput(float obj) {
@@ -53,6 +54,10 @@ namespace _03_Code.Player {
             var dam = 1 - hp.hp;
             hp.UpdateHp(dam);
             vfx.Play();
+        }
+
+        private void HandlePlayerDeath() {
+            Destroy(gameObject);
         }
 
         private void OnDestroy() {
