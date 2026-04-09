@@ -5270,7 +5270,7 @@ MonoBehaviour:
   moveSpeed: 5
   playerTrm: {fileID: 646734940}
   damage: 0
-  hp: {fileID: 0}
+  hp: {fileID: 646734944}
 --- !u!61 &271853554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5681,7 +5681,7 @@ MonoBehaviour:
   contactChecker: {fileID: 1015725206}
   playerRenderer: {fileID: 193382079}
   vfx: {fileID: 61308853}
-  hp: {fileID: 0}
+  hp: {fileID: 646734944}
 --- !u!114 &646734944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13292,11 +13292,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2022249982}
-  - {fileID: 646734940}
   - {fileID: 273909528}
   - {fileID: 1626225244}
-  - {fileID: 1306396272}
-  - {fileID: 61308854}
-  - {fileID: 271853557}
-  - {fileID: 1164709595}
   - {fileID: 1515950449}
+  - {fileID: 1164709595}
+  - {fileID: 1306396272}
+  - {fileID: 646734940}
+  - {fileID: 271853557}
+  - {fileID: 61308854}
