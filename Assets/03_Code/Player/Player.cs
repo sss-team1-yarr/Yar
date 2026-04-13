@@ -18,7 +18,7 @@ namespace _03_Code.Player {
         [SerializeField] private float dashPower;
         [SerializeField] private PlayerMover pm;
         [SerializeField] private int explosion;
-        
+        [SerializeField] private GameObject vfxBoom;
         
         public IItem HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
@@ -63,6 +63,7 @@ namespace _03_Code.Player {
         }
         private void HandleSkill1Input() {
             hp.UpdateHp(explosion);
+            vfxBoom.transform.position = rb.position;
             vfx.Play();
         }
 
