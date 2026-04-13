@@ -10,6 +10,7 @@ namespace _3_Code.Player.Components {
         public event Action OnJumpInput;
         public event Action OnRunInput;
         public event Action OnSkill1Input;
+        public event Action OnPauseInput;
 
         private void Awake() {
             _controls = new Controls();
@@ -42,6 +43,11 @@ namespace _3_Code.Player.Components {
                 OnSkill1Input?.Invoke();
         }
         public void OnSkill2(InputAction.CallbackContext context) { }
+        public void OnPause(InputAction.CallbackContext context) {
+            if (context.performed) {
+                OnPauseInput?.Invoke();
+            }
+        }
 
         private void OnDestroy() {
             _controls.Disable();

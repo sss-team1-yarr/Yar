@@ -32,6 +32,7 @@ namespace _03_Code.Player {
             input.OnMoveInput += HandleMoveInput;
             input.OnAttackInput += HandleAttackInput;
             input.OnSkill1Input += HandleSkill1Input;
+            input.OnPauseInput += HandlePauseInput;
         }
 
         private void Update() {
@@ -72,12 +73,17 @@ namespace _03_Code.Player {
             Time.timeScale = 0;
         }
 
+        private void HandlePauseInput() {
+            
+        }
+
         private void OnDestroy() {
             input.OnJumpInput -= HandleJump;
             input.OnRunInput -= HandleRun;
             input.OnMoveInput -= HandleMoveInput;
             input.OnAttackInput -= HandleAttackInput;
             input.OnSkill1Input -= HandleSkill1Input;
+            input.OnPauseInput -= HandlePauseInput;
         }
     }
 }
