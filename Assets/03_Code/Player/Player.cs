@@ -42,7 +42,7 @@ namespace _03_Code.Player {
         private void HandleMoveInput(float obj) {
             playerMover.SetMoveInput(obj);
             playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(obj));
-            if (!Mathf.Approximately(obj, 0f)) playerRenderer.SetFlip(obj > 0);
+            if (!Mathf.Approximately(obj, 0f)) transform.rotation = Quaternion.Euler(0f, obj>0f?0f:180f, 0f);
         }
 
         private void HandleJump() {

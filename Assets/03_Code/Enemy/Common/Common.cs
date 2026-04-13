@@ -9,27 +9,15 @@ namespace _03_Code.Enemy.Common
     public class Common : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private float moveSpeed = 2f;
-        [SerializeField] private Transform playerTrm;
         [SerializeField] private int damage;
         [SerializeField] private HpManager hp;
         [SerializeField] private PlayerRenderer playerRenderer;
-
-        private Vector2 _moveDir;
-
-        private void Update()
-        {
-            if(playerTrm == null) return;
-            _moveDir = playerTrm.position - transform.position;
-            _moveDir.Normalize();
-            playerRenderer.SetFlip(_moveDir.x > 0);
+        [SerializeField] private IsNearbyMe rc;
+        
+        private void Update() {
+            transform.rotation = Quaternion.Euler(0f, rc.MoveDir.x>0f?0f:180f, 0f);
         }
-
-        private void FixedUpdate()
-        {
-            rb.linearVelocity = _moveDir * moveSpeed;
-        }
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             hp.UpdateHp(damage);
