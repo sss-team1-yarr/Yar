@@ -1,10 +1,6 @@
 ﻿using _03_Code.Items;
 using _03_Code.Player.Components;
-using _3_Code.Player.Components;
-using Microsoft.Win32.SafeHandles;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace _03_Code.Player {
     public class Player : MonoBehaviour {

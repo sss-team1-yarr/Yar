@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _3_Code.Player.Components {
+namespace _03_Code.Player.Components {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions {
         private Controls _controls;
         public event Action<int, bool> OnAttackInput;
