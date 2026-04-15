@@ -5,7 +5,7 @@ namespace _03_Code.Player.Components {
         [SerializeField] private float jumpForce;
         [SerializeField] private Rigidbody2D rb;
 
-        public float speed;
+        public float Speed { internal get; set; }
         private float _moveInput;
 
         public void SetMoveInput(float value) {
@@ -17,7 +17,7 @@ namespace _03_Code.Player.Components {
         }
 
         private void FixedUpdate() {
-            rb.linearVelocityX = _moveInput * speed;
+            rb.linearVelocityX = _moveInput * Speed;
         }
     }
 }
