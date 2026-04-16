@@ -1,4 +1,5 @@
 ﻿using _03_Code.Items;
+using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace _03_Code.Player {
         [SerializeField] private int explosion;
         [SerializeField] private GameObject vfxBoom;
         
-        public IItem HoldingItem { get; private set; }
+        [field: SerializeField] public Weapon HoldingItem { get; private set; }
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 
@@ -28,6 +29,8 @@ namespace _03_Code.Player {
             input.OnMoveInput += HandleMoveInput;
             input.OnAttackInput += HandleAttackInput;
             input.OnSkill1Input += HandleSkill1Input;
+
+            HoldingItem?.HoldItem(new ItemUsingContext() { User = this, Input = 0, Pressed = true });
         }
 
 

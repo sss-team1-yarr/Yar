@@ -25,6 +25,7 @@ namespace _03_Code.Items.Weapons {
 
         public override void Use(ItemUsingContext context) {
             base.Use(context);
+            if (context.Pressed) Debug.Log("Attack!");
             if (context.Input == 0) _isHoldingKey = context.Pressed;
         }
 
