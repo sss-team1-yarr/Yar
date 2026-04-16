@@ -30,6 +30,7 @@ namespace _03_Code.Player {
             input.OnSkill1Input += HandleSkill1Input;
         }
 
+
         private void Update() {
             playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
             if(hp.hp <= 0) HandlePlayerDeath();
@@ -46,8 +47,8 @@ namespace _03_Code.Player {
                 playerMover.Jump();
         }
 
-        private void HandleRun() {
-            pm.Speed *= 2;
+        private void HandleRun(bool run) {
+            pm.Speed *= run ? 2 : 0.5f;
         }
         
         private void HandleAttackInput(int btn, bool pressed) {
