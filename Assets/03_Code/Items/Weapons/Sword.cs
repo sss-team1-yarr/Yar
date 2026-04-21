@@ -23,7 +23,7 @@ namespace _03_Code.Items.Weapons {
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
-        private bool isRight;
+
 
         public override bool CanUse => Time.time - _lastAttackTime >= cooldown;
 
@@ -41,25 +41,14 @@ namespace _03_Code.Items.Weapons {
 
         private void Update() {
             Attack();
-            CalcRotation();
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            if (_owner)
-            {
-                bool isRight = input.onMoveInputVec2.x > 0;
-
-                Vector3 attackPoint = _owner.transform.position; 
-                attackPoint += (Vector3)input.onMoveInputVec2.normalized * damageOffset.x;
-                Vector3 rotatedDirection = new Vector2(-input.onMoveInputVec2.y * (isRight ? -1 : 1),
-                    input.onMoveInputVec2.x * (isRight ? 1 : -1)).normalized; 
-                attackPoint += rotatedDirection * damageOffset.y;
-                Gizmos.DrawWireSphere(attackPoint, damageRadius);
-
-            }
+            Gizmos.DrawWireSphere(new Vector3(1, 1, 0), damageRadius);
         }
+        
         private void Attack()
         {
             if (!_isHoldingKey || !CanUse) return;
@@ -72,23 +61,13 @@ namespace _03_Code.Items.Weapons {
             vfx.Emit(new ParticleSystem.EmitParams
             {
                 rotation = rotation
-            }, 1);
+            }, 5);
 
-
-            bool isRight = direction.x > 0;
-
-            Vector3 attackPoint = _owner.transform.position; 
-            attackPoint += (Vector3)input.onMoveInputVec2.normalized * damageOffset.x;
-            Vector3 rotatedDirection = new Vector2(-input.onMoveInputVec2.y * (isRight ? -1 : 1),
-                input.onMoveInputVec2.x * (isRight ? 1 : -1)).normalized;
-            attackPoint += rotatedDirection * damageOffset.y;
-
-            int cnt = Physics2D.OverlapCircle(attackPoint, damageRadius, targetFilter, _hitBuffer);
+            int cnt = Physics2D.OverlapCircle(new Vector2(1,1), damageRadius, targetFilter, _hitBuffer);
             for (int i = 0; i < cnt; i++)
             {
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable))
                 {
-                    if (ReferenceEquals(damageable, _owner)) continue;
                     DamageResult result = damageable.ApplyDamage(new DamageInfo
                     {
                         DamageAmount = damageAmount,
@@ -100,22 +79,6 @@ namespace _03_Code.Items.Weapons {
                     }
                 }
             }
-        }
-
-        private void CalcRotation()
-        {
-            if (handTrm == null) return;
-
-            Vector2 direction = input.onMoveInputVec2;
-            bool isRight = direction.x > 0;
-            int dir = isRight ^ _isUpperAttack ? 1 : -1;
-
-            handTrm.localScale = new Vector3(1f, dir, 1f);
-
-            float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
-            float swing = swingAngle * (dir);
-
-            handTrm.rotation = Quaternion.Euler(0f, 0f, rotation + swing);
         }
     }
 }
