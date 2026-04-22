@@ -15,7 +15,7 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private CinemachineImpulseSource impulseSource;
 
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
-        private Player.Player _owner;
+        [SerializeField] Player.Player _owner;
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
