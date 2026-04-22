@@ -10736,7 +10736,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bcf6b500aa292b7449b02e2ffdd78c90, type: 2}
+  - {fileID: 2100000, guid: 9c771a17fd8d343aba338c12b0dc2b22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11210,8 +11210,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.08276904, y: -0.28949186}
-  m_Size: {x: 1.1362882, y: 2.0990925}
+  m_Offset: {x: -0.086, y: -0.285}
+  m_Size: {x: 1.13, y: 2.07}
   m_Direction: 0
 --- !u!1 &925448223
 GameObject:
@@ -21399,7 +21399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
   cooldown: 0.2
   vfx: {fileID: 2003477190}
-  damageRadius: 1.5
+  damageRadius: 0.8
   damageAmount: 2
   knockbackForce: 2
   targetFilter:
