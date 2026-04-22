@@ -7,12 +7,12 @@ namespace _03_Code.UI.Title {
             SceneManager.LoadScene(1);
         }
 
-        public void ExitGame() {
-            Application.Quit();
-        }
-
         public void SettingsMenu() {
             
+        }
+        
+        public void ExitGame() {
+            Application.Quit();
         }
     }
 }
