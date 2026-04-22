@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _03_Code.Items.Weapons {
-    public class Sword : Weapon {
+    public class Sword : Weapon, IItem {
         [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private float damageRadius = 1.5f;
@@ -13,13 +13,13 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private ContactFilter2D targetFilter;
         [SerializeField] private Transform handTrm;
         [SerializeField] private CinemachineImpulseSource impulseSource;
+        [SerializeField] private Player.Player owner;
 
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
-        [SerializeField] Player.Player _owner;
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
-        private float ranKnockbackForce;
+        private float _ranKnockbackForce;
 
         private static readonly Vector3 AttackOffset = new(0.3f, 0.3f, 0f);
 
@@ -40,7 +40,7 @@ namespace _03_Code.Items.Weapons {
 
             _lastAttackTime = Time.time;
             _isUpperAttack = !_isUpperAttack;
-            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, _owner.transform.rotation.eulerAngles.y, _owner.transform.rotation.eulerAngles.z);
+            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, owner.transform.rotation.eulerAngles.y, owner.transform.rotation.eulerAngles.z);
 
             var center = transform.position + AttackOffset;
 
@@ -50,12 +50,12 @@ namespace _03_Code.Items.Weapons {
 
             for (var i = 0; i < cnt; i++)
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    if (ReferenceEquals(damageable, _owner)) continue;
+                    if (ReferenceEquals(damageable, owner)) continue;
 
-                    ranKnockbackForce = Random.Range(knockbackForce - 1.5f, knockbackForce + 1.5f);
+                    _ranKnockbackForce = Random.Range(knockbackForce - 1.5f, knockbackForce + 1.5f);
                     var result = damageable.ApplyDamage(new DamageInfo {
                         DamageAmount = damageAmount,
-                        KnockbackForce = ranKnockbackForce
+                        KnockbackForce = _ranKnockbackForce
                     });
 
                     if (result.Hit) impulseSource.GenerateImpulseWithForce(1f);
