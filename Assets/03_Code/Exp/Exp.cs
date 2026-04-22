@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace _03_Code.Exp {
@@ -6,13 +5,13 @@ namespace _03_Code.Exp {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float range = 10f;
-        
+
 
         private Vector2 _moveDir;
 
         private void FixedUpdate() {
             var circle = Physics2D.OverlapCircle(rb.position, range, LayerMask.GetMask("Player"));
-            if(!circle) return;
+            if (!circle) return;
             _moveDir = circle.transform.position - transform.position;
             _moveDir.Normalize();
             rb.linearVelocity = _moveDir * moveSpeed;

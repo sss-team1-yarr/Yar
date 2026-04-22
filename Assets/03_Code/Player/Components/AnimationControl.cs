@@ -3,7 +3,7 @@ using UnityEngine;
 namespace _03_Code.Player.Components {
     public class AnimationControl : MonoBehaviour {
         [SerializeField] private PlayerRenderer playerRenderer;
-        
+
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 

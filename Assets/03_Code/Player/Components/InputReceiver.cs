@@ -43,10 +43,12 @@ namespace _03_Code.Player.Components {
             if (context.canceled)
                 OnRunInput?.Invoke(false);
         }
+
         public void OnSkill1(InputAction.CallbackContext context) {
             if (context.performed)
                 OnSkill1Input?.Invoke();
         }
+
         public void OnSkill2(InputAction.CallbackContext context) { }
 
         private void OnDestroy() {

@@ -12,37 +12,34 @@ namespace _03_Code.Player {
         [SerializeField] private HpManager hp;
         [SerializeField] private GameObject pause;
         [SerializeField] private AnimationControl ani;
-        
-        private bool _isActived = false;
+
+        private bool _isActived;
         private Dictionary<Type, IPlayerModule> _moduleDictionary;
-        
+
         private void Awake() {
             GetComponent<Player>();
-            _moduleDictionary = GetComponentsInChildren<IPlayerModule>().ToDictionary(
-                type => type.GetType());
-            
+            _moduleDictionary = GetComponentsInChildren<IPlayerModule>().ToDictionary(type => type.GetType());
+
             InitializeComponents();
         }
 
         public T GetModule<T>() {
-            if(_moduleDictionary.TryGetValue(typeof(T), out var module)) return (T)module;
-            
+            if (_moduleDictionary.TryGetValue(typeof(T), out var module)) return (T)module;
+
             var findModule = _moduleDictionary.Values.FirstOrDefault(moduleType => moduleType is T);
-            
+
             if (findModule is T castedModule) return castedModule;
-            
+
             return default;
         }
 
         private void InitializeComponents() {
-            foreach (var module in _moduleDictionary.Values.OfType<IPlayerModule>()) {
-                module.Initialize(this);
-            }
+            foreach (var module in _moduleDictionary.Values.OfType<IPlayerModule>()) module.Initialize(this);
         }
 
         private void Update() {
-            if(hp.hp <= 0) HandlePlayerDeath();
-            if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+            if (hp.hp <= 0) HandlePlayerDeath();
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
                 switch (_isActived) {
                     case false:
                         pause.SetActive(true);
@@ -53,7 +50,6 @@ namespace _03_Code.Player {
                         _isActived = !_isActived;
                         break;
                 }
-            }
         }
 
         private void HandlePlayerDeath() {

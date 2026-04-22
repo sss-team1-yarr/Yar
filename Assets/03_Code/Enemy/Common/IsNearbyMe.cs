@@ -7,8 +7,8 @@ namespace _03_Code.Enemy.Common {
         [SerializeField] private float mobDistance = 3f;
 
         public Vector2 MoveDir { get; private set; }
-        
-        
+
+
         private void FixedUpdate() {
             var circle = Physics2D.OverlapCircle(rb.position, mobDistance, LayerMask.GetMask("Player"));
             if (!circle) {

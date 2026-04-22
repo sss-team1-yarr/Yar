@@ -17,7 +17,7 @@ namespace _03_Code.Player.Components {
         private Player _owner;
         private Rigidbody2D _rb;
         private InputReceiver _input;
-        
+
         public void Initialize(Player owner) {
             _owner = owner;
             _rb = owner.GetComponent<Rigidbody2D>();
@@ -30,7 +30,7 @@ namespace _03_Code.Player.Components {
         }
 
         private void Awake() {
-            HoldingItem?.HoldItem(new ItemUsingContext() { User = _owner, Input = 0, Pressed = true });
+            HoldingItem?.HoldItem(new ItemUsingContext { User = _owner, Input = 0, Pressed = true });
         }
 
         private float Speed { get; set; } = 8f;
@@ -39,8 +39,10 @@ namespace _03_Code.Player.Components {
         private void HandleMoveInput(float value) {
             _moveInput = value;
             ani.OnMoveAni(Mathf.Abs(value));
-            if (!Mathf.Approximately(value, 0f)) _owner.transform.rotation = Quaternion.Euler(0f, value>0f?0f:180f, 0f);
+            if (!Mathf.Approximately(value, 0f))
+                _owner.transform.rotation = Quaternion.Euler(0f, value > 0f ? 0f : 180f, 0f);
         }
+
         private void HandleRun(bool run) {
             Speed *= run ? 2 : 0.5f;
         }
@@ -50,7 +52,7 @@ namespace _03_Code.Player.Components {
             if (contactChecker.IsGrounded)
                 _rb.AddForceY(jumpForce * multiplier, ForceMode2D.Impulse);
         }
-        
+
         private void HandleAttackInput(int btn, bool pressed) {
             HoldingItem?.Use(new ItemUsingContext {
                 Input = btn,
@@ -58,7 +60,7 @@ namespace _03_Code.Player.Components {
                 User = _owner
             });
         }
-        
+
         private void HandleSkill1Input() {
             hp.UpdateHp(explosion);
             vfxBoom.transform.position = transform.position;
@@ -68,6 +70,7 @@ namespace _03_Code.Player.Components {
         private void FixedUpdate() {
             _rb.linearVelocityX = _moveInput * Speed;
         }
+
         private void OnDestroy() {
             _input.OnMoveInput -= HandleMoveInput;
             _input.OnRunInput -= HandleRun;

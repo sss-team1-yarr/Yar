@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-
-namespace _03_Code.Interface {
-    public interface IDamageable{
+﻿namespace _03_Code.Interface {
+    public interface IDamageable {
         DamageResult ApplyDamage(DamageInfo info);
     }
 

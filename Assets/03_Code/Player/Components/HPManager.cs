@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _03_Code.Player.Components {
     public class HpManager : MonoBehaviour {
-        [SerializeField]private TextMeshProUGUI text;
+        [SerializeField] private TextMeshProUGUI text;
 
         public int hp = int.MaxValue;
 
