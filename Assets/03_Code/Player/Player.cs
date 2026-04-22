@@ -8,12 +8,8 @@ using UnityEngine.InputSystem;
 
 namespace _03_Code.Player {
     public class Player : MonoBehaviour {
-        [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ContactChecker contactChecker;
-        [SerializeField] private ParticleSystem vfx;
         [SerializeField] private HpManager hp;
-        [SerializeField] private float dashPower;
-        [SerializeField] private GameObject vfxBoom;
         [SerializeField] private GameObject pause;
         [SerializeField] private AnimationControl ani;
         
