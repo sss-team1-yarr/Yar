@@ -14,5 +14,10 @@ namespace _03_Code {
                 Hit = true
             };
         }
+
+        public void largePush()
+        {
+            rb.AddForce(new Vector2(Random.Range(4f, 10f), Random.Range(8f, 12f)) * 2.5f, ForceMode2D.Impulse);
+        }
     }
 }

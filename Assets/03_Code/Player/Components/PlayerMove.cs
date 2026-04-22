@@ -13,6 +13,7 @@ namespace _03_Code.Player.Components {
         [SerializeField] private GameObject vfxBoom;
         [SerializeField] private ContactChecker contactChecker;
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
+        [SerializeField] private TestDamageable[] testDam;
 
         private Player _owner;
         private Rigidbody2D _rb;
@@ -64,6 +65,10 @@ namespace _03_Code.Player.Components {
         private void HandleSkill1Input() {
             hp.UpdateHp(explosion);
             vfxBoom.transform.position = transform.position;
+            for (int i = 0; i < testDam.Length; i++)
+            {
+                testDam[i].largePush();
+            }
             vfx.Play();
         }
 

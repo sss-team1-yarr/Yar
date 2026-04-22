@@ -21677,6 +21677,11 @@ MonoBehaviour:
   vfxBoom: {fileID: 61308851}
   contactChecker: {fileID: 1015725206}
   <HoldingItem>k__BackingField: {fileID: 1746290486}
+  testDam:
+  - {fileID: 1893497885}
+  - {fileID: 2033437478}
+  - {fileID: 1708833882}
+  - {fileID: 144573223}
 --- !u!1 &1306396270
 GameObject:
   m_ObjectHideFlags: 0
