@@ -1,70 +1,63 @@
-﻿using _03_Code.Items;
-using _03_Code.Items.Weapons;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using _03_Code.Player.Components;
+using _03_Code.Player.Interface;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _03_Code.Player {
     public class Player : MonoBehaviour {
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private InputReceiver input;
-        [SerializeField] private PlayerMover playerMover;
         [SerializeField] private ContactChecker contactChecker;
-        [SerializeField] private PlayerRenderer playerRenderer;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private HpManager hp;
         [SerializeField] private float dashPower;
-        [SerializeField] private PlayerMover pm;
-        [SerializeField] private int explosion;
         [SerializeField] private GameObject vfxBoom;
+        [SerializeField] private GameObject pause;
+        [SerializeField] private AnimationControl ani;
         
-        [field: SerializeField] public Weapon HoldingItem { get; private set; }
-        private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
-        private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
-
-
+        private bool _isActived = false;
+        private Dictionary<Type, IPlayerModule> _moduleDictionary;
+        
         private void Awake() {
-            rb = GetComponent<Rigidbody2D>();
-            input.OnJumpInput += HandleJump;
-            input.OnRunInput += HandleRun;
-            input.OnMoveInput += HandleMoveInput;
-            input.OnAttackInput += HandleAttackInput;
-            input.OnSkill1Input += HandleSkill1Input;
-
-            HoldingItem?.HoldItem(new ItemUsingContext() { User = this, Input = 0, Pressed = true });
+            GetComponent<Player>();
+            _moduleDictionary = GetComponentsInChildren<IPlayerModule>().ToDictionary(
+                type => type.GetType());
+            
+            InitializeComponents();
         }
 
+        public T GetModule<T>() {
+            if(_moduleDictionary.TryGetValue(typeof(T), out var module)) return (T)module;
+            
+            var findModule = _moduleDictionary.Values.FirstOrDefault(moduleType => moduleType is T);
+            
+            if (findModule is T castedModule) return castedModule;
+            
+            return default;
+        }
+
+        private void InitializeComponents() {
+            foreach (var module in _moduleDictionary.Values.OfType<IPlayerModule>()) {
+                module.Initialize(this);
+            }
+        }
 
         private void Update() {
-            playerRenderer.SetBoolValue(IsGroundedHash, contactChecker.IsGrounded);
             if(hp.hp <= 0) HandlePlayerDeath();
-        }
-
-        private void HandleMoveInput(float obj) {
-            playerMover.SetMoveInput(obj);
-            playerRenderer.SetFloatValue(XVelocityHash, Mathf.Abs(obj));
-            if (!Mathf.Approximately(obj, 0f)) transform.rotation = Quaternion.Euler(0f, obj>0f?0f:180f, 0f);
-        }
-
-        private void HandleJump() {
-            if (contactChecker.IsGrounded)
-                playerMover.Jump();
-        }
-
-        private void HandleRun(bool run) {
-            pm.Speed *= run ? 2 : 0.5f;
-        }
-        
-        private void HandleAttackInput(int btn, bool pressed) {
-            HoldingItem?.Use(new ItemUsingContext {
-                Input = btn,
-                Pressed = pressed,
-                User = this
-            });
-        }
-        private void HandleSkill1Input() {
-            hp.UpdateHp(explosion);
-            vfxBoom.transform.position = rb.position;
-            vfx.Play();
+            if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+                switch (_isActived) {
+                    case false:
+                        pause.SetActive(true);
+                        _isActived = !_isActived;
+                        break;
+                    case true:
+                        pause.SetActive(false);
+                        _isActived = !_isActived;
+                        break;
+                }
+            }
         }
 
         private void HandlePlayerDeath() {
@@ -72,12 +65,8 @@ namespace _03_Code.Player {
             Time.timeScale = 0;
         }
 
-        private void OnDestroy() {
-            input.OnJumpInput -= HandleJump;
-            input.OnRunInput -= HandleRun;
-            input.OnMoveInput -= HandleMoveInput;
-            input.OnAttackInput -= HandleAttackInput;
-            input.OnSkill1Input -= HandleSkill1Input;
+        private void LateUpdate() {
+            ani.OnJumpAni(contactChecker.IsGrounded);
         }
     }
 }

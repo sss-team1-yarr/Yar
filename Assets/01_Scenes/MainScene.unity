@@ -5026,6 +5026,7 @@ GameObject:
   - component: {fileID: 193382077}
   - component: {fileID: 193382078}
   - component: {fileID: 193382079}
+  - component: {fileID: 193382080}
   m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
@@ -5144,6 +5145,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRenderer
   animator: {fileID: 193382078}
   playerTransform: {fileID: 193382076}
+--- !u!114 &193382080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193382075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8336a8091d47adb6270c906beda543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.AnimationControl
+  playerRenderer: {fileID: 193382079}
 --- !u!1 &201182654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5213,7 +5227,7 @@ Transform:
   m_GameObject: {fileID: 209713220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.067, y: -0.284, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5814,7 +5828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.72156864}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6128,17 +6142,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Player
   rb: {fileID: 646734942}
-  input: {fileID: 201182656}
-  playerMover: {fileID: 1177184726}
   contactChecker: {fileID: 1015725206}
-  playerRenderer: {fileID: 193382079}
   vfx: {fileID: 61308853}
   hp: {fileID: 646734944}
   dashPower: 10.5
-  pm: {fileID: 1177184726}
-  explosion: 0
   vfxBoom: {fileID: 61308851}
-  <HoldingItem>k__BackingField: {fileID: 1746290486}
+  pause: {fileID: 428201212}
+  ani: {fileID: 193382080}
 --- !u!114 &646734944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6331,7 +6341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &925448225
@@ -6354,7 +6364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: pause
+  m_text: PAUSE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
   m_sharedMaterial: {fileID: -4682830297683088511, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
@@ -6480,11 +6490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5129031149994008648, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.34
+      value: 0.343
       objectReference: {fileID: 0}
     - target: {fileID: 5129031149994008648, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32
+      value: -0.466
       objectReference: {fileID: 0}
     - target: {fileID: 5129031149994008648, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6724,9 +6734,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a851c242ea14ff9875078273898f722, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.PlayerMover
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerInput
+  explosion: 100
   jumpForce: 6
-  rb: {fileID: 646734942}
+  ani: {fileID: 193382080}
+  hp: {fileID: 646734944}
+  vfx: {fileID: 61308853}
+  vfxBoom: {fileID: 61308851}
+  contactChecker: {fileID: 1015725206}
+  <HoldingItem>k__BackingField: {fileID: 1746290486}
 --- !u!1 &1306396270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7195,7 +7211,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 122.2, y: 1}
+  m_Size: {x: 1e+9, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1618012826
 Transform:
@@ -16418,7 +16434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddcc26dfda306e43b61d371360ebc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
-  swingAngle: 180
   cooldown: 0.2
   vfx: {fileID: 2003477190}
   damageRadius: 1.5

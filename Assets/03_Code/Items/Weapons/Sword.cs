@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace _03_Code.Items.Weapons {
     public class Sword : Weapon {
-        [SerializeField] private float swingAngle = 120f;
         [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private float damageRadius = 1.5f;
@@ -53,15 +52,10 @@ namespace _03_Code.Items.Weapons {
         {
             if (!_isHoldingKey || !CanUse) return;
             _lastAttackTime = Time.time; 
-            _isUpperAttack = !_isUpperAttack; 
+            _isUpperAttack = !_isUpperAttack;
+            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, 0f, 0f);
 
-            Vector2 direction = input.onMoveInputVec2;
-            float rotation = 45f - Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            vfx.Emit(new ParticleSystem.EmitParams
-            {
-                rotation = rotation
-            }, 5);
+            vfx.Emit(new ParticleSystem.EmitParams(), 5);
 
             int cnt = Physics2D.OverlapCircle(new Vector2(1,1), damageRadius, targetFilter, _hitBuffer);
             for (int i = 0; i < cnt; i++)
@@ -73,10 +67,6 @@ namespace _03_Code.Items.Weapons {
                         DamageAmount = damageAmount,
                         KnockbackForce = knockbackForce,
                     });
-                    if (result.Hit)
-                    {
-                        impulseSource.GenerateImpulse(direction.normalized);
-                    }
                 }
             }
         }

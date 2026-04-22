@@ -1,30 +1,25 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace _03_Code.UI.Pause {
     public class PauseUI : MonoBehaviour {
-
-        private void Start()
-        {
+        private void Start() {
             gameObject.SetActive(false);
         }
 
-        private void Update()
-        {
-            if (Keyboard.current.escapeKey.wasPressedThisFrame)
-            {
-                gameObject.SetActive(true);
-            }
+        private void OnEnable() {
+            Time.timeScale = 0f;
         }
 
-        public void ReturnGame()
-        {
+        public void ReturnGame() {
             gameObject.SetActive(true);
         }
 
-        public void Exit()
-        {
+        private void OnDisable() {
+            Time.timeScale = 1f;
+        }
+
+        public void Exit() {
             SceneManager.LoadScene(0);
         }
     }

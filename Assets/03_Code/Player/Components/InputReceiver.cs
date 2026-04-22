@@ -1,9 +1,10 @@
 ﻿using System;
+using _03_Code.Player.Interface;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _03_Code.Player.Components {
-    public class InputReceiver : MonoBehaviour, Controls.IPlayerActions {
+    public class InputReceiver : MonoBehaviour, Controls.IPlayerActions, IPlayerModule {
         private Controls _controls;
         public event Action<int, bool> OnAttackInput;
         public event Action<float> OnMoveInput;
@@ -53,5 +54,7 @@ namespace _03_Code.Player.Components {
             _controls.Dispose();
             _controls = null;
         }
+
+        public void Initialize(Player owner) { }
     }
 }
