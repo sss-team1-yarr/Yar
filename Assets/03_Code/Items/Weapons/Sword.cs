@@ -8,15 +8,11 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private float damageRadius = 1.5f;
-        [SerializeField] private Vector2 damageOffset;
         [SerializeField] private float damageAmount;
         [SerializeField] private float knockbackForce;
         [SerializeField] private ContactFilter2D targetFilter;
-        [SerializeField] private CinemachineImpulseSource impulseSource;
         [SerializeField] private Transform handTrm;
-
-        [SerializeField] private InputReceiver input;
-
+        
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
         private Player.Player _owner;
         private bool _isHoldingKey;
