@@ -8,7 +8,7 @@ public class Damageable : MonoBehaviour, IDamageable
 
     public DamageResult ApplyDamage(DamageInfo info)
     {
-        rb.AddForce(new Vector2(1f, 1f).normalized * info.KnockbackForce, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(1f, 1f).normalized, ForceMode2D.Impulse);
         vfx.Play();
         return new DamageResult
         {
