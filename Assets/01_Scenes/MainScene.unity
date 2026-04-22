@@ -6215,8 +6215,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.08276904, y: -0.28949186}
-  m_Size: {x: 1.1362882, y: 2.0990925}
+  m_Offset: {x: -0.086, y: -0.285}
+  m_Size: {x: 1.13, y: 2.07}
   m_Direction: 0
 --- !u!1 &711593090
 GameObject:
@@ -16488,7 +16488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
   cooldown: 0.2
   vfx: {fileID: 2003477190}
-  damageRadius: 1.5
+  damageRadius: 0.8
   damageAmount: 2
   knockbackForce: 2
   targetFilter:
