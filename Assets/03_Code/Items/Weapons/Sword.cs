@@ -2,6 +2,7 @@ using _03_Code.Interface;
 using _03_Code.Player.Components;
 using Unity.Cinemachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _03_Code.Items.Weapons {
     public class Sword : Weapon
@@ -20,6 +21,7 @@ namespace _03_Code.Items.Weapons {
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
+        private float ranKnockbackForce;
 
         private static readonly Vector3 AttackOffset = new Vector3(0.3f, 0.3f, 0f);
 
@@ -60,10 +62,11 @@ namespace _03_Code.Items.Weapons {
                 {
                     if (ReferenceEquals(damageable, _owner)) continue;
                                         
+                    ranKnockbackForce = Random.Range(knockbackForce - 1.5f, knockbackForce + 1.5f);
                     DamageResult result = damageable.ApplyDamage(new DamageInfo
                     {
                         DamageAmount = damageAmount,
-                        KnockbackForce = knockbackForce,
+                        KnockbackForce = ranKnockbackForce,
                     });
                     
                     if (result.Hit)
