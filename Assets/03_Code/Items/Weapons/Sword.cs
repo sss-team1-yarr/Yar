@@ -49,7 +49,7 @@ namespace _03_Code.Items.Weapons {
             if (!_isHoldingKey || !CanUse) return;
             _lastAttackTime = Time.time; 
             _isUpperAttack = !_isUpperAttack;
-            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, 0f, 0f);
+            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, _owner.transform.rotation.eulerAngles.y, _owner.transform.rotation.eulerAngles.z);
 
             vfx.Emit(new ParticleSystem.EmitParams(), 5);
 

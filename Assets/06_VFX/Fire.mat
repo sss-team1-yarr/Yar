@@ -60,6 +60,6 @@ Material:
     - _Progress: 0
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
-    - _Burn: {r: 1, g: 0, b: 0, a: 1}
+    - _Burn: {r: 0.56681556, g: 0.33490568, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
