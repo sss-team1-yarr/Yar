@@ -31926,6 +31926,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   handTrm: {fileID: 209713221}
   impulseSource: {fileID: 267876709}
+  _owner: {fileID: 646734943}
 --- !u!212 &1746290487
 SpriteRenderer:
   serializedVersion: 2
