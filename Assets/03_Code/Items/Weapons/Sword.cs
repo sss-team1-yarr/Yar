@@ -45,7 +45,7 @@ namespace _03_Code.Items.Weapons {
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(new Vector3(1, 1, 0), damageRadius);
+            Gizmos.DrawWireSphere(transform.position + new Vector3(0.3f, 0.3f, 0), damageRadius);
         }
         
         private void Attack()
@@ -57,7 +57,7 @@ namespace _03_Code.Items.Weapons {
 
             vfx.Emit(new ParticleSystem.EmitParams(), 5);
 
-            int cnt = Physics2D.OverlapCircle(new Vector2(1,1), damageRadius, targetFilter, _hitBuffer);
+            int cnt = Physics2D.OverlapCircle(transform.position + new Vector3(0.3f, 0.3f, 0).normalized, damageRadius, targetFilter, _hitBuffer);
             for (int i = 0; i < cnt; i++)
             {
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable))
