@@ -11363,6 +11363,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: NoiseModule.frequency
       value: 3.16
       objectReference: {fileID: 0}
@@ -11384,7 +11388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -11394,6 +11398,58 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683944660196686290, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756072703839582933, guid: b0a957290ac97f844954020e68884b2c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0de2370ca61498ef1940c56e944c1d78, type: 2}
     - target: {fileID: 5129031149994008648, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.343
@@ -21361,7 +21417,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   handTrm: {fileID: 209713221}
-  impulseSource: {fileID: 267876709}
 --- !u!212 &1746290487
 SpriteRenderer:
   serializedVersion: 2
