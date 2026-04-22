@@ -1,18 +1,21 @@
 using _03_Code.Interface;
 using UnityEngine;
 
-public class Damageable : MonoBehaviour, IDamageable
+namespace _03_Code
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private ParticleSystem vfx;
-
-    public DamageResult ApplyDamage(DamageInfo info)
+    public class Damageable : MonoBehaviour, IDamageable
     {
-        rb.AddForce(new Vector2(1f, 1f).normalized, ForceMode2D.Impulse);
-        vfx.Play();
-        return new DamageResult
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private ParticleSystem vfx;
+
+        public DamageResult ApplyDamage(DamageInfo info)
         {
-            Hit = true
-        };
+            rb.AddForce(new Vector2(1f, 1f).normalized, ForceMode2D.Impulse);
+            vfx.Play();
+            return new DamageResult
+            {
+                Hit = true
+            };
+        }
     }
 }
