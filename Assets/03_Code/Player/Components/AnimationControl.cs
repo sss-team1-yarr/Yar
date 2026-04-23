@@ -6,6 +6,7 @@ namespace _03_Code.Player.Components {
 
         private static readonly int XVelocityHash = Animator.StringToHash("XVelocity");
         private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
+        private static readonly int IsDashHash = Animator.StringToHash("IsDash");
 
         public void OnJumpAni(bool isGrounded) {
             playerRenderer.SetBoolValue(IsGroundedHash, isGrounded);
@@ -13,6 +14,10 @@ namespace _03_Code.Player.Components {
 
         public void OnMoveAni(float move) {
             playerRenderer.SetFloatValue(XVelocityHash, move);
+        }
+
+        public void OnDashAni(bool isDash) {
+            playerRenderer.SetBoolValue(IsDashHash, isDash);
         }
     }
 }
