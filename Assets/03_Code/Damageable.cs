@@ -1,4 +1,4 @@
-using _03_Code.Interface;
+using _03_Code.Enemy.Interface;
 using UnityEngine;
 
 namespace _03_Code {

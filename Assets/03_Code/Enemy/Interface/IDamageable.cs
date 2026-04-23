@@ -1,4 +1,4 @@
-﻿namespace _03_Code.Interface {
+﻿namespace _03_Code.Enemy.Interface {
     public interface IDamageable {
         DamageResult ApplyDamage(DamageInfo info);
     }
