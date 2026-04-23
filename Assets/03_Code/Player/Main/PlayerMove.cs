@@ -26,7 +26,7 @@ namespace _03_Code.Player.Main {
         private InputReceiver _input;
         private AnimationControl _anim;
         
-        private bool isDashing = false; 
+        private bool _isDashing = false; 
         [SerializeField] private float dashForce = 20f;
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private ParticleSystem dashVfx;
@@ -49,10 +49,10 @@ namespace _03_Code.Player.Main {
         }
 
         private float Speed { get; set; } = 8f;
-        public float _moveInput { get; private set; }
+        public float MoveInput { get; private set; }
 
         private void HandleMoveInput(float value) {
-            _moveInput = value;
+            MoveInput = value;
             ani.OnMoveAni(Mathf.Abs(value));
             if (!Mathf.Approximately(value, 0f))
                 _owner.transform.rotation = Quaternion.Euler(0f, value > 0f ? 0f : 180f, 0f);
@@ -85,25 +85,25 @@ namespace _03_Code.Player.Main {
         }
 
         private void HandleSkill2Input() {
-            if (isDashing) return;
+            if (_isDashing) return;
             StartCoroutine(Dash());
             dashVfx?.Play();
         }
 
         private void FixedUpdate() {
-            if (isDashing) return;
-            _rb.linearVelocityX = _moveInput * Speed;
+            if (_isDashing) return;
+            _rb.linearVelocityX = MoveInput * Speed;
         }
 
         private IEnumerator Dash() {
-            isDashing = true;
+            _isDashing = true;
             ani.OnDashAni(true);
-            float dashDirection = _moveInput > 0f ? 1f : -1f; 
+            float dashDirection = MoveInput > 0f ? 1f : -1f; 
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
             
             yield return new WaitForSeconds(dashDuration);
             ani.OnDashAni(false);
-            isDashing = false; 
+            _isDashing = false; 
         }
         
         private void OnDestroy() {
