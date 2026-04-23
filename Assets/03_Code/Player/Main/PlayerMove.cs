@@ -26,8 +26,9 @@ namespace _03_Code.Player.Main {
         private InputReceiver _input;
         
         private bool isDashing = false; 
-        [SerializeField] float dashForce = 20f;
-        [SerializeField] float dashDuration = 0.2f;
+        [SerializeField] private float dashForce = 20f;
+        [SerializeField] private float dashDuration = 0.2f;
+        [SerializeField] private ParticleSystem dashVfx;
 
         public void Initialize(Player owner) {
             _owner = owner;
@@ -84,6 +85,7 @@ namespace _03_Code.Player.Main {
         private void HandleSkill2Input() {
             if (isDashing) return;
             StartCoroutine(Dash());
+            dashVfx?.Play();
         }
 
         private void FixedUpdate() {
