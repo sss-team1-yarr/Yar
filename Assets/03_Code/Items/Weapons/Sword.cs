@@ -58,7 +58,7 @@ namespace _03_Code.Items.Weapons {
                         KnockbackForce = _ranKnockbackForce
                     });
 
-                    if (result.Hit) impulseSource.GenerateImpulseWithForce(1f);
+                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.3f);
                 }
         }
 

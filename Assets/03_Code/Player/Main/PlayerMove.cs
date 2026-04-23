@@ -3,6 +3,7 @@ using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
 using _03_Code.Player.Input;
 using _03_Code.Player.Interface;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace _03_Code.Player.Main {
@@ -14,6 +15,8 @@ namespace _03_Code.Player.Main {
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private GameObject vfxBoom;
         [SerializeField] private ContactChecker contactChecker;
+        [SerializeField] private CinemachineImpulseSource impulseSource;
+        
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
         [SerializeField] private TestDamageable[] testDam;
 
@@ -37,7 +40,7 @@ namespace _03_Code.Player.Main {
         }
 
         private float Speed { get; set; } = 8f;
-        private float _moveInput;
+        public float _moveInput { get;  private set; }
 
         private void HandleMoveInput(float value) {
             _moveInput = value;
@@ -66,7 +69,8 @@ namespace _03_Code.Player.Main {
 
         private void HandleSkill1Input() {
             hp.UpdateHp(explosion);
-            vfxBoom.transform.position = transform.position;
+            vfxBoom.transform.position = transform.position; 
+            impulseSource.GenerateImpulseWithForce(1f);
             for (int i = 0; i < testDam.Length; i++)
             {
                 testDam[i].largePush();
