@@ -13,6 +13,6 @@ namespace _03_Code.Items {
     public struct ItemUsingContext {
         public int Input;
         public bool Pressed;
-        public Player.Player User;
+        public Player.Main.Player User;
     }
 }

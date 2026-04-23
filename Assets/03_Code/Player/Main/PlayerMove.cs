@@ -1,9 +1,11 @@
 ﻿using _03_Code.Items;
 using _03_Code.Items.Weapons;
+using _03_Code.Player.Components;
+using _03_Code.Player.Input;
 using _03_Code.Player.Interface;
 using UnityEngine;
 
-namespace _03_Code.Player.Components {
+namespace _03_Code.Player.Main {
     public class PlayerMove : MonoBehaviour, IPlayerModule {
         [SerializeField] private int explosion;
         [SerializeField] private float jumpForce;
@@ -15,11 +17,11 @@ namespace _03_Code.Player.Components {
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
         [SerializeField] private TestDamageable[] testDam;
 
-        private Player _owner;
+        private Main.Player _owner;
         private Rigidbody2D _rb;
         private InputReceiver _input;
 
-        public void Initialize(Player owner) {
+        public void Initialize(Main.Player owner) {
             _owner = owner;
             _rb = owner.GetComponent<Rigidbody2D>();
             _input = _owner.GetModule<InputReceiver>();

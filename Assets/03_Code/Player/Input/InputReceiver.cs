@@ -3,7 +3,7 @@ using _03_Code.Player.Interface;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _03_Code.Player.Components {
+namespace _03_Code.Player.Input {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions, IPlayerModule {
         private Controls _controls;
         public event Action<int, bool> OnAttackInput;
@@ -57,6 +57,6 @@ namespace _03_Code.Player.Components {
             _controls = null;
         }
 
-        public void Initialize(Player owner) { }
+        public void Initialize(Main.Player owner) { }
     }
 }

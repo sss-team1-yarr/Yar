@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _03_Code.Player.Components {
+namespace _03_Code.Player.Main {
     public class ContactChecker : MonoBehaviour {
         [SerializeField] private LayerMask targetLayer;
         [SerializeField] private Vector2 size;

@@ -6,7 +6,7 @@ using _03_Code.Player.Interface;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _03_Code.Player {
+namespace _03_Code.Player.Main {
     public class Player : MonoBehaviour {
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private HpManager hp;

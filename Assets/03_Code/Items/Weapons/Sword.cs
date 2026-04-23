@@ -13,7 +13,7 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private ContactFilter2D targetFilter;
         [SerializeField] private Transform handTrm;
         [SerializeField] private CinemachineImpulseSource impulseSource;
-        [SerializeField] private Player.Player owner;
+        [SerializeField] private Player.Main.Player owner;
 
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
         private bool _isHoldingKey;
