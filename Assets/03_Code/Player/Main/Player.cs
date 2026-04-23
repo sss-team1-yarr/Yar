@@ -10,12 +10,8 @@ namespace _03_Code.Player.Main {
     public class Player : MonoBehaviour {
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private HpManager hp;
-        [SerializeField] private GameObject pause;
         [SerializeField] private AnimationControl ani;
-        [SerializeField] private GameObject settings;
         
-
-        public bool isActived;
         private Dictionary<Type, IPlayerModule> _moduleDictionary;
 
         private void Awake() {
@@ -41,17 +37,6 @@ namespace _03_Code.Player.Main {
 
         private void Update() {
             if (hp.hp <= 0) HandlePlayerDeath();
-            if (Keyboard.current.escapeKey.wasPressedThisFrame)
-                switch (isActived) {
-                    case false:
-                        pause.SetActive(true);
-                        isActived = !isActived;
-                        break;
-                    case true:
-                        pause.SetActive(false);
-                        isActived = !isActived;
-                        break;
-                }
         }
 
         private void HandlePlayerDeath() {

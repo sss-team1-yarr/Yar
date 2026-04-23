@@ -10835,7 +10835,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -11200,7 +11200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.UI.Pause.PauseUI
   settingsUI: {fileID: 1094829351}
-  player: {fileID: 646734943}
+  escHandler: {fileID: 1172466002}
 --- !u!1 &444473491
 GameObject:
   m_ObjectHideFlags: 0
@@ -11562,9 +11562,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 641800305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 428201216}, m_TargetAssemblyTypeName: '_03_Code.UI.Pause.PauseUI,
-            Assembly-CSharp', m_MethodName: Settings, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 428201216}
+        m_TargetAssemblyTypeName: _03_Code.UI.Pause.PauseUI, Assembly-CSharp
+        m_MethodName: Settings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &641800305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11683,10 +11693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Player
   contactChecker: {fileID: 1015725206}
   hp: {fileID: 646734944}
-  pause: {fileID: 428201212}
   ani: {fileID: 193382080}
-  settings: {fileID: 1094829351}
-  isActived: 0
 --- !u!114 &646734944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12137,7 +12144,7 @@ PrefabInstance:
       value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 3756072703839582933, guid: b0a957290ac97f844954020e68884b2c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0de2370ca61498ef1940c56e944c1d78, type: 2}
     - target: {fileID: 5129031149994008648, guid: b0a957290ac97f844954020e68884b2c, type: 3}
@@ -12330,7 +12337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.UI.Settings.Settings
   pauseUI: {fileID: 428201212}
-  player: {fileID: 646734943}
+  escHandler: {fileID: 1172466002}
 --- !u!1 &1164709591
 GameObject:
   m_ObjectHideFlags: 0
@@ -12436,6 +12443,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1172466001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172466003}
+  - component: {fileID: 1172466002}
+  m_Layer: 0
+  m_Name: Eschandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1172466002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172466001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6289ce1d07404e8f0bac447fbb2e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Handler.EscHandler
+  pause: {fileID: 428201212}
+  isActived: 0
+--- !u!4 &1172466003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172466001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 830.8668, y: 506.0433, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177184724
 GameObject:
   m_ObjectHideFlags: 0
@@ -24154,3 +24207,4 @@ SceneRoots:
   - {fileID: 2033437482}
   - {fileID: 1708833886}
   - {fileID: 144573227}
+  - {fileID: 1172466003}

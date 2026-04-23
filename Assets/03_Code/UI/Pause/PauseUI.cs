@@ -1,10 +1,11 @@
+using _03_Code.Handler;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace _03_Code.UI.Pause {
     public class PauseUI : MonoBehaviour {
         [SerializeField] private GameObject settingsUI;
-        [SerializeField] private Player.Main.Player player;
+        [SerializeField] private EscHandler escHandler;
         
         
         private void Start() {
@@ -20,7 +21,7 @@ namespace _03_Code.UI.Pause {
         }
 
         public void Settings() {
-            player.isActived = !player.isActived;
+            escHandler.isActived = !escHandler.isActived;
             gameObject.SetActive(false);
             settingsUI.SetActive(true);
         }
