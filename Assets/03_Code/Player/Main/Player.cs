@@ -12,8 +12,10 @@ namespace _03_Code.Player.Main {
         [SerializeField] private HpManager hp;
         [SerializeField] private GameObject pause;
         [SerializeField] private AnimationControl ani;
+        [SerializeField] private GameObject settings;
+        
 
-        private bool _isActived;
+        public bool isActived;
         private Dictionary<Type, IPlayerModule> _moduleDictionary;
 
         private void Awake() {
@@ -40,14 +42,14 @@ namespace _03_Code.Player.Main {
         private void Update() {
             if (hp.hp <= 0) HandlePlayerDeath();
             if (Keyboard.current.escapeKey.wasPressedThisFrame)
-                switch (_isActived) {
+                switch (isActived) {
                     case false:
                         pause.SetActive(true);
-                        _isActived = !_isActived;
+                        isActived = !isActived;
                         break;
                     case true:
                         pause.SetActive(false);
-                        _isActived = !_isActived;
+                        isActived = !isActived;
                         break;
                 }
         }
