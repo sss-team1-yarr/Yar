@@ -11,6 +11,7 @@ namespace _03_Code.Player.Input {
         public event Action OnJumpInput;
         public event Action<bool> OnRunInput;
         public event Action OnSkill1Input;
+        public event Action OnSkill2Input;
 
         public Vector2 onMoveInputVec2 { get; private set; }
 
@@ -49,7 +50,11 @@ namespace _03_Code.Player.Input {
                 OnSkill1Input?.Invoke();
         }
 
-        public void OnSkill2(InputAction.CallbackContext context) { }
+        public void OnSkill2(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnSkill2Input?.Invoke();
+        }
 
         private void OnDestroy() {
             _controls.Disable();

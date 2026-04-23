@@ -1,4 +1,5 @@
-﻿using _03_Code.Items;
+﻿using System.Collections;
+using _03_Code.Items;
 using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
 using _03_Code.Player.Input;
@@ -23,6 +24,10 @@ namespace _03_Code.Player.Main {
         private Player _owner;
         private Rigidbody2D _rb;
         private InputReceiver _input;
+        
+        private bool isDashing = false; 
+        [SerializeField] float dashForce = 20f;
+        [SerializeField] float dashDuration = 0.2f;
 
         public void Initialize(Player owner) {
             _owner = owner;
@@ -33,6 +38,7 @@ namespace _03_Code.Player.Main {
             _input.OnMoveInput += HandleMoveInput;
             _input.OnAttackInput += HandleAttackInput;
             _input.OnSkill1Input += HandleSkill1Input;
+            _input.OnSkill2Input += HandleSkill2Input;
         }
 
         private void Awake() {
@@ -75,16 +81,34 @@ namespace _03_Code.Player.Main {
             vfx.Play();
         }
 
+        private void HandleSkill2Input() {
+            if (isDashing) return;
+            StartCoroutine(Dash());
+        }
+
         private void FixedUpdate() {
+            if (isDashing) return;
             _rb.linearVelocityX = _moveInput * Speed;
         }
 
+        private IEnumerator Dash() {
+            isDashing = true;
+
+            float dashDirection = _moveInput > 0f ? 1f : -1f; 
+            _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
+            
+            yield return new WaitForSeconds(dashDuration);
+            
+            isDashing = false; 
+        }
+        
         private void OnDestroy() {
             _input.OnMoveInput -= HandleMoveInput;
             _input.OnRunInput -= HandleRun;
             _input.OnJumpInput -= HandleJump;
             _input.OnAttackInput -= HandleAttackInput;
             _input.OnSkill1Input -= HandleSkill1Input;
+            _input.OnSkill2Input -= HandleSkill2Input;
         }
     }
 }
