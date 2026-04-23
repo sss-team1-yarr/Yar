@@ -40,7 +40,8 @@ namespace _03_Code.Items.Weapons {
 
             _lastAttackTime = Time.time;
             _isUpperAttack = !_isUpperAttack;
-            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, owner.transform.rotation.eulerAngles.y, owner.transform.rotation.eulerAngles.z);
+            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, owner.transform.rotation.eulerAngles.y,
+                owner.transform.rotation.eulerAngles.z);
 
             var center = transform.position + AttackOffset;
 

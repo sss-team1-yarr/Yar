@@ -1,5 +1,5 @@
 using _03_Code.Interface;
-using _03_Code.Player.Components;
+using _03_Code.Player.Main;
 using UnityEngine;
 
 namespace _03_Code {
@@ -16,9 +16,9 @@ namespace _03_Code {
             };
         }
 
-        public void largePush()
-        {
-            rb.AddForce(new Vector2(Random.Range(4f, 10f) * (pm._moveInput > 0f ? 1f : -1f), Random.Range(8f, 12f)) * 2.5f, 
+        public void largePush() {
+            rb.AddForce(
+                new Vector2(Random.Range(4f, 10f) * (pm._moveInput > 0f ? 1f : -1f), Random.Range(8f, 12f)) * 2.5f,
                 ForceMode2D.Impulse);
         }
     }

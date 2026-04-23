@@ -16,15 +16,15 @@ namespace _03_Code.Player.Main {
         [SerializeField] private GameObject vfxBoom;
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private CinemachineImpulseSource impulseSource;
-        
+
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
         [SerializeField] private TestDamageable[] testDam;
 
-        private Main.Player _owner;
+        private Player _owner;
         private Rigidbody2D _rb;
         private InputReceiver _input;
 
-        public void Initialize(Main.Player owner) {
+        public void Initialize(Player owner) {
             _owner = owner;
             _rb = owner.GetComponent<Rigidbody2D>();
             _input = _owner.GetModule<InputReceiver>();
@@ -40,7 +40,7 @@ namespace _03_Code.Player.Main {
         }
 
         private float Speed { get; set; } = 8f;
-        public float _moveInput { get;  private set; }
+        public float _moveInput { get; private set; }
 
         private void HandleMoveInput(float value) {
             _moveInput = value;
@@ -69,12 +69,9 @@ namespace _03_Code.Player.Main {
 
         private void HandleSkill1Input() {
             hp.UpdateHp(explosion);
-            vfxBoom.transform.position = transform.position; 
+            vfxBoom.transform.position = transform.position;
             impulseSource.GenerateImpulseWithForce(1f);
-            for (int i = 0; i < testDam.Length; i++)
-            {
-                testDam[i].largePush();
-            }
+            for (var i = 0; i < testDam.Length; i++) testDam[i].largePush();
             vfx.Play();
         }
 
