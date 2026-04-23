@@ -35,7 +35,7 @@ namespace _03_Code.Player.Components {
         }
 
         private float Speed { get; set; } = 8f;
-        private float _moveInput;
+        public float _moveInput { get;  private set; }
 
         private void HandleMoveInput(float value) {
             _moveInput = value;
