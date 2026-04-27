@@ -10787,10 +10787,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96a8f2de4ae018e4f8bc034df6762739, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.RayCast
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.IsNearbyMe
   rb: {fileID: 271853555}
+  pm: {fileID: 1177184726}
   speed: 2
   mobDistance: 3
+  hitDuration: 0.05
+  enemyKnockBackForce: 10
 --- !u!114 &271853561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10802,9 +10805,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17394a60f9bd6c64d8998ae84d3df2b7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Damageable
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable
   rb: {fileID: 271853555}
   vfx: {fileID: 82457217}
+  isNearbyMe: {fileID: 271853560}
 --- !u!61 &271853562
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23137,7 +23141,7 @@ MonoBehaviour:
   vfx: {fileID: 2003477190}
   damageRadius: 1.92
   damageAmount: 2
-  knockbackForce: 1.95
+  knockbackForce: 2.5
   targetFilter:
     useTriggers: 0
     useLayerMask: 1

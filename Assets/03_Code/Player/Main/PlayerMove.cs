@@ -26,6 +26,8 @@ namespace _03_Code.Player.Main {
         private InputReceiver _input;
         private AnimationControl _anim;
         
+        public bool RotationRight { get; private set; }
+        
         private bool _isDashing = false; 
         [SerializeField] private float dashForce = 20f;
         [SerializeField] private float dashDuration = 0.2f;
@@ -54,8 +56,10 @@ namespace _03_Code.Player.Main {
         private void HandleMoveInput(float value) {
             MoveInput = value;
             ani.OnMoveAni(Mathf.Abs(value));
-            if (!Mathf.Approximately(value, 0f))
-                _owner.transform.rotation = Quaternion.Euler(0f, value > 0f ? 0f : 180f, 0f);
+            if (!Mathf.Approximately(value, 0f)) {
+                RotationRight = value > 0f;
+                _owner.transform.rotation = Quaternion.Euler(0f, RotationRight ? 0f : 180f, 0f);
+            }
         }
 
         private void HandleRun(bool run) {
@@ -98,7 +102,7 @@ namespace _03_Code.Player.Main {
         private IEnumerator Dash() {
             _isDashing = true;
             ani.OnDashAni(true);
-            float dashDirection = MoveInput > 0f ? 1f : -1f; 
+            float dashDirection = RotationRight ? 2f : -2f;
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
             
             yield return new WaitForSeconds(dashDuration);
