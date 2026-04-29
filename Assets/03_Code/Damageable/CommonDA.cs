@@ -5,17 +5,12 @@ using UnityEngine;
 namespace _03_Code.Damageable {
     public class CommonDA : MonoBehaviour, IDamageable
     {
-        [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ParticleSystem vfx;
-        [SerializeField] private PlayerMove pm;
-
-        private void Reset() {
-            rb = GetComponent<Rigidbody2D>();
-            pm = GetComponent<PlayerMove>();
-        }
+        [SerializeField] private EnemyMove em;
 
         public DamageResult ApplyDamage(DamageInfo info) {
             vfx.Play();
+            em.KnockBack();
             return new DamageResult {
                 Hit = true
             };

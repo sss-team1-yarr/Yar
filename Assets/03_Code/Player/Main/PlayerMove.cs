@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _03_Code.Damageable;
 using _03_Code.Enemy.Interface;
 using _03_Code.Items;
 using _03_Code.Items.Weapons;
@@ -20,7 +21,7 @@ namespace _03_Code.Player.Main {
         [SerializeField] private CinemachineImpulseSource impulseSource;
 
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
-        [SerializeField] private TestDamageable[] testDam;
+        //private TestDamageable[] testDam;
 
         private Player _owner;
         private Rigidbody2D _rb;
@@ -85,7 +86,7 @@ namespace _03_Code.Player.Main {
             hp.UpdateHp(explosion);
             vfxBoom.transform.position = transform.position;
             impulseSource.GenerateImpulseWithForce(1f);
-            for (var i = 0; i < testDam.Length; i++) testDam[i]?.largePush();
+            //for (var i = 0; i < testDam.Length; i++) testDam[i]?.largePush();
             vfx.Play();
         }
 

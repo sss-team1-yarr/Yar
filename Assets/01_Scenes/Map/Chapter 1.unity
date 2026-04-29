@@ -10791,9 +10791,9 @@ MonoBehaviour:
   rb: {fileID: 271853555}
   pm: {fileID: 1177184726}
   speed: 2
-  mobDistance: 3
+  mobDistance: 6.87
   hitDuration: 0.05
-  enemyKnockBackForce: 10
+  enemyKnockBackForce: 18.89
 --- !u!114 &271853561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12548,11 +12548,6 @@ MonoBehaviour:
   contactChecker: {fileID: 1015725206}
   impulseSource: {fileID: 176997189}
   <HoldingItem>k__BackingField: {fileID: 1746290486}
-  testDam:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   dashForce: 20
   dashDuration: 0.2
   dashVfx: {fileID: 120747803}
@@ -20604,7 +20599,7 @@ GameObject:
   - component: {fileID: 1932870136}
   - component: {fileID: 1932870135}
   - component: {fileID: 1932870138}
-  - component: {fileID: 1932870137}
+  - component: {fileID: 1932870140}
   - component: {fileID: 1932870139}
   m_Layer: 9
   m_Name: Slime
@@ -20622,7 +20617,7 @@ Transform:
   m_GameObject: {fileID: 1932870131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -21.18, y: -4.88, z: 0}
+  m_LocalPosition: {x: -20.73, y: -1.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20648,7 +20643,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -20686,28 +20681,13 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.045964554, y: -0.5778503}
   m_Size: {x: 1.4128209, y: 0.9531666}
   m_Direction: 1
---- !u!114 &1932870137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932870131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e19f15ccf9a6244a5a145ca19aaab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable.CommonDA
-  rb: {fileID: 1932870135}
-  vfx: {fileID: 1920488262}
-  pm: {fileID: 1177184726}
 --- !u!114 &1932870138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20720,10 +20700,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98f234b8c9788e409db23e4f76a4e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
-  _rb: {fileID: 1932870135}
-  _pr: {fileID: 193382079}
-  _player: {fileID: 646734940}
-  _speed: 5
+  rb: {fileID: 1932870135}
+  player: {fileID: 646734940}
+  speed: 2
+  detectRange: 5
+  knockBackForce: 40.8
+  knockBackTime: 0.1
 --- !u!212 &1932870139
 SpriteRenderer:
   serializedVersion: 2
@@ -20783,6 +20765,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1932870140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932870131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e19f15ccf9a6244a5a145ca19aaab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable.CommonDA
+  vfx: {fileID: 1920488262}
+  em: {fileID: 1932870138}
 --- !u!1 &1946479380
 GameObject:
   m_ObjectHideFlags: 0
