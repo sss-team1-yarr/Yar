@@ -17,12 +17,11 @@ namespace _03_Code.UI.Pause {
         }
 
         public void ReturnGame() {
-            escHandler.isActived = !escHandler.isActived;
+            escHandler.EscPressed();
             gameObject.SetActive(false);
         }
 
         public void Settings() {
-            escHandler.isActived = !escHandler.isActived;
             gameObject.SetActive(false);
             settingsUI.SetActive(true);
         }

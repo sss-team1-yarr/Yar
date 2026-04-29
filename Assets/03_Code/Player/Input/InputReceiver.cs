@@ -13,7 +13,7 @@ namespace _03_Code.Player.Input {
         public event Action OnSkill1Input;
         public event Action OnSkill2Input;
 
-        public Vector2 onMoveInputVec2 { get; private set; }
+        public Vector2 OnMoveInputVec2 { get; private set; }
 
         private void Awake() {
             _controls = new Controls();
@@ -22,8 +22,8 @@ namespace _03_Code.Player.Input {
         }
 
         public void OnMove(InputAction.CallbackContext context) {
-            onMoveInputVec2 = context.ReadValue<Vector2>();
-            OnMoveInput?.Invoke(onMoveInputVec2.x);
+            OnMoveInputVec2 = context.ReadValue<Vector2>();
+            OnMoveInput?.Invoke(OnMoveInputVec2.x);
         }
 
         public void OnJump(InputAction.CallbackContext context) {
