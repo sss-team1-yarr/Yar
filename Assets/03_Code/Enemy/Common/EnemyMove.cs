@@ -18,6 +18,7 @@ public class EnemyMove : MonoBehaviour
     private void Reset()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     private void FixedUpdate()
