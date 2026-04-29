@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _03_Code.Enemy.Interface;
 using _03_Code.Items;
 using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
@@ -84,7 +85,7 @@ namespace _03_Code.Player.Main {
             hp.UpdateHp(explosion);
             vfxBoom.transform.position = transform.position;
             impulseSource.GenerateImpulseWithForce(1f);
-            for (var i = 0; i < testDam.Length; i++) testDam[i].largePush();
+            for (var i = 0; i < testDam.Length; i++) testDam[i]?.largePush();
             vfx.Play();
         }
 

@@ -18,7 +18,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        _rb.linearVelocity = _moveDir.normalized * _speed;
+        _rb.linearVelocity = _moveDir * _speed;
     }
 
     private void LateUpdate() {
