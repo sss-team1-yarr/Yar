@@ -12549,10 +12549,10 @@ MonoBehaviour:
   impulseSource: {fileID: 176997189}
   <HoldingItem>k__BackingField: {fileID: 1746290486}
   testDam:
-  - {fileID: 1893497885}
-  - {fileID: 2033437478}
-  - {fileID: 1708833882}
-  - {fileID: 144573223}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dashForce: 20
   dashDuration: 0.2
   dashVfx: {fileID: 120747803}
