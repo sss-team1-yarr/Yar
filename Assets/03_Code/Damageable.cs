@@ -3,7 +3,7 @@ using _03_Code.Enemy.Common;
 using _03_Code.Enemy.Interface;
 using UnityEngine;
 
-namespace _03_Code {
+namespace _03_Code_Damageable {
     public class Damageable : MonoBehaviour, IDamageable {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ParticleSystem vfx;
