@@ -1,5 +1,5 @@
+using _03_Code.Enemy.Common;
 using _03_Code.Enemy.Interface;
-using _03_Code.Player.Main;
 using UnityEngine;
 
 namespace _03_Code.Damageable {

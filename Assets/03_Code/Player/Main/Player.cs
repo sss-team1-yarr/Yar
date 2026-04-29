@@ -4,14 +4,13 @@ using System.Linq;
 using _03_Code.Player.Components;
 using _03_Code.Player.Interface;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace _03_Code.Player.Main {
     public class Player : MonoBehaviour {
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private HpManager hp;
         [SerializeField] private AnimationControl ani;
-        
+
         private Dictionary<Type, IPlayerModule> _moduleDictionary;
 
         private void Awake() {

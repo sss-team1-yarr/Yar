@@ -17,6 +17,7 @@ namespace _03_Code.UI.Pause {
         }
 
         public void ReturnGame() {
+            escHandler.isActived = !escHandler.isActived;
             gameObject.SetActive(false);
         }
 

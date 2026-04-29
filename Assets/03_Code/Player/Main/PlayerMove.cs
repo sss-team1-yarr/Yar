@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using _03_Code.Damageable;
-using _03_Code.Enemy.Interface;
 using _03_Code.Items;
 using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
@@ -27,10 +25,10 @@ namespace _03_Code.Player.Main {
         private Rigidbody2D _rb;
         private InputReceiver _input;
         private AnimationControl _anim;
-        
+
         public bool RotationRight { get; private set; }
-        
-        private bool _isDashing = false; 
+
+        private bool _isDashing;
         [SerializeField] private float dashForce = 20f;
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private ParticleSystem dashVfx;
@@ -104,14 +102,14 @@ namespace _03_Code.Player.Main {
         private IEnumerator Dash() {
             _isDashing = true;
             ani.OnDashAni(true);
-            float dashDirection = RotationRight ? 2f : -2f;
+            var dashDirection = RotationRight ? 2f : -2f;
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
-            
+
             yield return new WaitForSeconds(dashDuration);
             ani.OnDashAni(false);
-            _isDashing = false; 
+            _isDashing = false;
         }
-        
+
         private void OnDestroy() {
             _input.OnMoveInput -= HandleMoveInput;
             _input.OnRunInput -= HandleRun;
