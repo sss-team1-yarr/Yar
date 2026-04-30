@@ -24,7 +24,6 @@ namespace _03_Code.Player.Main {
         private Player _owner;
         private Rigidbody2D _rb;
         private InputReceiver _input;
-        private AnimationControl _anim;
 
         public bool RotationRight { get; private set; }
 
@@ -37,7 +36,7 @@ namespace _03_Code.Player.Main {
             _owner = owner;
             _rb = owner.GetComponent<Rigidbody2D>();
             _input = _owner.GetModule<InputReceiver>();
-            _anim = _owner.GetModule<AnimationControl>();
+            _owner.GetModule<AnimationControl>();
             _input.OnJumpInput += HandleJump;
             _input.OnRunInput += HandleRun;
             _input.OnMoveInput += HandleMoveInput;
