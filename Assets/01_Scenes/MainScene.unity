@@ -443,10 +443,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.IsNearbyMe
   rb: {fileID: 271853555}
   pm: {fileID: 1177184726}
-  speed: 2
-  mobDistance: 3
+  speed: 5
+  mobDistance: 9
   hitDuration: 0.05
-  enemyKnockBackForce: 10
+  enemyKnockBackForce: 25
 --- !u!114 &271853561
 MonoBehaviour:
   m_ObjectHideFlags: 0

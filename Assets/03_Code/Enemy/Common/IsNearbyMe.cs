@@ -29,8 +29,7 @@ namespace _03_Code.Enemy.Common {
             }
             
             MoveDir = circle.transform.position - transform.position;
-            MoveDir.Normalize();
-            rb.linearVelocity = MoveDir * speed;
+            rb.linearVelocity = MoveDir.normalized * speed;
         }
 
         private void OnDrawGizmos() {
