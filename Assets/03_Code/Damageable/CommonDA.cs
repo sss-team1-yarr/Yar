@@ -10,7 +10,7 @@ namespace _03_Code.Damageable {
 
         public DamageResult ApplyDamage(DamageInfo info) {
             vfx.Play();
-            em.KnockBack();
+            em.KnockBack(info.DamageAmount);
             return new DamageResult {
                 Hit = true
             };

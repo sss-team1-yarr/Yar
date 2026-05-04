@@ -4,7 +4,7 @@
     }
 
     public struct DamageInfo {
-        public float DamageAmount;
+        public int DamageAmount;
         public float KnockbackForce;
     }
 

@@ -8,7 +8,7 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private float damageRadius = 1.5f;
-        [SerializeField] private float damageAmount;
+        [SerializeField] private int damageAmount;
         [SerializeField] private float knockbackForce;
         [SerializeField] private ContactFilter2D targetFilter;
         [SerializeField] private Transform handTrm;
