@@ -49,6 +49,7 @@ namespace _03_Code.Player.Main {
         private void HandleGuard() {
             //what is this?
             Destroy(gameObject);
+            Time.timeScale = 0.2f;
         }
 
         private void Awake() {
