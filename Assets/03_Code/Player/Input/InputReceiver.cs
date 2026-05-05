@@ -12,6 +12,7 @@ namespace _03_Code.Player.Input {
         public event Action<bool> OnRunInput;
         public event Action OnSkill1Input;
         public event Action OnSkill2Input;
+        public event Action OnGuardInput;
 
         public Vector2 OnMoveInputVec2 { get; private set; }
 
@@ -54,6 +55,10 @@ namespace _03_Code.Player.Input {
         {
             if (context.performed)
                 OnSkill2Input?.Invoke();
+        }
+
+        public void OnGuard(InputAction.CallbackContext context) {
+            OnGuardInput?.Invoke();
         }
 
         private void OnDestroy() {

@@ -43,6 +43,12 @@ namespace _03_Code.Player.Main {
             _input.OnAttackInput += HandleAttackInput;
             _input.OnSkill1Input += HandleSkill1Input;
             _input.OnSkill2Input += HandleSkill2Input;
+            _input.OnGuardInput += HandleGuard;
+        }
+
+        private void HandleGuard() {
+            //what is this?
+            Destroy(gameObject);
         }
 
         private void Awake() {
