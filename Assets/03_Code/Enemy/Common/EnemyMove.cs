@@ -1,4 +1,5 @@
 using System.Collections;
+using _03_Code.Enemy.Common.Animation;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Common {
@@ -8,6 +9,7 @@ namespace _03_Code.Enemy.Common {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Transform player;
         [SerializeField] private ShowHp sHp;
+        [SerializeField] private EnemyAnimationControl enemyAnim;
         [SerializeField] private float speed = 2f;
         [SerializeField] private float detectRange = 5f;
         [SerializeField] private float knockBackForce = 40f;
@@ -23,11 +25,12 @@ namespace _03_Code.Enemy.Common {
             rb = GetComponent<Rigidbody2D>();
             player = GameObject.FindWithTag("Player").transform;
             sHp = GetComponentInChildren<ShowHp>();
+            enemyAnim = GetComponent<EnemyAnimationControl>();
         }
         
         private void FixedUpdate()
         {
-            if (_isKnockedBack) return;
+            if (_isKnockedBack || enemyHp == 0) return;
         
             float distance = Vector2.Distance(transform.position, player.position);
 
@@ -59,7 +62,14 @@ namespace _03_Code.Enemy.Common {
             sHp.UpdateHp(enemyHp);
             StartCoroutine(KnockBackRoutine());
             if (enemyHp == 0)
-                gameObject.SetActive(false);
+                StartCoroutine(Dead());
+        }
+
+        private IEnumerator Dead()
+        {
+            enemyAnim.OnDeadAni(true);
+            yield return new WaitForSeconds(2f);
+            gameObject.SetActive(false);
         }
 
         private IEnumerator KnockBackRoutine() {

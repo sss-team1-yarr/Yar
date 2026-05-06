@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2687878557845823389}
   - component: {fileID: 6138031603436324351}
   - component: {fileID: 3596685449833228555}
+  - component: {fileID: 4520489111901401195}
+  - component: {fileID: 8963976901956473803}
   - component: {fileID: 7959897507597357776}
   - component: {fileID: 7079258433552748852}
   m_Layer: 9
@@ -73,8 +75,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.04596455, y: -0.5534894}
-  m_Size: {x: 1.412821, y: 0.9044477}
+  m_Offset: {x: -0.1634588, y: -0.5534894}
+  m_Size: {x: 1.3487357, y: 0.9044479}
   m_Direction: 1
 --- !u!50 &2687878557845823389
 Rigidbody2D:
@@ -119,6 +121,7 @@ MonoBehaviour:
   rb: {fileID: 2687878557845823389}
   player: {fileID: 0}
   sHp: {fileID: 8990751338369420748}
+  enemyAnim: {fileID: 4520489111901401195}
   speed: 2
   detectRange: 5
   knockBackForce: 40
@@ -138,6 +141,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable.CommonDA
   vfx: {fileID: 7809627024906510427}
   em: {fileID: 6138031603436324351}
+--- !u!114 &4520489111901401195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848927922415046634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cbd3d2942bd419397bcffce4b0c2437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Animation.EnemyAnimationControl
+  enemyRenderer: {fileID: 8963976901956473803}
+--- !u!114 &8963976901956473803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848927922415046634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03513af58f553634da4c8afc17782338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Animation.EnemyRenderer
+  animator: {fileID: 7079258433552748852}
 --- !u!212 &7959897507597357776
 SpriteRenderer:
   serializedVersion: 2

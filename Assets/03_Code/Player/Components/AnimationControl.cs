@@ -1,4 +1,6 @@
+using _03_Code.Enemy.Common.Animation;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _03_Code.Player.Components {
     public class AnimationControl : MonoBehaviour {
