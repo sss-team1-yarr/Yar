@@ -1,9 +1,15 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace _03_Code.Player.Components {
     public class HpManager : MonoBehaviour {
         [SerializeField] private TextMeshProUGUI text;
+
+        private void Reset()
+        {
+            text = GameObject.Find("HP").GetComponent<TextMeshProUGUI>();
+        }
 
         public int hp = int.MaxValue;
 

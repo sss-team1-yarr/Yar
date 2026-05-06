@@ -6,6 +6,7 @@ using UnityEngine;
 namespace _03_Code.Enemy.Common {
     public class EnemyMove : MonoBehaviour
     {
+        [SerializeField] private Collider2D coll;
         [SerializeField] private SpriteRenderer sr;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Transform player;
@@ -73,6 +74,10 @@ namespace _03_Code.Enemy.Common {
 
         private IEnumerator Dead()
         {
+            coll.isTrigger = true;
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
             gameObject.SetActive(false);

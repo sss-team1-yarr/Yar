@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _03_Code.Handler {
     public class EscHandler : MonoBehaviour {
         [SerializeField] private GameObject pause;
-        
+
+        private void Reset()
+        {
+            pause = GameObject.Find("Pause");
+        }
+
         private bool _isActive;
         
         private void Update() {
