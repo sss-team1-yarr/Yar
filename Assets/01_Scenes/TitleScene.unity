@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uCDA9 \uC81C\uBAA9"
+  m_text: Hello, World!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
   m_sharedMaterial: {fileID: 8857025348429554468, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
@@ -1997,5 +1997,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 65226577}
-  - {fileID: 634761585}
   - {fileID: 1903208205}
+  - {fileID: 634761585}
