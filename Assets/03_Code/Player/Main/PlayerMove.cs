@@ -75,7 +75,10 @@ namespace _03_Code.Player.Main {
         private void HandleJump() {
             const float multiplier = 3f;
             if (contactChecker.IsGrounded)
+            {
+                _rb.linearVelocity = Vector2.zero;
                 _rb.AddForceY(jumpForce * multiplier, ForceMode2D.Impulse);
+            }
         }
 
         private void HandleAttackInput(int btn, bool pressed) {
