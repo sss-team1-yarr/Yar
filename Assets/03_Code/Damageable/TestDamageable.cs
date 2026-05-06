@@ -6,7 +6,7 @@ namespace _03_Code.Damageable {
     public class TestDamageable : MonoBehaviour, IDamageable {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ParticleSystem vfx;
-        [SerializeField] private PlayerMove pm;
+        [SerializeField] private PlayerSystem pm;
 
         public DamageResult ApplyDamage(DamageInfo info) {
             rb.AddForce(new Vector2(6f * pm.MoveInput, 6f) * info.KnockbackForce, ForceMode2D.Impulse); 

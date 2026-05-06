@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _03_Code.Enemy.Common {
     public class IsNearbyMe : MonoBehaviour {
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private PlayerMove pm;
+        [SerializeField] private PlayerSystem pm;
         [SerializeField] private float speed = 2f;
         [SerializeField] private float mobDistance = 3f;
         [SerializeField] private float hitDuration = 0.5f;

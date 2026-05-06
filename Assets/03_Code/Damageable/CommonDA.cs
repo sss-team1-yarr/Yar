@@ -1,4 +1,5 @@
 using _03_Code.Enemy.Common;
+using _03_Code.Enemy.Common.Component;
 using _03_Code.Enemy.Interface;
 using UnityEngine;
 

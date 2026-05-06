@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace _03_Code.Enemy.Common {
+namespace _03_Code.Enemy.Common.Component {
     public class EnemyMove : MonoBehaviour
     {
         [SerializeField] private Collider2D coll;
@@ -18,11 +18,11 @@ namespace _03_Code.Enemy.Common {
         [SerializeField] private float knockBackTime = 0.1f;
         [SerializeField] private int enemyHp = 100;
 
-        private float _direction;
         private bool _isKnockedBack = false;
 
         public bool IsDead { get; private set; } = false;
-    
+        public float Direction { get; private set; }
+        
         private void Reset()
         {
             sr = GetComponent<SpriteRenderer>();
@@ -44,10 +44,10 @@ namespace _03_Code.Enemy.Common {
                 return;
             }
 
-            _direction = player.position.x > transform.position.x ? 1f : -1f;
+            Direction = player.position.x > transform.position.x ? 1f : -1f;
 
-            rb.linearVelocity = new Vector2(_direction * speed, rb.linearVelocity.y);
-            sr.flipX = _direction < 0f;
+            rb.linearVelocity = new Vector2(Direction * speed, rb.linearVelocity.y);
+            sr.flipX = Direction < 0f;
         }
     
         private void OnDrawGizmos() {
@@ -88,7 +88,7 @@ namespace _03_Code.Enemy.Common {
             
             _isKnockedBack = true;
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(knockBackForce * -_direction, 0f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(knockBackForce * -Direction, 0f), ForceMode2D.Impulse);
             yield return new WaitForSeconds(knockBackTime);
             _isKnockedBack = false;
         }

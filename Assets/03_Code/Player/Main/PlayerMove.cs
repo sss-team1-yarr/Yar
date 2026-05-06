@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using _03_Code.Items;
 using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;

@@ -1,3 +1,4 @@
+using _03_Code.Player.Components;
 using _03_Code.Player.Main;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ namespace _03_Code {
     {
         public static GameManager Instance;
 
-        public PlayerMove playerMove; 
+        public PlayerSystem playerSystem;
+        public PlayerHit playerHit;
     
         private void Awake() {
             Instance = this;

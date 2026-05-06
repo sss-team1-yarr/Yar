@@ -4970,6 +4970,50 @@ Transform:
   - {fileID: 6727938733187489628}
   m_Father: {fileID: 583260207570438123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3644791081058892320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4789871676491977662}
+  - component: {fileID: 6967762128492124017}
+  m_Layer: 6
+  m_Name: Mover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4789871676491977662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644791081058892320}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8960773238287014654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6967762128492124017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644791081058892320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cefd94c97b11645a8a537c50ed0179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Main.PlayerMove
 --- !u!1 &5050612560137249071
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,10 +5025,11 @@ GameObject:
   - component: {fileID: 8960773238287014654}
   - component: {fileID: 5263609241632774816}
   - component: {fileID: 1116159715040441635}
+  - component: {fileID: 6237197459490354437}
   - component: {fileID: 8536089062628682418}
   - component: {fileID: 6460290439495194327}
   m_Layer: 6
-  m_Name: Player1
+  m_Name: RealPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5005,6 +5050,7 @@ Transform:
   m_Children:
   - {fileID: 583260207570438123}
   - {fileID: 2425456469483027139}
+  - {fileID: 4789871676491977662}
   - {fileID: 2101306618187445214}
   - {fileID: 1015539667005344662}
   m_Father: {fileID: 0}
@@ -5051,6 +5097,20 @@ MonoBehaviour:
   contactChecker: {fileID: 6954522762026317439}
   hp: {fileID: 8536089062628682418}
   ani: {fileID: 5071230411770458684}
+--- !u!114 &6237197459490354437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050612560137249071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b29d73ef3c8d04aa0ee170f42066cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerHit
+  rb: {fileID: 5263609241632774816}
+  approachForce: 10
 --- !u!114 &8536089062628682418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5376,7 +5436,7 @@ GameObject:
   - component: {fileID: 2425456469483027139}
   - component: {fileID: 3741093847934813083}
   m_Layer: 6
-  m_Name: Mover
+  m_Name: System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5434,7 +5494,7 @@ GameObject:
   - component: {fileID: 4768332066607994373}
   - component: {fileID: 2423133509466135820}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: ImpulseSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7020674766588388296}
   - component: {fileID: 2687878557845823389}
   - component: {fileID: 6138031603436324351}
+  - component: {fileID: 4155865790157877307}
   - component: {fileID: 3596685449833228555}
   - component: {fileID: 4520489111901401195}
   - component: {fileID: 8963976901956473803}
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98f234b8c9788e409db23e4f76a4e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.EnemyMove
+  coll: {fileID: 7020674766588388296}
   sr: {fileID: 7959897507597357776}
   rb: {fileID: 2687878557845823389}
   player: {fileID: 0}
@@ -136,6 +138,20 @@ MonoBehaviour:
   knockBackForce: 40
   knockBackTime: 0.1
   enemyHp: 100
+--- !u!114 &4155865790157877307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848927922415046634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c632f2165ad5c34488fcfe622f0dcb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Component.EnemyAttack
+  rb: {fileID: 2687878557845823389}
+  em: {fileID: 6138031603436324351}
 --- !u!114 &3596685449833228555
 MonoBehaviour:
   m_ObjectHideFlags: 0
