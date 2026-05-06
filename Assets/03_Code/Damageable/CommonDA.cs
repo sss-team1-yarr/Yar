@@ -8,7 +8,10 @@ namespace _03_Code.Damageable {
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private EnemyMove em;
 
-        public DamageResult ApplyDamage(DamageInfo info) {
+        public DamageResult ApplyDamage(DamageInfo info)
+        {
+            if (em.IsDead) return new DamageResult();
+            
             vfx.Play();
             em.KnockBack(info.DamageAmount);
             return new DamageResult {

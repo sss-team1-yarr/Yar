@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace _03_Code.Enemy.Common {
 
         private float _direction;
         private bool _isKnockedBack = false;
+
+        public bool IsDead { get; private set; } = false;
     
         private void Reset()
         {
@@ -27,10 +30,10 @@ namespace _03_Code.Enemy.Common {
             sHp = GetComponentInChildren<ShowHp>();
             enemyAnim = GetComponent<EnemyAnimationControl>();
         }
-        
+
         private void FixedUpdate()
         {
-            if (_isKnockedBack || enemyHp == 0) return;
+            if (_isKnockedBack || IsDead) return;
         
             float distance = Vector2.Distance(transform.position, player.position);
 
@@ -52,16 +55,19 @@ namespace _03_Code.Enemy.Common {
         
         public void KnockBack(int damageAmount)
         {
-            if (_isKnockedBack) return;
+            if (_isKnockedBack || IsDead) return;
 
             if (enemyHp - damageAmount > 0f)
                 enemyHp -= damageAmount;
             else
+            {
                 enemyHp = 0;
+                IsDead = true;
+            }
             
             sHp.UpdateHp(enemyHp);
             StartCoroutine(KnockBackRoutine());
-            if (enemyHp == 0)
+            if (IsDead)
                 StartCoroutine(Dead());
         }
 
@@ -73,6 +79,8 @@ namespace _03_Code.Enemy.Common {
         }
 
         private IEnumerator KnockBackRoutine() {
+            if (IsDead) yield break;
+            
             _isKnockedBack = true;
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(new Vector2(knockBackForce * -_direction, 0f), ForceMode2D.Impulse);

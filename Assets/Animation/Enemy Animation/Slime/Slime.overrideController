@@ -6,10 +6,10 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slime2
-  m_Controller: {fileID: 9100000, guid: 73981948d3ef7ec44a75ef111e37a120, type: 2}
+  m_Name: Slime
+  m_Controller: {fileID: 9100000, guid: 7fe25eec5985c93459fb0a72bbf735b3, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 94e33a81dfb89aa47b24388257a98b81, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2c431dbb420b7744a8e49ac1cb673e9d, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: f023bdaff1dd17142b6a80fe87d07015, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: d5882ec7e8de98c4dbc32c3a7fdfc805, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 435d58572b7d2f04d8122d38962e90b8, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 0e872265ff5cdb7498b5d35ce4f9a288, type: 2}

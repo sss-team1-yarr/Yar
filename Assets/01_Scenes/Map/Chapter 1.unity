@@ -5283,6 +5283,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4061982904400892996, guid: 29886ea99bcc652eba45d64e43240a27, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1754952569}
     - target: {fileID: 6803756125084207528, guid: 29886ea99bcc652eba45d64e43240a27, type: 3}
       propertyPath: m_Name
       value: Eschandler
@@ -11971,6 +11975,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1754952569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7671453525687311572, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
+  m_PrefabInstance: {fileID: 2017040568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2017040568
 PrefabInstance:
   m_ObjectHideFlags: 0
