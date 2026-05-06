@@ -11168,6 +11168,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1044089098413409581, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
     - target: {fileID: 1556247456720232541, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
       propertyPath: escHandler
       value: 
