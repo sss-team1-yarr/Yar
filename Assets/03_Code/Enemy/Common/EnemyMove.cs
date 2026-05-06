@@ -58,6 +58,7 @@ namespace _03_Code.Enemy.Common {
             
             sHp.UpdateHp(enemyHp);
             StartCoroutine(KnockBackRoutine());
+            gameObject.SetActive(false);
         }
 
         private IEnumerator KnockBackRoutine() {
