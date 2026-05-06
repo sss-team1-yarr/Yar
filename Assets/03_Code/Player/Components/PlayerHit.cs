@@ -6,7 +6,9 @@ namespace _03_Code.Player.Components
     public class PlayerHit : MonoBehaviour
     { 
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private float approachForce;
+        [SerializeField] private float approachForce = 10f;
+        [SerializeField] private int approachDamage = 10;
+        [SerializeField] private float approachTime = 1f;
         
         public bool IsApproach { get; private set; }= false;
 
@@ -20,10 +22,10 @@ namespace _03_Code.Player.Components
             if (IsApproach) yield break;
             
             IsApproach = true;
-            Debug.Log("밀려났다!");
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(new Vector2(direction, 1f) * approachForce, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(1f);
+            GameManager.Instance.hpManager.UpdateHp(approachDamage);
+            yield return new WaitForSeconds(approachTime);
             IsApproach = false;
         }
     }

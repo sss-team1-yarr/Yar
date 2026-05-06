@@ -5180,8 +5180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c063e4fe7f1bc4ca04b096adcf89d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.GameManager
+  player: {fileID: 0}
   playerSystem: {fileID: 1438965678}
   playerHit: {fileID: 1788283248}
+  hpManager: {fileID: 1788283246}
 --- !u!4 &685035184
 Transform:
   m_ObjectHideFlags: 0
@@ -12037,6 +12039,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7671453525687311572, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
   m_PrefabInstance: {fileID: 2017040568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1788283246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8536089062628682418, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae5c01c4622479a93276d51f478ad30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.HpManager
 --- !u!114 &1788283248 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6237197459490354437, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}

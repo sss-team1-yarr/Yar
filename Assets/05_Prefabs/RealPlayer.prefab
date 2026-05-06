@@ -5111,6 +5111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerHit
   rb: {fileID: 5263609241632774816}
   approachForce: 10
+  approachDamage: 10
+  approachTime: 1
 --- !u!114 &8536089062628682418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5124,7 +5126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.HpManager
   text: {fileID: 0}
-  hp: 2147483647
+  hp: 100
 --- !u!70 &6460290439495194327
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

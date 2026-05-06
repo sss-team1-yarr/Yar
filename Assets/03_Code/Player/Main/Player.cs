@@ -34,11 +34,7 @@ namespace _03_Code.Player.Main {
             foreach (var module in _moduleDictionary.Values.OfType<IPlayerModule>()) module.Initialize(this);
         }
 
-        private void Update() {
-            if (hp.hp <= 0) HandlePlayerDeath();
-        }
-
-        private void HandlePlayerDeath() {
+        public void HandlePlayerDeath() {
             Destroy(gameObject);
             Time.timeScale = 0;
         }

@@ -7,8 +7,10 @@ namespace _03_Code {
     {
         public static GameManager Instance;
 
+        public Player.Main.Player player;
         public PlayerSystem playerSystem;
         public PlayerHit playerHit;
+        public HpManager hpManager;
     
         private void Awake() {
             Instance = this;
