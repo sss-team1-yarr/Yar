@@ -552,7 +552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.UI.Settings.Settings
   pauseUI: {fileID: 7671453525687311572}
-  escHandler: {fileID: 0}
 --- !u!1 &3103335885935629414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1037,7 @@ GameObject:
   - component: {fileID: 8720375126082421846}
   - component: {fileID: 4031040199806981717}
   - component: {fileID: 1044089098413409581}
+  - component: {fileID: 582605273294679917}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
   m_sharedMaterial: {fileID: 8857025348429554468, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
@@ -1164,6 +1164,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &582605273294679917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521186719643842536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:e5c7d565c2c0de2eaa83f8c60e737b96
+    m_TableEntryReference:
+      m_KeyId: 4704607959977984
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1044089098413409581}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &5600737829296576752
 GameObject:
   m_ObjectHideFlags: 0

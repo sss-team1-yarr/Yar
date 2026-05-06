@@ -51,6 +51,10 @@ MonoBehaviour:
     m_Key: Settings.Title
     m_Metadata:
       m_Items: []
+  - m_Id: 4704607959977984
+    m_Key: Settings.Back
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
