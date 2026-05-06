@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: Settings.Back
     m_Metadata:
       m_Items: []
+  - m_Id: 4709956192505856
+    m_Key: Settings.ReBind
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

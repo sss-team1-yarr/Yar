@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 namespace _03_Code.UI.Pause {
     public class Settings : MonoBehaviour {
         [SerializeField] private GameObject pauseUI;
-        
+
         private void Start() {
             gameObject.SetActive(false);
         }
