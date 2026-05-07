@@ -5180,8 +5180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c063e4fe7f1bc4ca04b096adcf89d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.GameManager
-  player: {fileID: 0}
-  playerSystem: {fileID: 1438965678}
+  player: {fileID: 4926987094042420573}
+  playerSystem: {fileID: 4926987094042420570}
   playerHit: {fileID: 1788283248}
   hpManager: {fileID: 1788283246}
 --- !u!4 &685035184
@@ -5244,17 +5244,6 @@ Transform:
   - {fileID: 1711020102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1438965678 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3741093847934813083, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
-  m_PrefabInstance: {fileID: 4926987094042420568}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a851c242ea14ff9875078273898f722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerInput
 --- !u!1 &1515950446
 GameObject:
   m_ObjectHideFlags: 0
@@ -12491,6 +12480,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: RealPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: hp
+      value: 
+      objectReference: {fileID: 1788283246}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: ani
+      value: 
+      objectReference: {fileID: 4926987094042420575}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: vfx
+      value: 
+      objectReference: {fileID: 61308853}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: dashVfx
+      value: 
+      objectReference: {fileID: 4926987094042420571}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: vfxBoom
+      value: 
+      objectReference: {fileID: 61308851}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: explosion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: impulseSource
+      value: 
+      objectReference: {fileID: 4926987094042420574}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: contactChecker
+      value: 
+      objectReference: {fileID: 4926987094042420569}
+    - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: <HoldingItem>k__BackingField
+      value: 
+      objectReference: {fileID: 4926987094042420572}
     - target: {fileID: 8536089062628682418, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
       propertyPath: text
       value: 
@@ -12535,11 +12564,83 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3741093847934813083, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+--- !u!114 &4926987094042420569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6954522762026317439, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92782d3c9b8c406b9b43b97b29209742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.ContactChecker
+--- !u!114 &4926987094042420570 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cefd94c97b11645a8a537c50ed0179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Main.PlayerMove
+--- !u!198 &4926987094042420571 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7127980844141048395, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4926987094042420572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 641600390513165272, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddcc26dfda306e43b61d371360ebc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
+--- !u!114 &4926987094042420573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1116159715040441635, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7bdd86e94b413292b9f7ab2c2e9b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Player
+--- !u!114 &4926987094042420574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2423133509466135820, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+--- !u!114 &4926987094042420575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5071230411770458684, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8336a8091d47adb6270c906beda543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.AnimationControl
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
