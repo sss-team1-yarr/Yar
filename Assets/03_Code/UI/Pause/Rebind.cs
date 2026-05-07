@@ -1,12 +1,18 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _03_Code.UI.Pause {
     public class Rebind : MonoBehaviour {
+        [SerializeField]
+        private InputActionReference currentAction = null;
+        [SerializeField]
+        private GameObject selectedMarkObject;
+        [SerializeField]
+        private InputBinding.DisplayStringOptions displayStringOptions;
+        
         [SerializeField] private TextMeshProUGUI tmPro;
-        [SerializeField] private Revive revive;
-        [SerializeField] private string keyName;
         
         private InputActionRebindingExtensions.RebindingOperation _reBinding;
         
@@ -15,45 +21,41 @@ namespace _03_Code.UI.Pause {
         
         private void Awake() {
             _controls = new Controls();
-            UpdateKey();
+        }
+
+        private void OnEnable() {
+            UpdateBind();
         }
 
         public void KeyRebinding() {
             ReBindKey();
-            UpdateKey();
         }
         
         public void ReBindKey() {
-            revive.gameObject.SetActive(true);
-            InputAction rebin = null;
-            _controls.Disable();
-            switch (keyName) {
-                case "Jump":
-                    rebin = _controls.Player.Jump;
-                    break;
-            }
-
-            _reBinding = rebin.PerformInteractiveRebinding()
+            currentAction.action.Disable();
+            selectedMarkObject.SetActive(true);
+            
+            _reBinding = currentAction.action.PerformInteractiveRebinding()
                 .WithControlsExcluding("Mouse")
-                .OnMatchWaitForAnother(0.1f)
-                .OnComplete(operation => {
-                    operation.Dispose();
-                    _controls.Enable();
-                    revive.gameObject.SetActive(false);
-                })
+                .OnComplete(operation=>Complete())
                 .Start();
         }
 
-        public void UpdateKey() {
-            InputAction update;
-            string value = "";
-            switch (keyName) {
-                case "Jump":
-                    update = _controls.Player.Jump;
-                    value = update.GetBindingDisplayString(0);
-                    break;
-            }
-            tmPro.SetText(value);
+        private void Complete() {
+            selectedMarkObject.SetActive(false);
+            _reBinding.Dispose();
+            currentAction.action.Enable();
+            
+        }
+
+        private void UpdateBind() {
+            var displayStr = string.Empty;
+            var deviceLayoutName = default(string);
+            var controlPath = default(string);
+            
+            displayStr = currentAction.action.GetBindingDisplayString(0, out deviceLayoutName, out controlPath, displayStringOptions);
+            
+            tmPro.text = displayStr;
         }
     }
 }

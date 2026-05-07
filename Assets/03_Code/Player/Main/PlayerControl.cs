@@ -68,6 +68,8 @@ namespace _03_Code.Player.Main
                 RotationRight = value > 0f;
                 _owner.transform.rotation = Quaternion.Euler(0f, RotationRight ? 0f : 180f, 0f);
             }
+
+            Move();
         }
 
         private void HandleRun(bool run) {
@@ -125,7 +127,8 @@ namespace _03_Code.Player.Main
             _input.OnSkill2Input -= HandleSkill2Input;
         }
         
-        private void FixedUpdate() {
+        private void Move() {
+            if(IsDashing) return;
             _rb.linearVelocityX = GameManager.Instance.playerControl.MoveInput * GameManager.Instance.playerControl.Speed;
         }
     }
