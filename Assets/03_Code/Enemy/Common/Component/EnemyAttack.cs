@@ -20,7 +20,9 @@ namespace _03_Code.Enemy.Common.Component
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                StartCoroutine(GameManager.Instance.playerHit.Approach(em.Direction));
+                Vector2 direction = - collision.contacts[0].normal;
+                Debug.Log(direction);
+                StartCoroutine(GameManager.Instance.playerHit.Approach(direction));
             }
         }
     }

@@ -27,7 +27,7 @@ namespace _03_Code.Items.Weapons {
 
         public override void Use(ItemUsingContext context) {
             base.Use(context);
-
+            
             if (context.Input == 0) _isHoldingKey = context.Pressed;
         }
 

@@ -2,10 +2,12 @@
 using System.Collections;
 using _03_Code.Player.Components;
 using _03_Code.Player.Main;
+using _03_Code.SO;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Common {
     public class Common : MonoBehaviour {
+        [SerializeField] private EnemySO enemyData;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private int damage;
         [SerializeField] private HpManager hp;

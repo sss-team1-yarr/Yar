@@ -15144,6 +15144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RealPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6237197459490354437, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: approachForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
       propertyPath: hp
       value: 

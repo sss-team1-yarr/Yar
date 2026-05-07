@@ -17,13 +17,13 @@ namespace _03_Code.Player.Components
             rb = GetComponent<Rigidbody2D>();
         }
         
-        public IEnumerator Approach(float direction)
+        public IEnumerator Approach(Vector2 direction)
         {
             if (IsApproach) yield break;
             
             IsApproach = true;
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(direction, 1f) * approachForce, ForceMode2D.Impulse);
+            rb.AddForce(direction * approachForce, ForceMode2D.Impulse);
             GameManager.Instance.hpManager.UpdateHp(approachDamage);
             yield return new WaitForSeconds(approachTime);
             IsApproach = false;

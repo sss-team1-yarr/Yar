@@ -5,6 +5,7 @@ namespace _03_Code.SO {
     public class EnemySO : ScriptableObject {
         [Header("Enemy stat")] 
         public Sprite sprite;
+        public string enemyName;
         public int speed;
         public int maxHealth;
         public int damage;
