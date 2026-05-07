@@ -32,10 +32,10 @@ namespace _03_Code.Player.Main
         private Rigidbody2D _rb;
         private InputReceiver _input;
 
-        public bool RotationRight { get; private set; }
-        public bool IsDashing { get; private set; }
+        public bool rotationRight;
+        public bool isDashing;
         public bool IsFFF { get; private set; }
-        public float Speed { get; private set; } = 8f;
+        public float speed = 8f;
         public float MoveInput { get; private set; }
         
         [SerializeField] private float dashForce = 20f;
@@ -68,18 +68,16 @@ namespace _03_Code.Player.Main
         }
         
         private void HandleMoveInput(float value) {
-            MoveInput = value;
+            _rb.linearVelocityX = value * speed;
             ani.OnMoveAni(Mathf.Abs(value));
             if (!Mathf.Approximately(value, 0f)) {
-                RotationRight = value > 0f;
-                _owner.transform.rotation = Quaternion.Euler(0f, RotationRight ? 0f : 180f, 0f);
+                rotationRight = value > 0f;
+                _owner.transform.rotation = Quaternion.Euler(0f, rotationRight ? 0f : 180f, 0f);
             }
-
-            Move();
         }
 
         private void HandleRun(bool run) {
-            Speed *= run ? 2 : 0.5f;
+            speed *= run ? 2 : 0.5f;
         }
 
         private void HandleJump() {
@@ -108,20 +106,20 @@ namespace _03_Code.Player.Main
         }
 
         private void HandleSkill2Input() {
-            if (IsDashing) return;
+            if (isDashing) return;
             StartCoroutine(Dash());
             dashVfx?.Play();
         }
 
         private IEnumerator Dash() {
-            IsDashing = true;
+            isDashing = true;
             ani.OnDashAni(true);
-            var dashDirection = RotationRight ? 2f : -2f;
+            var dashDirection = rotationRight ? 2f : -2f;
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
 
             yield return new WaitForSeconds(dashDuration);
             ani.OnDashAni(false);
-            IsDashing = false;
+            isDashing = false;
         }
 
         private void HandleSkill3Input() {
@@ -144,11 +142,6 @@ namespace _03_Code.Player.Main
             _input.OnSkill2Input -= HandleSkill2Input;
             _input.OnGuardInput -= HandleGuard;
             _input.OnSkill3Input -= HandleSkill3Input;
-        }
-        
-        private void Move() {
-            if(IsDashing) return;
-            _rb.linearVelocityX = GameManager.Instance.playerControl.MoveInput * GameManager.Instance.playerControl.Speed;
         }
     }
 }
