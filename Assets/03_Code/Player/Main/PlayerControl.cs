@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _03_Code.Items;
 using _03_Code.Items.Weapons;
@@ -31,6 +32,7 @@ namespace _03_Code.Player.Main
         private Player _owner;
         private Rigidbody2D _rb;
         private InputReceiver _input;
+        private float _moveInput;
 
         public bool rotationRight;
         public bool isDashing;
@@ -68,10 +70,16 @@ namespace _03_Code.Player.Main
         }
         
         private void HandleMoveInput(float value) {
-            _rb.linearVelocityX = value * speed;
-            ani.OnMoveAni(Mathf.Abs(value));
-            if (!Mathf.Approximately(value, 0f)) {
-                rotationRight = value > 0f;
+            _moveInput = value;
+            
+        }
+
+        private void FixedUpdate() {
+            if(isDashing)   return;
+            _rb.linearVelocityX = _moveInput * speed;
+            ani.OnMoveAni(Mathf.Abs(_moveInput));
+            if (!Mathf.Approximately(_moveInput, 0f)) {
+                rotationRight = _moveInput > 0f;
                 _owner.transform.rotation = Quaternion.Euler(0f, rotationRight ? 0f : 180f, 0f);
             }
         }
