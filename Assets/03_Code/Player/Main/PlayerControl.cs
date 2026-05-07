@@ -75,7 +75,7 @@ namespace _03_Code.Player.Main
         }
 
         private void FixedUpdate() {
-            if(isDashing)   return;
+            if(isDashing || GameManager.Instance.playerHit.IsApproach) return;
             _rb.linearVelocityX = _moveInput * speed;
             ani.OnMoveAni(Mathf.Abs(_moveInput));
             if (!Mathf.Approximately(_moveInput, 0f)) {
