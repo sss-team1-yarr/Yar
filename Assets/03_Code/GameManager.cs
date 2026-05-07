@@ -15,6 +15,7 @@ namespace _03_Code {
     
         private void Awake() {
             Instance = this;
+            
         }
     }
 }
