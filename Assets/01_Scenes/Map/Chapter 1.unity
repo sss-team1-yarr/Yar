@@ -15083,6 +15083,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 646734940}
+    - target: {fileID: 2758541620568426419, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: knockBackTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       propertyPath: m_Name
       value: Slime
@@ -15177,11 +15181,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050612560137249071, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
       propertyPath: m_Name
-      value: RealPlayer
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237197459490354437, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: approachTime
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6237197459490354437, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
       propertyPath: approachForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954522762026317439, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+      propertyPath: targetLayer.m_Bits
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 6967762128492124017, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
       propertyPath: hp
