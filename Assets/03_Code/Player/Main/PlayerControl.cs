@@ -126,7 +126,7 @@ namespace _03_Code.Player.Main
         }
         
         private void FixedUpdate() {
-            _rb.linearVelocityX = GameManager.Instance.playerSystem.MoveInput * GameManager.Instance.playerSystem.Speed;
+            _rb.linearVelocityX = GameManager.Instance.playerControl.MoveInput * GameManager.Instance.playerControl.Speed;
         }
     }
 }

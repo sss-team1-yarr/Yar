@@ -9,7 +9,7 @@ namespace _03_Code {
         public static GameManager Instance;
 
         public Player.Main.Player player;
-        public PlayerControl playerSystem;
+        public PlayerControl playerControl;
         public PlayerHit playerHit;
         public HpManager hpManager;
     
