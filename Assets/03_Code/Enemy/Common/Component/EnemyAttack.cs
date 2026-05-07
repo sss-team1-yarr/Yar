@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Common.Component
@@ -17,7 +18,10 @@ namespace _03_Code.Enemy.Common.Component
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            StartCoroutine(GameManager.Instance.playerHit.Approach(em.Direction));
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                StartCoroutine(GameManager.Instance.playerHit.Approach(em.Direction));
+            }
         }
     }
 }
