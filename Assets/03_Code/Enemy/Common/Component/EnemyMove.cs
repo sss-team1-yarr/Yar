@@ -26,6 +26,7 @@ namespace _03_Code.Enemy.Common.Component {
         
         private void Reset()
         {
+            coll = GetComponent<Collider2D>();
             sr = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
             player = GameObject.Find("Player").transform; //태그로 하니깐 자꾸 태그를 못찾아서 오류남
