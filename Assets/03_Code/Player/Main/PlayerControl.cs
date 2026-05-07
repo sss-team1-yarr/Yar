@@ -20,6 +20,10 @@ namespace _03_Code.Player.Main
         [SerializeField] private GameObject vfxBoom;
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private CinemachineImpulseSource impulseSource;
+        [SerializeField] private Sword sword;
+        [SerializeField] private float skill3ActiveTime;
+        
+        
 
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
         //private TestDamageable[] testDam;
@@ -30,6 +34,7 @@ namespace _03_Code.Player.Main
 
         public bool RotationRight { get; private set; }
         public bool IsDashing { get; private set; }
+        public bool IsFFF { get; private set; }
         public float Speed { get; private set; } = 8f;
         public float MoveInput { get; private set; }
         
@@ -49,6 +54,7 @@ namespace _03_Code.Player.Main
             _input.OnSkill1Input += HandleSkill1Input;
             _input.OnSkill2Input += HandleSkill2Input;
             _input.OnGuardInput += HandleGuard;
+            _input.OnSkill3Input += HandleSkill3Input;
         }
 
         private void HandleGuard() {
@@ -116,6 +122,17 @@ namespace _03_Code.Player.Main
             IsDashing = false;
         }
 
+        private void HandleSkill3Input() {
+            if (IsFFF) return;
+            StartCoroutine(FFFActive());
+        }
+
+        private IEnumerator FFFActive() {
+            IsFFF = true;
+            yield return new WaitForSeconds(skill3ActiveTime);
+            IsFFF = false;
+        }
+
         private void OnDestroy() {
             _input.OnMoveInput -= HandleMoveInput;
             _input.OnRunInput -= HandleRun;
@@ -123,6 +140,8 @@ namespace _03_Code.Player.Main
             _input.OnAttackInput -= HandleAttackInput;
             _input.OnSkill1Input -= HandleSkill1Input;
             _input.OnSkill2Input -= HandleSkill2Input;
+            _input.OnGuardInput -= HandleGuard;
+            _input.OnSkill3Input -= HandleSkill3Input;
         }
         
         private void FixedUpdate() {
