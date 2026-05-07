@@ -1,19 +1,25 @@
 using _03_Code.Enemy.Interface;
+using _03_Code.Player.Main;
 using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _03_Code.Items.Weapons {
     public class Sword : Weapon, IItem {
+        [SerializeField] private int baseDamageAmount;
+        [SerializeField] private int damageAmount;
+        [SerializeField] private int  damageAddSize;
         [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private float damageRadius = 1.5f;
-        [SerializeField] private int damageAmount;
         [SerializeField] private float knockbackForce;
         [SerializeField] private ContactFilter2D targetFilter;
         [SerializeField] private Transform handTrm;
         [SerializeField] private CinemachineImpulseSource impulseSource;
         [SerializeField] private Player.Main.Player owner;
+        [SerializeField] private PlayerSystem playerSystem;
+        
+        
 
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
         private bool _isHoldingKey;
@@ -31,8 +37,17 @@ namespace _03_Code.Items.Weapons {
             if (context.Input == 0) _isHoldingKey = context.Pressed;
         }
 
+        private void DamageAmountChanged() {
+            if (!playerSystem.IsFFF) {
+                damageAmount = baseDamageAmount;
+                return;
+            }
+            damageAmount = damageAddSize;
+        }
+
         private void Update() {
             Attack();
+            DamageAmountChanged();
         }
 
         private void Attack() {
