@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.UI.Pause.Rebind
   tmPro: {fileID: 6213615410292282064}
   revive: {fileID: 4439537696091392350}
-  keyName: 
+  keyName: Jump
 --- !u!1 &6612502969074418579
 GameObject:
   m_ObjectHideFlags: 0

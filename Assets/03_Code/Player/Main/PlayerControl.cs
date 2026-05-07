@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using _03_Code.Items;
 using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
@@ -7,8 +7,11 @@ using _03_Code.Player.Interface;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace _03_Code.Player.Main {
-    public class PlayerSystem : MonoBehaviour, IPlayerModule {
+//hyunwoo don't touch this script
+namespace _03_Code.Player.Main
+{
+    public class PlayerControl : MonoBehaviour, IPlayerModule
+    {
         [SerializeField] private int explosion;
         [SerializeField] private float jumpForce;
         [SerializeField] private AnimationControl ani;
@@ -139,6 +142,10 @@ namespace _03_Code.Player.Main {
             _input.OnSkill2Input -= HandleSkill2Input;
             _input.OnGuardInput -= HandleGuard;
             _input.OnSkill3Input -= HandleSkill3Input;
+        }
+        
+        private void FixedUpdate() {
+            _rb.linearVelocityX = GameManager.Instance.playerControl.MoveInput * GameManager.Instance.playerControl.Speed;
         }
     }
 }

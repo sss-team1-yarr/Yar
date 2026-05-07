@@ -5,13 +5,18 @@ using UnityEngine;
 namespace _03_Code.Player.Components {
     public class HpManager : MonoBehaviour {
         [SerializeField] private TextMeshProUGUI text;
-        [SerializeField] private int hp = 100;
+        [SerializeField] private int hp = int.MaxValue;
         
         private void Reset()
         {
             text = GameObject.Find("HP").GetComponent<TextMeshProUGUI>();
         }
-        
+
+        private void Start()
+        {
+            text.SetText($"HP: {hp}");
+        }
+
         public void UpdateHp(int damage) {
             if (hp - damage <= 0)
             {
