@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98f234b8c9788e409db23e4f76a4e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.EnemyMove
+  coll: {fileID: 0}
   sr: {fileID: 4231661009374129085}
   rb: {fileID: 1243230830170992504}
   player: {fileID: 0}
