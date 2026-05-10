@@ -17,7 +17,7 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private Transform handTrm;
         [SerializeField] private CinemachineImpulseSource impulseSource;
         [SerializeField] private Player.Main.Player owner;
-        [SerializeField] private PlayerControl playerSystem;
+        [SerializeField] private Attacks attack;
         
         
 
@@ -38,7 +38,7 @@ namespace _03_Code.Items.Weapons {
         }
 
         private void DamageAmountChanged() {
-            if (!playerSystem.IsFFF) {
+            if (!attack.IsFFF) {
                 damageAmount = baseDamageAmount;
                 return;
             }

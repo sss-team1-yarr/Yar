@@ -11,7 +11,7 @@ namespace _03_Code.Player.Input {
         public event Action OnJumpInput;
         public event Action<bool> OnRunInput;
         public event Action OnSkill1Input;
-        public event Action OnSkill2Input;
+        public event Action OnDashInput;
         public event Action OnSkill3Input;
         public event Action OnGuardInput;
 
@@ -55,7 +55,7 @@ namespace _03_Code.Player.Input {
         public void OnSkill2(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnSkill2Input?.Invoke();
+                OnDashInput?.Invoke();
         }
 
         public void OnGuard(InputAction.CallbackContext context) {
