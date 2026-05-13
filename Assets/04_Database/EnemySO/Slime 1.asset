@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00ce5e8b48244465b42cbcb8cb44f651, type: 3}
-  m_Name: Slime
+  m_Name: Slime 1
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.SO.EnemySO
-  name: Slime
-  scale: 1
-  health: 200
+  name: Slime1
+  scale: 2
+  health: 300
   speed: 2
   dropExp: 0
   approachForce: 10

@@ -18,19 +18,19 @@ namespace _03_Code.Enemy.Common.Component {
         [SerializeField] private ShowHp sHp;
         [SerializeField] private EnemyAnimationControl enemyAnim;
         
-        [Header("Settings")]
-        [SerializeField] private float detectRange = 5f;
-        [SerializeField] private float knockBackForce = 40f;
-        [SerializeField] private float knockBackTime = 0.1f;
-
         public float ApproachForce { get; private set; }
         public float ApproachTime { get; private set; }
         public int ApproachDamage { get; private set; }
-        
-        private bool _isKnockedBack = false;
+
+        private float _scale;
         private float _speed;
         private int _enemyHp;
+        private float _detectRange;
+        private float _knockBackForce;
+        private float _knockBackTime;
 
+        private bool _isKnockedBack = false;
+        
         public bool IsDead { get; private set; } = false;
         public float Direction { get; private set; }
         
@@ -47,15 +47,20 @@ namespace _03_Code.Enemy.Common.Component {
         // input EnemySO Value
         private void Awake()
         {
+            _scale = enemySO.scale;
             _speed = enemySO.speed;
             _enemyHp = enemySO.health;
             ApproachForce = enemySO.approachForce;
             ApproachTime = enemySO.approachTime;
             ApproachDamage = enemySO.approachDamage;
+            _detectRange = enemySO.detectRange;
+            _knockBackForce = enemySO.knockBackForce;
+            _knockBackTime = enemySO.knockBackTime;
         }
         
         private void Start()
         {
+            transform.localScale = Vector3.one * _scale;
             sHp.UpdateHp(_enemyHp);
         }
 
@@ -65,7 +70,7 @@ namespace _03_Code.Enemy.Common.Component {
         
             float distance = Vector2.Distance(transform.position, player.position);
 
-            if (distance > detectRange)
+            if (distance > _detectRange)
             {
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
                 return;
@@ -78,7 +83,8 @@ namespace _03_Code.Enemy.Common.Component {
         }
     
         private void OnDrawGizmos() {
-            Gizmos.DrawWireSphere(rb.position, detectRange);
+            if (_detectRange != 0)
+                Gizmos.DrawWireSphere(rb.position, _detectRange);
         }
         
         public void KnockBack(int damageAmount)
@@ -115,8 +121,8 @@ namespace _03_Code.Enemy.Common.Component {
             
             _isKnockedBack = true;
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(knockBackForce * -Direction, 0f), ForceMode2D.Impulse);
-            yield return new WaitForSeconds(knockBackTime);
+            rb.AddForce(new Vector2(_knockBackForce * -Direction, 0f), ForceMode2D.Impulse);
+            yield return new WaitForSeconds(_knockBackTime);
             _isKnockedBack = false;
         }
     }
