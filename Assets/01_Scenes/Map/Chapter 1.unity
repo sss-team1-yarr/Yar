@@ -5561,6 +5561,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialText
   text: {fileID: 850302575}
   wall: {fileID: 271851315}
+--- !u!114 &863145386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3489686770836807601, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
+  m_PrefabInstance: {fileID: 4926987094042420568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1afb385900434499febda9a7450ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.InputReceiver
 --- !u!1001 &1176730735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17543,6 +17554,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6576251627443867865, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
+      propertyPath: currentAction
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576251627443867865, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
+      propertyPath: inputReceiver
+      value: 
+      objectReference: {fileID: 863145386}
     - target: {fileID: 6576251627443867865, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
       propertyPath: displayStringOptions
       value: -1
