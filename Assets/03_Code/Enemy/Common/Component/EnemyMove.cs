@@ -1,24 +1,35 @@
 using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
+using _03_Code.SO;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Common.Component {
     public class EnemyMove : MonoBehaviour
     {
+        [Header("EnemySO")] 
+        [SerializeField] private EnemySO enemySO;
+        
+        [Header("Components")]
         [SerializeField] private Collider2D coll;
         [SerializeField] private SpriteRenderer sr;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Transform player;
         [SerializeField] private ShowHp sHp;
         [SerializeField] private EnemyAnimationControl enemyAnim;
-        [SerializeField] private float speed = 2f;
+        
+        [Header("Settings")]
         [SerializeField] private float detectRange = 5f;
         [SerializeField] private float knockBackForce = 40f;
         [SerializeField] private float knockBackTime = 0.1f;
-        [SerializeField] private int enemyHp = 100;
 
+        public float ApproachForce { get; private set; }
+        public float ApproachTime { get; private set; }
+        public int ApproachDamage { get; private set; }
+        
         private bool _isKnockedBack = false;
+        private float _speed;
+        private int _enemyHp;
 
         public bool IsDead { get; private set; } = false;
         
@@ -32,6 +43,21 @@ namespace _03_Code.Enemy.Common.Component {
             player = GameObject.Find("Player").transform; //태그로 하니깐 자꾸 태그를 못찾아서 오류남
             sHp = GetComponentInChildren<ShowHp>();
             enemyAnim = GetComponent<EnemyAnimationControl>();
+        }
+
+        // input EnemySO Value
+        private void Awake()
+        {
+            _speed = enemySO.speed;
+            _enemyHp = enemySO.health;
+            ApproachForce = enemySO.approachForce;
+            ApproachTime = enemySO.approachTime;
+            ApproachDamage = enemySO.approachDamage;
+        }
+        
+        private void Start()
+        {
+            sHp.UpdateHp(_enemyHp);
         }
 
         private void FixedUpdate()
@@ -48,7 +74,7 @@ namespace _03_Code.Enemy.Common.Component {
 
             Direction = player.position.x > transform.position.x ? 1f : -1f;
 
-            rb.linearVelocity = new Vector2(Direction * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(Direction * _speed, rb.linearVelocity.y);
             sr.flipX = Direction < 0f;
         }
     
@@ -60,15 +86,15 @@ namespace _03_Code.Enemy.Common.Component {
         {
             if (_isKnockedBack || IsDead) return;
 
-            if (enemyHp - damageAmount > 0f)
-                enemyHp -= damageAmount;
+            if (_enemyHp - damageAmount > 0f)
+                _enemyHp -= damageAmount;
             else
             {
-                enemyHp = 0;
+                _enemyHp = 0;
                 IsDead = true;
             }
             
-            sHp.UpdateHp(enemyHp);
+            sHp.UpdateHp(_enemyHp);
             StartCoroutine(KnockBackRoutine());
             if (IsDead)
                 StartCoroutine(Dead());
