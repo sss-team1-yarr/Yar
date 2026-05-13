@@ -5016,15 +5016,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7cefd94c97b11645a8a537c50ed0179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Main.PlayerMove
-  explosion: 1
   jumpForce: 5
   ani: {fileID: 5071230411770458684}
-  hp: {fileID: 8536089062628682418}
-  vfx: {fileID: 639729644590143093, guid: 0aaafcc5fe07f7fe3b39701afdc98c68, type: 3}
-  vfxBoom: {fileID: 4959795888135895216, guid: abe8d9a83710044dfba2a451cadd6434, type: 3}
   contactChecker: {fileID: 6954522762026317439}
-  impulseSource: {fileID: 2423133509466135820}
-  <HoldingItem>k__BackingField: {fileID: 641600390513165272}
+  rotationRight: 0
+  isDashing: 0
+  speed: 8
   dashForce: 20
   dashDuration: 0.2
   dashVfx: {fileID: 7127980844141048395}
@@ -5123,9 +5120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerHit
   rb: {fileID: 5263609241632774816}
-  approachForce: 10
-  approachDamage: 10
-  approachTime: 1
 --- !u!114 &8536089062628682418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5188,6 +5182,7 @@ GameObject:
   - component: {fileID: 6727938733187489628}
   - component: {fileID: 4754562048955960108}
   - component: {fileID: 641600390513165272}
+  - component: {fileID: 6825382497603686745}
   m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
@@ -5283,10 +5278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddcc26dfda306e43b61d371360ebc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
+  baseDamageAmount: 5
+  damageAmount: 5
+  damageAddSize: 6
   cooldown: 0.2
   vfx: {fileID: 6545358463000178982}
   damageRadius: 1.92
-  damageAmount: 5
   knockbackForce: 2.5
   targetFilter:
     useTriggers: 0
@@ -5305,6 +5302,27 @@ MonoBehaviour:
   handTrm: {fileID: 2446845944295672572}
   impulseSource: {fileID: 3481823629062078584}
   owner: {fileID: 1116159715040441635}
+  attack: {fileID: 6825382497603686745}
+--- !u!114 &6825382497603686745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5496500425264170280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79515ea820c649d6bb4758748c0f986e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Main.Attacks
+  skill3ActiveTime: 2
+  vfx: {fileID: 0}
+  vfxBoom: {fileID: 0}
+  impulseSource: {fileID: 3481823629062078584}
+  explosion: 2
+  hp: {fileID: 8536089062628682418}
+  sword: {fileID: 641600390513165272}
+  <HoldingItem>k__BackingField: {fileID: 641600390513165272}
 --- !u!1 &6259080003157856927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5351,7 +5369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.ContactChecker
   targetLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   size: {x: 0.88, y: 0.28}
   offset: {x: -0.08, y: -1.33}
   rb: {fileID: 5263609241632774816}
@@ -5768,7 +5786,7 @@ PrefabInstance:
     - target: {fileID: 3756072703839582933, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0de2370ca61498ef1940c56e944c1d78, type: 2}
+      objectReference: {fileID: 2100000, guid: a70f76428e09bf54ab689bba2cadad13, type: 2}
     - target: {fileID: 5129031149994008648, guid: b0a957290ac97f844954020e68884b2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.343
