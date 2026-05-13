@@ -5025,6 +5025,52 @@ MonoBehaviour:
   dashForce: 20
   dashDuration: 0.2
   dashVfx: {fileID: 7127980844141048395}
+--- !u!1 &3709368882639798389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2485426688050125625}
+  - component: {fileID: 7602562026414456079}
+  m_Layer: 0
+  m_Name: ExpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2485426688050125625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709368882639798389}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.76018906, y: -0.07642031, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8960773238287014654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7602562026414456079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709368882639798389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e123321230bb4157aecfbd1e20dcc38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.ExpManager
+  expGauge: 0
+  expLevel: 1
 --- !u!1 &5050612560137249071
 GameObject:
   m_ObjectHideFlags: 0
@@ -5063,6 +5109,7 @@ Transform:
   - {fileID: 4789871676491977662}
   - {fileID: 2101306618187445214}
   - {fileID: 1015539667005344662}
+  - {fileID: 2485426688050125625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5263609241632774816
@@ -5133,7 +5180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.HpManager
   text: {fileID: 0}
-  hp: 100
+  hp: 3
 --- !u!70 &6460290439495194327
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5319,7 +5366,7 @@ MonoBehaviour:
   vfx: {fileID: 0}
   vfxBoom: {fileID: 0}
   impulseSource: {fileID: 3481823629062078584}
-  explosion: 2
+  explosion: 1
   hp: {fileID: 8536089062628682418}
   sword: {fileID: 641600390513165272}
   <HoldingItem>k__BackingField: {fileID: 641600390513165272}
