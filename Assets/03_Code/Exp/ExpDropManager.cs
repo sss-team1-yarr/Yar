@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _03_Code.Exp
 {
@@ -8,6 +10,11 @@ namespace _03_Code.Exp
         [SerializeField] private int expCount;
         [SerializeField] private float maxOffset;
         [SerializeField] private float minOffset;
+
+        private void Reset()
+        {
+            expPrefab = Resources.Load<GameObject>("Prefabs/Exp"); //rider Auto-Made
+        }
 
         public void DropExp(GameObject target) {
             GameObject exp;
