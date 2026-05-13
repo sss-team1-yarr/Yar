@@ -32,8 +32,8 @@ namespace _03_Code.Enemy.Common.Component {
         private bool _isKnockedBack = false;
         
         public bool IsDead { get; private set; } = false;
-        
-        public float Direction { get; private set; }
+
+        public float Direction { get; private set; } = 1f;
 
         private void Reset()
         {
@@ -76,11 +76,13 @@ namespace _03_Code.Enemy.Common.Component {
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
                 return;
             }
-
-            Direction = player.position.x > transform.position.x ? 1f : -1f;
-
-            rb.linearVelocity = new Vector2(Direction * _speed, rb.linearVelocity.y);
-            sr.flipX = Direction < 0f;
+            
+            if (!(Mathf.Abs(player.position.x - transform.position.x) < 1))
+            { 
+                Direction = player.position.x > transform.position.x ? 1f : -1f;
+                rb.linearVelocity = new Vector2(Direction * _speed, rb.linearVelocity.y);
+                sr.flipX = Direction < 0f;
+            }
         }
     
         private void OnDrawGizmos() {

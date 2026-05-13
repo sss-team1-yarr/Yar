@@ -14,6 +14,7 @@ namespace _03_Code {
         public PlayerHit playerHit;
         public HpManager hpManager;
         public ExpDropManager expDropManager;
+        public ExpManager expManager;
     
         private void Awake() {
             Instance = this;
