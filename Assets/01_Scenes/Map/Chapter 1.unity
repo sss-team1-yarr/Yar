@@ -5350,7 +5350,7 @@ MonoBehaviour:
   playerControl: {fileID: 4926987094042420570}
   playerHit: {fileID: 1788283248}
   hpManager: {fileID: 1788283246}
-  expDropManager: {fileID: 1556716942}
+  expDropManager: {fileID: 0}
 --- !u!4 &685035184
 Transform:
   m_ObjectHideFlags: 0
@@ -5562,17 +5562,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialText
   text: {fileID: 850302575}
   wall: {fileID: 271851315}
---- !u!114 &863145386 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3489686770836807601, guid: 75c60855d5c664c4ca29600ca59e1e6e, type: 3}
-  m_PrefabInstance: {fileID: 4926987094042420568}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1afb385900434499febda9a7450ae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.InputReceiver
 --- !u!1001 &1176730735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5853,6 +5842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDropManager
   expPrefab: {fileID: 3732848341737852482, guid: 4b7e299cd6502fe4682f610a04065be4, type: 3}
   expCount: 10
+  maxOffset: 0
+  minOffset: 0
 --- !u!4 &1556716943
 Transform:
   m_ObjectHideFlags: 0
@@ -17596,18 +17587,6 @@ PrefabInstance:
     - target: {fileID: 4748151293702212086, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576251627443867865, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
-      propertyPath: currentAction
-      value: Jump
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576251627443867865, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
-      propertyPath: inputReceiver
-      value: 
-      objectReference: {fileID: 863145386}
-    - target: {fileID: 6576251627443867865, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
-      propertyPath: displayStringOptions
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -19,15 +19,30 @@ namespace _03_Code.UI.Pause {
         
         private InputAction _target;
 
-        private void Awake() {
+        private void Start() {
             switch (currentAction) {
+                case "Move":
+                    _target = InputReceiver.Controls.Player.Move;
+                    break;
                 case "Jump":
                     _target = InputReceiver.Controls.Player.Jump;
                     break;
+                case "Run":
+                    _target = InputReceiver.Controls.Player.Run;
+                    break;
+                case "Skill1":
+                    _target = InputReceiver.Controls.Player.Skill1;
+                    break;
+                case "Dash":
+                    _target = InputReceiver.Controls.Player.Skill2;
+                    break;
+                case "Skill3":
+                    _target = InputReceiver.Controls.Player.Skill3;
+                    break;
+                case "Attack":
+                    _target = InputReceiver.Controls.Player.Attack;
+                    break;
             }
-        }
-
-        private void OnEnable() {
             UpdateBind();
         }
 
