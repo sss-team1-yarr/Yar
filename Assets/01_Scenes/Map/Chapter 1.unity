@@ -5350,7 +5350,7 @@ MonoBehaviour:
   playerControl: {fileID: 4926987094042420570}
   playerHit: {fileID: 1788283248}
   hpManager: {fileID: 1788283246}
-  expDropManager: {fileID: 0}
+  expDropManager: {fileID: 1556716942}
 --- !u!4 &685035184
 Transform:
   m_ObjectHideFlags: 0
@@ -5842,8 +5842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDropManager
   expPrefab: {fileID: 3732848341737852482, guid: 4b7e299cd6502fe4682f610a04065be4, type: 3}
   expCount: 10
-  maxOffset: 0
-  minOffset: 0
+  maxOffset: 1
+  minOffset: -1
 --- !u!4 &1556716943
 Transform:
   m_ObjectHideFlags: 0
