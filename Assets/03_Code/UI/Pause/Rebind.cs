@@ -1,3 +1,5 @@
+using System;
+using _03_Code.Player.Input;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,13 +7,25 @@ using UnityEngine.InputSystem;
 namespace _03_Code.UI.Pause {
     public class Rebind : MonoBehaviour {
         [SerializeField]
-        private InputActionReference currentAction;
+        private string currentAction;
         [SerializeField]
         private GameObject selectedMarkObject;
         
         [SerializeField] private TextMeshProUGUI tmPro;
         
+        [SerializeField] private int bindingIndex = 0;
+
         private InputActionRebindingExtensions.RebindingOperation _reBinding;
+        
+        private InputAction _target;
+
+        private void Awake() {
+            switch (currentAction) {
+                case "Jump":
+                    _target = InputReceiver.Controls.Player.Jump;
+                    break;
+            }
+        }
 
         private void OnEnable() {
             UpdateBind();
@@ -19,24 +33,24 @@ namespace _03_Code.UI.Pause {
 
         public void KeyRebinding() {
             selectedMarkObject.SetActive(true);
-            currentAction.action.Disable();
             
-            _reBinding = currentAction.action.PerformInteractiveRebinding()
+            _target.Disable();
+            
+            _reBinding = _target.PerformInteractiveRebinding()
                 .WithControlsExcluding("Mouse")
-                .WithTargetBinding(0)
-                .OnComplete(_=>Complete())
+                .WithTargetBinding(bindingIndex)
+                .OnComplete(_=> {
+                        selectedMarkObject.SetActive(false);
+                        _reBinding.Dispose();
+                        _target.Enable();
+                        UpdateBind();
+                    }
+                )
                 .Start();
         }
 
-        private void Complete() {
-            selectedMarkObject.SetActive(false);
-            _reBinding.Dispose();
-            currentAction.action.Enable();
-            UpdateBind();
-        }
-
         private void UpdateBind() {
-            tmPro.text = currentAction.action.GetBindingDisplayString(0);
+            tmPro.text = _target.GetBindingDisplayString(0);
         }
     }
 }

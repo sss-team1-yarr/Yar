@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace _03_Code.Player.Input {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions, IPlayerModule {
-        private Controls _controls;
+        public static Controls Controls;
         public event Action<int, bool> OnAttackInput;
         public event Action<float> OnMoveInput;
         public event Action OnJumpInput;
@@ -18,9 +18,9 @@ namespace _03_Code.Player.Input {
         public Vector2 OnMoveInputVec2 { get; private set; }
 
         private void Awake() {
-            _controls = new Controls();
-            _controls.Player.Enable();
-            _controls.Player.SetCallbacks(this);
+            Controls = new Controls();
+            Controls.Player.Enable();
+            Controls.Player.SetCallbacks(this);
         }
 
         public void OnMove(InputAction.CallbackContext context) {
@@ -67,9 +67,9 @@ namespace _03_Code.Player.Input {
         }
 
         private void OnDestroy() {
-            _controls.Disable();
-            _controls.Dispose();
-            _controls = null;
+            Controls.Disable();
+            Controls.Dispose();
+            Controls = null;
         }
 
         public void Initialize(Main.Player owner) { }
