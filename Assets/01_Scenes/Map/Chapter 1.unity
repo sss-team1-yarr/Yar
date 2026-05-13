@@ -5361,6 +5361,7 @@ MonoBehaviour:
   playerControl: {fileID: 4926987094042420570}
   playerHit: {fileID: 1788283248}
   hpManager: {fileID: 1788283246}
+  expDropManager: {fileID: 1556716942}
 --- !u!4 &685035184
 Transform:
   m_ObjectHideFlags: 0
@@ -5700,6 +5701,11 @@ Transform:
   - {fileID: 1711020102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1330920693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4447730504163711770, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
+  m_PrefabInstance: {fileID: 2017040568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473923824
 GameObject:
   m_ObjectHideFlags: 0
@@ -5807,6 +5813,52 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1556716941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556716943}
+  - component: {fileID: 1556716942}
+  m_Layer: 0
+  m_Name: ExpDropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1556716942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556716941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e14a28e4995bd43a70d2120166a589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDropManager
+  expPrefab: {fileID: 1330920693}
+  expCount: 10
+--- !u!4 &1556716943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556716941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.72408, y: -4.96931, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17454,26 +17506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b29d73ef3c8d04aa0ee170f42066cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerHit
---- !u!1 &1848049543 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-  m_PrefabInstance: {fileID: 2392192373732246323}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1848049554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848049543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e14a28e4995bd43a70d2120166a589, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDrop
-  expPrefab: {fileID: 3732848341737852482, guid: 4b7e299cd6502fe4682f610a04065be4, type: 3}
-  enemy: {fileID: 1848049543}
-  expCount: 3
 --- !u!114 &1861693000 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7490629995010705878, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
@@ -17893,9 +17925,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1848049554}
     - targetCorrespondingSourceObject: {fileID: 5149257437468465635, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -18138,6 +18167,7 @@ SceneRoots:
   - {fileID: 1626225244}
   - {fileID: 1515950449}
   - {fileID: 685035184}
+  - {fileID: 1556716943}
   - {fileID: 2017040568}
   - {fileID: 1306396272}
   - {fileID: 4926987094042420568}

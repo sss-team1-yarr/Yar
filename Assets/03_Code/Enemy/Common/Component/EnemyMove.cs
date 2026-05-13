@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _03_Code.Enemy.Common.Component {
     public class EnemyMove : MonoBehaviour
@@ -22,8 +21,9 @@ namespace _03_Code.Enemy.Common.Component {
         private bool _isKnockedBack = false;
 
         public bool IsDead { get; private set; } = false;
-        public float Direction { get; private set; }
         
+        public float Direction { get; private set; }
+
         private void Reset()
         {
             coll = GetComponent<Collider2D>();
@@ -82,6 +82,7 @@ namespace _03_Code.Enemy.Common.Component {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
+            GameManager.Instance.expDropManager.DropExp(gameObject);
             gameObject.SetActive(false);
         }
 
