@@ -6,13 +6,22 @@ namespace _03_Code.Exp
     {
         [SerializeField] private GameObject expPrefab;
         [SerializeField] private int expCount;
+        [SerializeField] private float maxOffset;
+        [SerializeField] private float minOffset;
 
         public void DropExp(GameObject target) {
             GameObject exp;
             for (int i = 0; i < expCount; i++) { 
                 exp = Instantiate(expPrefab, target.transform.position, Quaternion.identity);
+                SetPosition(exp);
                 exp.SetActive(true);
             }
+        }
+
+        private void SetPosition(GameObject exp) {
+            float x = exp.transform.position.x + Random.Range(minOffset, maxOffset);
+            float y = exp.transform.position.y + Random.Range(minOffset, maxOffset);
+            exp.transform.position = new Vector3(x, y, exp.transform.position.z);
         }
     }
 }
