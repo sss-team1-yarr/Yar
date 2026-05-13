@@ -5699,11 +5699,6 @@ Transform:
   - {fileID: 1711020102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1330920693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4447730504163711770, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
-  m_PrefabInstance: {fileID: 2017040568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473923824
 GameObject:
   m_ObjectHideFlags: 0
@@ -5845,7 +5840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e14a28e4995bd43a70d2120166a589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDropManager
-  expPrefab: {fileID: 1330920693}
+  expPrefab: {fileID: 3732848341737852482, guid: 4b7e299cd6502fe4682f610a04065be4, type: 3}
   expCount: 10
 --- !u!4 &1556716943
 Transform:
