@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Crab
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.SO.EnemySO
   name: Crab
+  scale: 1
   health: 80
   speed: 5
   dropExp: 0
   approachForce: 10
   approachTime: 1
   approachDamage: 10
+  detectRange: 8
+  knockBackForce: 40
+  knockBackTime: 0.1

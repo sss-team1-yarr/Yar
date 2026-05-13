@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace _03_Code.Enemy.Common {
     public class Common : MonoBehaviour {
-        //[SerializeField] private EnemySO enemyData;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private int damage;
         [SerializeField] private HpManager hp;
