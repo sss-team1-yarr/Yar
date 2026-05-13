@@ -1889,10 +1889,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c0b89e899b4180831884fb2ca6bc8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.UI.Pause.Rebind
-  currentAction: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  currentAction: Jump
   selectedMarkObject: {fileID: 2412630619196072850}
-  displayStringOptions: -1
   tmPro: {fileID: 6213615410292282064}
+  bindingIndex: 0
 --- !u!1 &6612502969074418579
 GameObject:
   m_ObjectHideFlags: 0

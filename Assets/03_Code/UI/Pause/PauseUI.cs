@@ -1,3 +1,4 @@
+using System;
 using _03_Code.Handler;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,7 +7,11 @@ namespace _03_Code.UI.Pause {
     public class PauseUI : MonoBehaviour {
         [SerializeField] private GameObject settingsUI;
         [SerializeField] private EscHandler escHandler;
-        
+
+        private void Awake() {
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void Start() {
             gameObject.SetActive(false);
         }
