@@ -7,7 +7,6 @@ namespace _03_Code.UI.Pause {
         [SerializeField] private GameObject settingsUI;
         [SerializeField] private EscHandler escHandler;
         
-        
         private void Start() {
             gameObject.SetActive(false);
         }

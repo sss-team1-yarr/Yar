@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,38 +5,26 @@ using UnityEngine.InputSystem;
 namespace _03_Code.UI.Pause {
     public class Rebind : MonoBehaviour {
         [SerializeField]
-        private InputActionReference currentAction = null;
+        private InputActionReference currentAction;
         [SerializeField]
         private GameObject selectedMarkObject;
-        [SerializeField]
-        private InputBinding.DisplayStringOptions displayStringOptions;
         
         [SerializeField] private TextMeshProUGUI tmPro;
         
         private InputActionRebindingExtensions.RebindingOperation _reBinding;
-        
-        
-        private Controls _controls;
-        
-        private void Awake() {
-            _controls = new Controls();
-        }
 
         private void OnEnable() {
             UpdateBind();
         }
 
         public void KeyRebinding() {
-            ReBindKey();
-        }
-        
-        public void ReBindKey() {
-            currentAction.action.Disable();
             selectedMarkObject.SetActive(true);
+            currentAction.action.Disable();
             
             _reBinding = currentAction.action.PerformInteractiveRebinding()
                 .WithControlsExcluding("Mouse")
-                .OnComplete(operation=>Complete())
+                .WithTargetBinding(0)
+                .OnComplete(_=>Complete())
                 .Start();
         }
 
@@ -45,17 +32,11 @@ namespace _03_Code.UI.Pause {
             selectedMarkObject.SetActive(false);
             _reBinding.Dispose();
             currentAction.action.Enable();
-            
+            UpdateBind();
         }
 
         private void UpdateBind() {
-            var displayStr = string.Empty;
-            var deviceLayoutName = default(string);
-            var controlPath = default(string);
-            
-            displayStr = currentAction.action.GetBindingDisplayString(0, out deviceLayoutName, out controlPath, displayStringOptions);
-            
-            tmPro.text = displayStr;
+            tmPro.text = currentAction.action.GetBindingDisplayString(0);
         }
     }
 }
