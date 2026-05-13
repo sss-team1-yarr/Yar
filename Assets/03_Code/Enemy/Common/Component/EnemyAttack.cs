@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Common.Component
