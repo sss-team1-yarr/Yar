@@ -1,14 +1,25 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
+using UnityEngine;
 
 namespace _03_Code.SO {
     [CreateAssetMenu(fileName = "Enemy data", menuName = "SO/Enemy", order = 0)]
     public class EnemySO : ScriptableObject {
         [Header("Enemy stat")] 
-        public Sprite sprite;
-        public string enemyName;
+        public string name;
+        public float scale;
+        public int health;
         public int speed;
-        public int maxHealth;
-        public int damage;
         public int dropExp;
+        
+        [Header("Approach")] 
+        public float approachForce;
+        public float approachTime;
+        public int approachDamage;
+
+        [Header("Extra stat")] 
+        public float detectRange;
+        public float knockBackForce;
+        public float knockBackTime;
+        
     }
 }

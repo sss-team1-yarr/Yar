@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00ce5e8b48244465b42cbcb8cb44f651, type: 3}
-  m_Name: Crab
+  m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.SO.EnemySO
-  sprite: {fileID: -159299079651030013, guid: 7fa445e39c7ef624587e3b7fb23ff552, type: 3}
-  enemyName: Crab
-  speed: 0
-  maxHealth: 0
-  damage: 0
+  name: Slime
+  scale: 1
+  health: 200
+  speed: 2
   dropExp: 0
+  approachForce: 10
+  approachTime: 1
+  approachDamage: 10
+  detectRange: 5
+  knockBackForce: 40
+  knockBackTime: 0.1

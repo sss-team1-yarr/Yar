@@ -1,4 +1,5 @@
 using _03_Code.Enemy.Common;
+using _03_Code.Exp;
 using _03_Code.Player.Components;
 using _03_Code.Player.Main;
 using UnityEngine;
@@ -12,10 +13,10 @@ namespace _03_Code {
         public PlayerControl playerControl;
         public PlayerHit playerHit;
         public HpManager hpManager;
+        public ExpDropManager expDropManager;
     
         private void Awake() {
             Instance = this;
-            
         }
     }
 }

@@ -1,29 +1,40 @@
 using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
+using _03_Code.SO;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _03_Code.Enemy.Common.Component {
     public class EnemyMove : MonoBehaviour
     {
+        [Header("EnemySO")] 
+        [SerializeField] private EnemySO enemySO;
+        
+        [Header("Components")]
         [SerializeField] private Collider2D coll;
         [SerializeField] private SpriteRenderer sr;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Transform player;
         [SerializeField] private ShowHp sHp;
         [SerializeField] private EnemyAnimationControl enemyAnim;
-        [SerializeField] private float speed = 2f;
-        [SerializeField] private float detectRange = 5f;
-        [SerializeField] private float knockBackForce = 40f;
-        [SerializeField] private float knockBackTime = 0.1f;
-        [SerializeField] private int enemyHp = 100;
+        
+        public float ApproachForce { get; private set; }
+        public float ApproachTime { get; private set; }
+        public int ApproachDamage { get; private set; }
+
+        private float _scale;
+        private float _speed;
+        private int _enemyHp;
+        private float _detectRange;
+        private float _knockBackForce;
+        private float _knockBackTime;
 
         private bool _isKnockedBack = false;
-
-        public bool IsDead { get; private set; } = false;
-        public float Direction { get; private set; }
         
+        public bool IsDead { get; private set; } = false;
+        
+        public float Direction { get; private set; }
+
         private void Reset()
         {
             coll = GetComponent<Collider2D>();
@@ -34,13 +45,33 @@ namespace _03_Code.Enemy.Common.Component {
             enemyAnim = GetComponent<EnemyAnimationControl>();
         }
 
+        // input EnemySO Value
+        private void Awake()
+        {
+            _scale = enemySO.scale;
+            _speed = enemySO.speed;
+            _enemyHp = enemySO.health;
+            ApproachForce = enemySO.approachForce;
+            ApproachTime = enemySO.approachTime;
+            ApproachDamage = enemySO.approachDamage;
+            _detectRange = enemySO.detectRange;
+            _knockBackForce = enemySO.knockBackForce;
+            _knockBackTime = enemySO.knockBackTime;
+        }
+        
+        private void Start()
+        {
+            transform.localScale = Vector3.one * _scale;
+            sHp.UpdateHp(_enemyHp);
+        }
+
         private void FixedUpdate()
         {
             if (_isKnockedBack || IsDead) return;
         
             float distance = Vector2.Distance(transform.position, player.position);
 
-            if (distance > detectRange)
+            if (distance > _detectRange)
             {
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
                 return;
@@ -48,27 +79,28 @@ namespace _03_Code.Enemy.Common.Component {
 
             Direction = player.position.x > transform.position.x ? 1f : -1f;
 
-            rb.linearVelocity = new Vector2(Direction * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(Direction * _speed, rb.linearVelocity.y);
             sr.flipX = Direction < 0f;
         }
     
         private void OnDrawGizmos() {
-            Gizmos.DrawWireSphere(rb.position, detectRange);
+            if (_detectRange != 0)
+                Gizmos.DrawWireSphere(rb.position, _detectRange);
         }
         
         public void KnockBack(int damageAmount)
         {
             if (_isKnockedBack || IsDead) return;
 
-            if (enemyHp - damageAmount > 0f)
-                enemyHp -= damageAmount;
+            if (_enemyHp - damageAmount > 0f)
+                _enemyHp -= damageAmount;
             else
             {
-                enemyHp = 0;
+                _enemyHp = 0;
                 IsDead = true;
             }
             
-            sHp.UpdateHp(enemyHp);
+            sHp.UpdateHp(_enemyHp);
             StartCoroutine(KnockBackRoutine());
             if (IsDead)
                 StartCoroutine(Dead());
@@ -82,6 +114,7 @@ namespace _03_Code.Enemy.Common.Component {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
+            GameManager.Instance.expDropManager.DropExp(gameObject);
             gameObject.SetActive(false);
         }
 
@@ -90,8 +123,8 @@ namespace _03_Code.Enemy.Common.Component {
             
             _isKnockedBack = true;
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(knockBackForce * -Direction, 0f), ForceMode2D.Impulse);
-            yield return new WaitForSeconds(knockBackTime);
+            rb.AddForce(new Vector2(_knockBackForce * -Direction, 0f), ForceMode2D.Impulse);
+            yield return new WaitForSeconds(_knockBackTime);
             _isKnockedBack = false;
         }
     }

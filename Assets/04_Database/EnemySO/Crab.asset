@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00ce5e8b48244465b42cbcb8cb44f651, type: 3}
-  m_Name: Bat
+  m_Name: Crab
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.SO.EnemySO
-  sprite: {fileID: 7812597124052491198, guid: 13e92c1d98e659941b362fa7c74445fa, type: 3}
-  enemyName: Bat
-  speed: 0
-  maxHealth: 0
-  damage: 0
+  name: Crab
+  scale: 1
+  health: 80
+  speed: 5
   dropExp: 0
+  approachForce: 10
+  approachTime: 1
+  approachDamage: 10
+  detectRange: 8
+  knockBackForce: 40
+  knockBackTime: 0.1
