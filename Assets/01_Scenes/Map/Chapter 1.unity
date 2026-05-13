@@ -14797,6 +14797,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b29d73ef3c8d04aa0ee170f42066cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.PlayerHit
+--- !u!1 &1848049543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+  m_PrefabInstance: {fileID: 2392192373732246323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848049554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848049543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e14a28e4995bd43a70d2120166a589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDrop
+  expPrefab: {fileID: 3732848341737852482, guid: 4b7e299cd6502fe4682f610a04065be4, type: 3}
+  enemy: {fileID: 1848049543}
+  expCount: 3
 --- !u!114 &1861693000 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7490629995010705878, guid: 70611b4feba9640dd84502b8cc1a1cba, type: 3}
@@ -15216,6 +15236,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1848049554}
     - targetCorrespondingSourceObject: {fileID: 5149257437468465635, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
