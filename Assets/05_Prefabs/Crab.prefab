@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8963976901956473803}
   - component: {fileID: 7959897507597357776}
   - component: {fileID: 7079258433552748852}
+  - component: {fileID: 8699034042430922851}
   m_Layer: 9
   m_Name: Crab
   m_TagString: Enemy
@@ -127,17 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98f234b8c9788e409db23e4f76a4e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.EnemyMove
-  coll: {fileID: 7020674766588388296}
-  sr: {fileID: 7959897507597357776}
-  rb: {fileID: 2687878557845823389}
-  player: {fileID: 0}
-  sHp: {fileID: 8990751338369420748}
-  enemyAnim: {fileID: 4520489111901401195}
-  speed: 2
-  detectRange: 5
-  knockBackForce: 40
-  knockBackTime: 0.1
-  enemyHp: 100
+  monster: {fileID: 8699034042430922851}
 --- !u!114 &4155865790157877307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Component.EnemyAttack
   rb: {fileID: 2687878557845823389}
-  em: {fileID: 6138031603436324351}
+  em: {fileID: 8699034042430922851}
 --- !u!114 &3596685449833228555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable.CommonDA
   vfx: {fileID: 7809627024906510427}
+  mob: {fileID: 8699034042430922851}
   em: {fileID: 6138031603436324351}
 --- !u!114 &4520489111901401195
 MonoBehaviour:
@@ -273,6 +265,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8699034042430922851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848927922415046634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558c06c86eba45fc991d8643f165c0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Monster
+  enemySO: {fileID: 0}
+  rb: {fileID: 2687878557845823389}
+  coll: {fileID: 7020674766588388296}
+  sHp: {fileID: 8990751338369420748}
+  enemyAnim: {fileID: 4520489111901401195}
 --- !u!1 &2503494539806404247
 GameObject:
   m_ObjectHideFlags: 0

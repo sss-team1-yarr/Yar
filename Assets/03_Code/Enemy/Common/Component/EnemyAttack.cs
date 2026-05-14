@@ -8,12 +8,12 @@ namespace _03_Code.Enemy.Common.Component
     public class EnemyAttack : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private EnemyMove em; 
+        [SerializeField] private Monster em; 
         
         private void Reset()
         {
             rb = GetComponent<Rigidbody2D>();
-            em = GetComponent<EnemyMove>();
+            em = GetComponent<Monster>();
         }
 
         private void OnCollisionStay2D(Collision2D collision)

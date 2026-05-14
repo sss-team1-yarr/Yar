@@ -1,4 +1,5 @@
 using System.Collections;
+using _03_Code.Enemy.Common;
 using _03_Code.Enemy.Common.Component;
 using UnityEngine;
 
@@ -12,10 +13,10 @@ namespace _03_Code.Player.Components
 
         private void Reset()
         {
-            rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();//?
         }
         
-        public IEnumerator Approach(Vector2 direction, EnemyMove em)
+        public IEnumerator Approach(Vector2 direction, Monster em)
         {
             if (IsApproach) yield break;
             
