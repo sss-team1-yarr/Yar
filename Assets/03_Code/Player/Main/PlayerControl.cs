@@ -17,7 +17,7 @@ namespace _03_Code.Player.Main
         [SerializeField] private ParticleSystem dashVfx;
         
         [Header("Settings")]
-        public float speed = 8f;
+        [SerializeField] private float speed = 8f;
         [SerializeField] private float jumpForce;
         [SerializeField] private float dashForce = 20f;
         [SerializeField] private float dashDuration = 0.2f;
@@ -30,12 +30,14 @@ namespace _03_Code.Player.Main
         private InputReceiver _input;
         private float _moveInput;
 
-        public bool rotationRight;
-        public bool isDashing;
-        public float MoveInput { get; private set; }
-        
-        
 
+        public float MoveInput { get; private set; }
+
+        
+        private bool _rotationRight = true;
+        private bool _isDashing; 
+        private bool _isDashingCooltime;
+        
         public void Initialize(Player owner) {
             _owner = owner;
             _rb = owner.GetComponent<Rigidbody2D>();
@@ -48,12 +50,12 @@ namespace _03_Code.Player.Main
             _input.OnGuardInput += HandleGuard;
         }
         private void FixedUpdate() {
-            if(isDashing || GameManager.Instance.playerHit.IsApproach) return;
+            if(_isDashing || GameManager.Instance.playerHit.IsApproach) return;
             _rb.linearVelocityX = _moveInput * speed;
             ani.OnMoveAni(Mathf.Abs(_moveInput));
             if (!Mathf.Approximately(_moveInput, 0f)) {
-                rotationRight = _moveInput > 0f;
-                _owner.transform.rotation = Quaternion.Euler(0f, rotationRight ? 0f : 180f, 0f);
+                _rotationRight = _moveInput > 0f;
+                _owner.transform.rotation = Quaternion.Euler(0f, _rotationRight ? 0f : 180f, 0f);
             }
         }
         private void OnDestroy() {
@@ -90,24 +92,28 @@ namespace _03_Code.Player.Main
         }
         
         private void HandleDashInput() {
-            if (isDashing) return;
+            if (_isDashingCooltime) return;
             StartCoroutine(Dash());
             dashVfx?.Play();
         }
 
         private IEnumerator Dash() {
-            isDashing = true;
+            _isDashing = true;
+            _isDashingCooltime = true;
             ani.OnDashAni(true);
-            var dashDirection = rotationRight ? 2f : -2f;
+            var dashDirection = _rotationRight ? 2f : -2f;
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
 
             yield return new WaitForSeconds(dashDuration);
-            ani.OnDashAni(false);
-
-            float cooltime = dashCoolTime - dashDuration > 0 ? dashCoolTime - dashDuration : 0f;
             
+            ani.OnDashAni(false);
+            _rb.linearVelocity = Vector2.zero;
+            _isDashing = false;
+            
+            float cooltime = dashCoolTime - dashDuration > 0 ? dashCoolTime - dashDuration : 0f;
             yield return new WaitForSeconds(cooltime);
-            isDashing = false;
+            
+            _isDashingCooltime = false;
         }
 
     }
