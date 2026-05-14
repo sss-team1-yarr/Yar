@@ -22,8 +22,10 @@ namespace _03_Code.Exp {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            GameManager.Instance.expManager.ExpAdd();
-            Destroy(gameObject);
+            if (other.CompareTag("Player")) {
+                GameManager.Instance.expManager.ExpAdd();
+                Destroy(gameObject);
+            }
         }
     }
 }
