@@ -1017,6 +1017,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 869344745051269947}
     - target: {fileID: 6138031603436324351, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 869344745051269945}
+    - target: {fileID: 6138031603436324351, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 869344745051269953}
+    - target: {fileID: 6138031603436324351, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 4051871188559445926}
@@ -1097,6 +1105,11 @@ MonoBehaviour:
   coll: {fileID: 869344745051269946}
   sHp: {fileID: 869344745051269943}
   enemyAnim: {fileID: 869344745051269944}
+--- !u!212 &869344745051269953 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7959897507597357776, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
+  m_PrefabInstance: {fileID: 869344745051269941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1364263734715945053 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4595885571205599915, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}

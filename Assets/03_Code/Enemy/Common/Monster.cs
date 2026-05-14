@@ -61,7 +61,7 @@ namespace _03_Code.Enemy.Common {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
-            GameManager.Instance.expDropManager.DropExp(gameObject, _dropExp);
+            GameManager.Instance.expDropManager.DropExp(gameObject, _dropExp);  
             gameObject.SetActive(false);
         }
 

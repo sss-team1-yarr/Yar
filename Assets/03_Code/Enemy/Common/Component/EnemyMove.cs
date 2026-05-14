@@ -13,9 +13,9 @@ namespace _03_Code.Enemy.Common.Component {
         private float _detectRange;
         private bool _isKnockedBack = false;
 
-        public float Direction { get; private set; } = 1f;
+        private float Direction = 1f;
 
-        private void Awake() {
+        private void Start() {
             _speed = monster.Speed;
             _detectRange = monster.DetectRange;
         }
@@ -29,7 +29,7 @@ namespace _03_Code.Enemy.Common.Component {
                 rb.linearVelocityX = 0f;
                 return;
             }
-            Direction = target.transform.position.x > rb.position.x ? -1 : 1;
+            Direction = target.transform.position.x > rb.position.x ? 1 : -1;
             rb.linearVelocityX = Direction * _speed;
             sr.flipX = Direction < 0f;
         }
