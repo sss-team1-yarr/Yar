@@ -42,6 +42,22 @@ namespace _03_Code.Player.Main
             _input.OnDashInput += HandleDashInput;
             _input.OnGuardInput += HandleGuard;
         }
+        private void FixedUpdate() {
+            if(isDashing || GameManager.Instance.playerHit.IsApproach) return;
+            _rb.linearVelocityX = _moveInput * speed;
+            ani.OnMoveAni(Mathf.Abs(_moveInput));
+            if (!Mathf.Approximately(_moveInput, 0f)) {
+                rotationRight = _moveInput > 0f;
+                _owner.transform.rotation = Quaternion.Euler(0f, rotationRight ? 0f : 180f, 0f);
+            }
+        }
+        private void OnDestroy() {
+            _input.OnMoveInput -= HandleMoveInput;
+            _input.OnRunInput -= HandleRun;
+            _input.OnJumpInput -= HandleJump;
+            _input.OnDashInput -= HandleDashInput;
+            _input.OnGuardInput -= HandleGuard;
+        }
 
         private void HandleGuard() {
             //what is this?
@@ -54,15 +70,6 @@ namespace _03_Code.Player.Main
             
         }
 
-        private void FixedUpdate() {
-            if(isDashing || GameManager.Instance.playerHit.IsApproach) return;
-            _rb.linearVelocityX = _moveInput * speed;
-            ani.OnMoveAni(Mathf.Abs(_moveInput));
-            if (!Mathf.Approximately(_moveInput, 0f)) {
-                rotationRight = _moveInput > 0f;
-                _owner.transform.rotation = Quaternion.Euler(0f, rotationRight ? 0f : 180f, 0f);
-            }
-        }
 
         private void HandleRun(bool run) {
             speed *= run ? 2 : 0.5f;
@@ -94,12 +101,5 @@ namespace _03_Code.Player.Main
             isDashing = false;
         }
 
-        private void OnDestroy() {
-            _input.OnMoveInput -= HandleMoveInput;
-            _input.OnRunInput -= HandleRun;
-            _input.OnJumpInput -= HandleJump;
-            _input.OnDashInput -= HandleDashInput;
-            _input.OnGuardInput -= HandleGuard;
-        }
     }
 }

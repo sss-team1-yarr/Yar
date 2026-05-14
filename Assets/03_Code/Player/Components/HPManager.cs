@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _03_Code.Player.Components {
     public class HpManager : MonoBehaviour {
         [SerializeField] private TextMeshProUGUI text;
-        [SerializeField] private int hp = int.MaxValue;
+        [SerializeField] private int hp = 10;
         
         private void Reset()
         {
