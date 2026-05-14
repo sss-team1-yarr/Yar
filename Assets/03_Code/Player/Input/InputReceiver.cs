@@ -22,6 +22,14 @@ namespace _03_Code.Player.Input {
             Controls.Player.Enable();
             Controls.Player.SetCallbacks(this);
         }
+        
+        private void OnDestroy() {
+            Controls.Disable();
+            Controls.Dispose();
+            Controls = null;
+        }
+
+        public void Initialize(Main.Player owner) { }
 
         public void OnMove(InputAction.CallbackContext context) {
             OnMoveInputVec2 = context.ReadValue<Vector2>();
@@ -65,13 +73,5 @@ namespace _03_Code.Player.Input {
         public void OnSkill3(InputAction.CallbackContext context) {
             OnSkill3Input?.Invoke();
         }
-
-        private void OnDestroy() {
-            Controls.Disable();
-            Controls.Dispose();
-            Controls = null;
-        }
-
-        public void Initialize(Main.Player owner) { }
     }
 }
