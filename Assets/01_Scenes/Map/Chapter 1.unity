@@ -336,8 +336,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<-, -> : Move'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
-  m_sharedMaterial: {fileID: 8857025348429554468, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -434,7 +434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8857025348429554468, guid: 1eea551af1639723b8d7395fd88240ea, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,6 +499,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 487794169764829398, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 487794169764829398, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 487794169764829398, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2343950940775625042, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       propertyPath: enemySO
       value: 
@@ -547,6 +559,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7606192053937804300, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -766,10 +782,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 368886666181047958, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316397956540245169, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3131627589521077727, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
       propertyPath: escHandler
       value: 
       objectReference: {fileID: 4061982905849845709}
+    - target: {fileID: 5024960000489539646, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5122104600557539443, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -850,6 +878,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6592905646848493766, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8634635329569762675, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -911,18 +943,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6138031603436324351, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 869344745051269945}
-    - target: {fileID: 6138031603436324351, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
-      propertyPath: sr
-      value: 
-      objectReference: {fileID: 869344745051269953}
-    - target: {fileID: 8699034042430922851, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
-      propertyPath: enemySO
-      value: 
-      objectReference: {fileID: 11400000, guid: 5294a3df903c0d34885e0a40527302ff, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1003,11 +1023,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77228e6297aa08540987e4c869792f31, type: 3}
---- !u!212 &869344745051269953 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7959897507597357776, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
-  m_PrefabInstance: {fileID: 869344745051269941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2392192373732246323
 PrefabInstance:
   m_ObjectHideFlags: 0
