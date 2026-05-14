@@ -9,19 +9,25 @@ using UnityEngine;
 
 namespace _03_Code.Player.Main {
     public class Attacks : MonoBehaviour, IPlayerModule {
-        [SerializeField] private float skill3ActiveTime;
+        
+        [Header("Components")]
+        [SerializeField] private Sword sword;
+        [SerializeField] private HpManager hp;
+        [field: SerializeField] public Weapon HoldingItem { get; private set; }
+        
+        [Header("VFX")]
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private GameObject vfxBoom;
         [SerializeField] private CinemachineImpulseSource impulseSource;
+        
+        [Header("Settings")]
         [SerializeField] private int explosion;
-        [SerializeField] private HpManager hp;
-        [SerializeField] private Sword sword;
+        [SerializeField] private float skill3ActiveTime;
         
         private Player _owner;
         private InputReceiver _input;
         
         public bool IsFFF { get; private set; }
-        [field: SerializeField] public Weapon HoldingItem { get; private set; }
 
         public void Initialize(Player owner) {
             _owner = owner;
