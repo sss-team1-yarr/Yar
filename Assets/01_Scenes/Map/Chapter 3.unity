@@ -865,7 +865,7 @@ MonoBehaviour:
   - {fileID: 380016415}
   - {fileID: 78351838}
   - {fileID: 96947165}
-  spawnDuration: 0.1
+  spawnDuration: 0.01
 --- !u!4 &2061582385
 Transform:
   m_ObjectHideFlags: 0
