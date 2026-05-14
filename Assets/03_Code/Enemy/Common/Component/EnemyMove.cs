@@ -28,6 +28,7 @@ namespace _03_Code.Enemy.Common.Component {
         private float _detectRange;
         private float _knockBackForce;
         private float _knockBackTime;
+        private int _dropExp;
 
         private bool _isKnockedBack = false;
         
@@ -57,6 +58,7 @@ namespace _03_Code.Enemy.Common.Component {
             _detectRange = enemySO.detectRange;
             _knockBackForce = enemySO.knockBackForce;
             _knockBackTime = enemySO.knockBackTime;
+            _dropExp = enemySO.dropExp;
         }
         
         private void Start()
@@ -116,7 +118,7 @@ namespace _03_Code.Enemy.Common.Component {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
-            GameManager.Instance.expDropManager.DropExp(gameObject);
+            GameManager.Instance.expDropManager.DropExp(gameObject, _dropExp);
             gameObject.SetActive(false);
         }
 
