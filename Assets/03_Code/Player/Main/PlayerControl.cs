@@ -15,10 +15,16 @@ namespace _03_Code.Player.Main
         [SerializeField] private AnimationControl ani;
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private ParticleSystem dashVfx;
-        
-        [Header("Settings")]
+
+        [Header("Settings/Movement")] 
         [SerializeField] private float speed = 8f;
         [SerializeField] private float jumpForce;
+
+        [field : Header("Settings/Damage")]
+        [field : SerializeField] public int Damage { get; private set; } = 5; 
+        [field : SerializeField] public int UpperDamage { get; private set; } = 8;
+        
+        [Header("Settings/Dash")]
         [SerializeField] private float dashForce = 20f;
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float dashCoolTime = 1f;
@@ -32,7 +38,6 @@ namespace _03_Code.Player.Main
 
 
         public float MoveInput { get; private set; }
-
         
         private bool _rotationRight = true;
         private bool _isDashing; 
@@ -49,6 +54,7 @@ namespace _03_Code.Player.Main
             _input.OnDashInput += HandleDashInput;
             _input.OnGuardInput += HandleGuard;
         }
+        
         private void FixedUpdate() {
             if(_isDashing || GameManager.Instance.playerHit.IsApproach) return;
             _rb.linearVelocityX = _moveInput * speed;
