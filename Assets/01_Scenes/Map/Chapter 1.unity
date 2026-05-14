@@ -1076,12 +1076,45 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4589394517740959171, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
   m_PrefabInstance: {fileID: 5996633480494107017}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1579817566}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e14a28e4995bd43a70d2120166a589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDropManager
+--- !u!1 &1579817566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8439944723450156981, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
+  m_PrefabInstance: {fileID: 5996633480494107017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579817568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579817566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73c0b674c5a48bfacda9f63f7573afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.DropItem.HealItem.HealItemDrop
+  healItemPrefab: {fileID: 4010758328391973288, guid: a52dc85e0498e4d43ace48a6d4b0e6fa, type: 3}
+--- !u!114 &1579817569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579817566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f2158a7e5344428c896b857c82f5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Exp.ExpDrop
+  expPrefab: {fileID: 3732848341737852482, guid: 4b7e299cd6502fe4682f610a04065be4, type: 3}
+  minOffset: -1
+  maxOffset: 1
 --- !u!1 &1618012823
 GameObject:
   m_ObjectHideFlags: 0
@@ -18318,6 +18351,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4589394517740959171, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
+      propertyPath: healItemPrefab
+      value: 
+      objectReference: {fileID: 4010758328391973288, guid: a52dc85e0498e4d43ace48a6d4b0e6fa, type: 3}
     - target: {fileID: 5518929534550342065, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.72408
@@ -18360,12 +18397,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8439944723450156981, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
       propertyPath: m_Name
-      value: ExpDropManager
+      value: ItemDropManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8439944723450156981, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1579817569}
+    - targetCorrespondingSourceObject: {fileID: 8439944723450156981, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1579817568}
   m_SourcePrefab: {fileID: 100100000, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
 --- !u!114 &7490629996214899054 stripped
 MonoBehaviour:
@@ -18508,6 +18551,10 @@ PrefabInstance:
       propertyPath: expManager
       value: 
       objectReference: {fileID: 1736083712}
+    - target: {fileID: 8054964075988839218, guid: 9964e0c05e0b8a445b8d4b3b050e0720, type: 3}
+      propertyPath: dropManager
+      value: 
+      objectReference: {fileID: 1556716942}
     - target: {fileID: 8054964075988839218, guid: 9964e0c05e0b8a445b8d4b3b050e0720, type: 3}
       propertyPath: playerControl
       value: 

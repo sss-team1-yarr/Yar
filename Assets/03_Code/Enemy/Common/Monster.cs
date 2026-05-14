@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
 using _03_Code.SO;
@@ -27,7 +28,7 @@ namespace _03_Code.Enemy.Common {
         private float _scale;
         private int _enemyHp;
         private int _dropExp;
-        
+
         private void Awake()
         {
             _scale = enemySO.scale;
@@ -41,7 +42,7 @@ namespace _03_Code.Enemy.Common {
             KnockBackTime = enemySO.knockBackTime;
             _dropExp = enemySO.dropExp;
         }
-        
+
         private void Start()
         {
             transform.localScale = Vector3.one * _scale;
@@ -61,7 +62,7 @@ namespace _03_Code.Enemy.Common {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
-            GameManager.Instance.expDropManager.DropExp(gameObject, _dropExp);  
+            GameManager.Instance.dropManager.DropItem(gameObject, enemySO.dropExp);
             gameObject.SetActive(false);
         }
 
