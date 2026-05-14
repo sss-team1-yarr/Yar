@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - ContactChecker
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Meteor
+    uniqueID: 2351249455
+    locked: 0
   - name: Ground
     uniqueID: 1711003337
     locked: 0
