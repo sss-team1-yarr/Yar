@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _03_Code.Player.Components;
@@ -39,8 +40,15 @@ namespace _03_Code.Player.Main {
         }
 
         public void HandlePlayerDeath() {
-            Destroy(gameObject);
-            Time.timeScale = 0;
+            StartCoroutine(Dead());
         }
+
+        private IEnumerator Dead()
+        {
+            ani.OnDeadAni(true);
+            yield return new WaitForSeconds(1f);
+            Destroy(gameObject);
+        }
+        
     }
 }
