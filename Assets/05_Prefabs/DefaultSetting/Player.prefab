@@ -5675,7 +5675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.HpManager
   text: {fileID: 0}
-  hp: 10
+  hp: 100
 --- !u!61 &306759811056710287
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5734,7 +5734,7 @@ GameObject:
   - component: {fileID: 5144699074489930235}
   m_Layer: 6
   m_Name: ContactChecker
-  m_TagString: Untagged
+  m_TagString: ContactChecker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5768,7 +5768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Code.Player.Components.ContactChecker
   targetLayer:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 2816
   size: {x: 0.88, y: 0.28}
   offset: {x: -0.08, y: -1.33}
   rb: {fileID: 4432011487506813273}
