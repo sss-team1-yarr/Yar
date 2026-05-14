@@ -20,6 +20,10 @@ namespace _03_Code.Player.Main {
             InitializeComponents();
         }
 
+        private void LateUpdate() {
+            ani.OnJumpAni(contactChecker.IsGrounded);
+        }
+        
         public T GetModule<T>() {
             if (_moduleDictionary.TryGetValue(typeof(T), out var module)) return (T)module;
 
@@ -37,10 +41,6 @@ namespace _03_Code.Player.Main {
         public void HandlePlayerDeath() {
             Destroy(gameObject);
             Time.timeScale = 0;
-        }
-
-        private void LateUpdate() {
-            ani.OnJumpAni(contactChecker.IsGrounded);
         }
     }
 }
