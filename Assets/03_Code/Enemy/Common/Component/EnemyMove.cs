@@ -43,7 +43,7 @@ namespace _03_Code.Enemy.Common.Component {
         {
             if (_isKnockedBack || monster.IsDead) return;
             
-            monster.UpdateHP(damageAmount);
+            monster.GetDamage(damageAmount);
             StartCoroutine(KnockBackRoutine());
         }
         

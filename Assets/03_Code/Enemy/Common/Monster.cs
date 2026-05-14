@@ -26,6 +26,7 @@ namespace _03_Code.Enemy.Common {
         
         private float _scale;
         private int _enemyHp;
+        private int _dropExp;
         
         private void Awake()
         {
@@ -38,6 +39,7 @@ namespace _03_Code.Enemy.Common {
             DetectRange = enemySO.detectRange;
             KnockBackForce = enemySO.knockBackForce;
             KnockBackTime = enemySO.knockBackTime;
+            _dropExp = enemySO.dropExp;
         }
         
         private void Start()
@@ -59,6 +61,7 @@ namespace _03_Code.Enemy.Common {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
+            GameManager.Instance.expDropManager.DropExp(gameObject, _dropExp);
             gameObject.SetActive(false);
         }
 
