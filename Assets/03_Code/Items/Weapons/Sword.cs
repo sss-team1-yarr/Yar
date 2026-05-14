@@ -6,21 +6,23 @@ using Random = UnityEngine.Random;
 
 namespace _03_Code.Items.Weapons {
     public class Sword : Weapon, IItem {
-        [SerializeField] private int baseDamageAmount;
-        [SerializeField] private int damageAmount;
-        [SerializeField] private int  damageAddSize;
-        [SerializeField] private float cooldown = 0.2f;
+        [Header("Components")]
+        [SerializeField] private Player.Main.Player owner;
+        [SerializeField] private Attacks attack;
+        [SerializeField] private Transform handTrm;
+                        
+        [Header("VFX")]
         [SerializeField] private ParticleSystem vfx;
+        [SerializeField] private CinemachineImpulseSource impulseSource;
+        
+        [Header("Settings")]
+        [SerializeField] private float cooldown = 0.2f;
         [SerializeField] private float damageRadius = 1.5f;
         [SerializeField] private float knockbackForce;
         [SerializeField] private ContactFilter2D targetFilter;
-        [SerializeField] private Transform handTrm;
-        [SerializeField] private CinemachineImpulseSource impulseSource;
-        [SerializeField] private Player.Main.Player owner;
-        [SerializeField] private Attacks attack;
         
+        private int _damageAmount = 5;
         
-
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
         private bool _isHoldingKey;
         private bool _isUpperAttack;
@@ -37,19 +39,24 @@ namespace _03_Code.Items.Weapons {
             if (context.Input == 0) _isHoldingKey = context.Pressed;
         }
 
-        private void DamageAmountChanged() {
-            if (!attack.IsFFF) {
-                damageAmount = baseDamageAmount;
-                return;
-            }
-            damageAmount = damageAddSize;
-        }
-
         private void Update() {
             Attack();
             DamageAmountChanged();
         }
-
+        
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + AttackOffset, damageRadius);
+        }
+        
+        private void DamageAmountChanged() {
+            if (!attack.IsFFF) {
+                _damageAmount = GameManager.Instance.playerControl.Damage;
+                return;
+            }
+            _damageAmount = GameManager.Instance.playerControl.UpperDamage;
+        }
+        
         private void Attack() {
             if (!_isHoldingKey || !CanUse) return;
 
@@ -70,17 +77,12 @@ namespace _03_Code.Items.Weapons {
 
                     _ranKnockbackForce = Random.Range(knockbackForce - 1.5f, knockbackForce + 1.5f);
                     var result = damageable.ApplyDamage(new DamageInfo {
-                        DamageAmount = damageAmount,
+                        DamageAmount = _damageAmount,
                         KnockbackForce = _ranKnockbackForce
                     });
 
                     if (result.Hit) impulseSource.GenerateImpulseWithForce(0.3f);
                 }
-        }
-
-        private void OnDrawGizmos() {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position + AttackOffset, damageRadius);
         }
     }
 }
