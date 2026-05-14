@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3953814046700941813}
   - component: {fileID: 8044832794396970901}
   - component: {fileID: 8016141696168348814}
+  - component: {fileID: 2343950940775625042}
   m_Layer: 9
   m_Name: Slime
   m_TagString: Enemy
@@ -36,7 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5001700007950624505}
   - {fileID: 5142457649519937038}
@@ -127,16 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98f234b8c9788e409db23e4f76a4e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.EnemyMove
-  enemySO: {fileID: 0}
-  coll: {fileID: 2385166045087897686}
-  sr: {fileID: 8044832794396970901}
+  monster: {fileID: 2343950940775625042}
   rb: {fileID: 5765124296430943895}
-  player: {fileID: 0}
-  sHp: {fileID: 7144444413851053883}
-  enemyAnim: {fileID: 5930410717183660399}
-  detectRange: 5
-  knockBackForce: 40
-  knockBackTime: 0.1
+  sr: {fileID: 8044832794396970901}
 --- !u!114 &836264855688758397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Component.EnemyAttack
   rb: {fileID: 5765124296430943895}
-  em: {fileID: 2758541620568426419}
+  em: {fileID: 2343950940775625042}
 --- !u!114 &5689139682214896873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable.CommonDA
   vfx: {fileID: 934238142073027893}
+  mob: {fileID: 2343950940775625042}
   em: {fileID: 2758541620568426419}
 --- !u!114 &5930410717183660399
 MonoBehaviour:
@@ -272,6 +267,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2343950940775625042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513901590025629557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558c06c86eba45fc991d8643f165c0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Common.Monster
+  enemySO: {fileID: 11400000, guid: 9fe13d83ec822b447a24544d16893083, type: 2}
+  rb: {fileID: 5765124296430943895}
+  coll: {fileID: 2385166045087897686}
+  sHp: {fileID: 7144444413851053883}
+  enemyAnim: {fileID: 5930410717183660399}
 --- !u!1 &5149257437468465635
 GameObject:
   m_ObjectHideFlags: 0
