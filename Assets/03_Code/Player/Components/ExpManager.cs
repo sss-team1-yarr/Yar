@@ -7,11 +7,11 @@ namespace _03_Code.Player.Components {
         
 
         public void ExpAdd() {
-            if (expGauge + 1 >= 100) {
+            if (expGauge + 5 >= 100) {
                 ExpLevelUp();
             }
             else {
-                expGauge += 1;
+                expGauge += 5;
             }
         }
         
