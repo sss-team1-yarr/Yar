@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
 using _03_Code.SO;
@@ -60,7 +59,6 @@ namespace _03_Code.Enemy.Common {
             
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
-            GameManager.Instance.expDropManager.DropExp(gameObject);
             gameObject.SetActive(false);
         }
 
