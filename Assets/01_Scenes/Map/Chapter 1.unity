@@ -718,6 +718,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1736083712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1225291928310296709, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+  m_PrefabInstance: {fileID: 3679532607361871224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e123321230bb4157aecfbd1e20dcc38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.ExpManager
 --- !u!61 &1865692627 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2385166045087897686, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
@@ -1584,6 +1595,10 @@ PrefabInstance:
       propertyPath: playerHit
       value: 
       objectReference: {fileID: 1364263734715945053}
+    - target: {fileID: 8054964075988839218, guid: 9964e0c05e0b8a445b8d4b3b050e0720, type: 3}
+      propertyPath: expManager
+      value: 
+      objectReference: {fileID: 1736083712}
     - target: {fileID: 8054964075988839218, guid: 9964e0c05e0b8a445b8d4b3b050e0720, type: 3}
       propertyPath: playerControl
       value: 

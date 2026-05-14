@@ -16,7 +16,7 @@ MonoBehaviour:
   scale: 2
   health: 300
   speed: 2
-  dropExp: 0
+  dropExp: 20
   approachForce: 10
   approachTime: 1
   approachDamage: 10
