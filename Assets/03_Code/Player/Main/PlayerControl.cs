@@ -11,9 +11,17 @@ namespace _03_Code.Player.Main
 {
     public class PlayerControl : MonoBehaviour, IPlayerModule
     {
-        [SerializeField] private float jumpForce;
+        [Header("Components")]
         [SerializeField] private AnimationControl ani;
         [SerializeField] private ContactChecker contactChecker;
+        [SerializeField] private ParticleSystem dashVfx;
+        
+        [Header("Settings")]
+        public float speed = 8f;
+        [SerializeField] private float jumpForce;
+        [SerializeField] private float dashForce = 20f;
+        [SerializeField] private float dashDuration = 0.2f;
+        [SerializeField] private float dashCoolTime = 1f;
         
         //private TestDamageable[] testDam;
 
@@ -24,12 +32,9 @@ namespace _03_Code.Player.Main
 
         public bool rotationRight;
         public bool isDashing;
-        public float speed = 8f;
         public float MoveInput { get; private set; }
         
-        [SerializeField] private float dashForce = 20f;
-        [SerializeField] private float dashDuration = 0.2f;
-        [SerializeField] private ParticleSystem dashVfx;
+        
 
         public void Initialize(Player owner) {
             _owner = owner;
@@ -72,7 +77,7 @@ namespace _03_Code.Player.Main
 
 
         private void HandleRun(bool run) {
-            speed *= run ? 2 : 0.5f;
+            speed *= run ? 3/2f : 2/3f;
         }
 
         private void HandleJump() {
@@ -98,6 +103,10 @@ namespace _03_Code.Player.Main
 
             yield return new WaitForSeconds(dashDuration);
             ani.OnDashAni(false);
+
+            float cooltime = dashCoolTime - dashDuration > 0 ? dashCoolTime - dashDuration : 0f;
+            
+            yield return new WaitForSeconds(cooltime);
             isDashing = false;
         }
 
