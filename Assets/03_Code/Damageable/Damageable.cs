@@ -8,9 +8,9 @@ namespace _03_Code.Damageable {
         [SerializeField] private ParticleSystem vfx;
         [SerializeField] private FlyEnemy enemy;
 
-        public DamageResult ApplyDamage(DamageInfo info) {
+        public DamageResult ApplyDamage(int damageAmount) {
             vfx.Play();
-            StartCoroutine(enemy.Hit(info.KnockbackForce));
+            StartCoroutine(enemy.Hit());
             return new DamageResult {
                 Hit = true
             };

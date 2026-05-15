@@ -28,7 +28,6 @@ namespace _03_Code.Items.Weapons {
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
-        private float _ranKnockbackForce;
 
         private static readonly Vector3 AttackOffset = new(0.3f, 0.3f, 0f);
         
@@ -80,13 +79,8 @@ namespace _03_Code.Items.Weapons {
 
             for (var i = 0; i < cnt; i++)
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    if (ReferenceEquals(damageable, owner)) continue;
 
-                    _ranKnockbackForce = Random.Range(knockbackForce - 1.5f, knockbackForce + 1.5f);
-                    var result = damageable.ApplyDamage(new DamageInfo {
-                        DamageAmount = _damageAmount,
-                        KnockbackForce = _ranKnockbackForce
-                    });
+                    var result = damageable.ApplyDamage(_damageAmount);
 
                     if (result.Hit) impulseSource.GenerateImpulseWithForce(0.3f);
                 }

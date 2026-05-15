@@ -32,7 +32,7 @@ namespace _03_Code.Enemy.Common.FlyEnemy {
                 rb.linearVelocity = _scan.MoveDir.normalized * speed;
         }
 
-        public IEnumerator Hit(float knockBackForce) {
+        public IEnumerator Hit() {
             if (_isHit) yield break; 
             _isHit = true;
             float dir = transform.position.x > GameManager.Instance.playerControl.transform.position.x ? 1f : -1f;

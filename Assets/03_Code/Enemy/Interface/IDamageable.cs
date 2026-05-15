@@ -1,16 +1,9 @@
 ﻿namespace _03_Code.Enemy.Interface {
     public interface IDamageable {
-        DamageResult ApplyDamage(DamageInfo info);
-    }
-
-    public struct DamageInfo {
-        public int DamageAmount;
-        public float KnockbackForce;
+        DamageResult ApplyDamage(int damageAmount);
     }
 
     public struct DamageResult {
         public bool Hit;
-        public bool WasCrit;
-        public float DamageAmount;
     }
 }
