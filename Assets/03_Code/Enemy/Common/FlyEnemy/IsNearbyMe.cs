@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _03_Code.Enemy.Common {
+namespace _03_Code.Enemy.Common.FlyEnemy {
     public class IsNearbyMe : MonoBehaviour {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float mobDistance = 3f;

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using _03_Code.Player.Components;
-using _03_Code.Player.Main;
-using _03_Code.SO;
 using UnityEngine;
 
-namespace _03_Code.Enemy.Common {
-    public class Common : MonoBehaviour {
+namespace _03_Code.Enemy.Common.FlyEnemy {
+    public class FlyEnemy : MonoBehaviour {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private int damage;
         [SerializeField] private HpManager hp;
@@ -35,13 +32,13 @@ namespace _03_Code.Enemy.Common {
                 rb.linearVelocity = _scan.MoveDir.normalized * speed;
         }
 
-        public IEnumerator Hit(float knockbackForce) {
+        public IEnumerator Hit(float knockBackForce) {
             if (_isHit) yield break; 
             _isHit = true;
             float dir = transform.position.x > GameManager.Instance.playerControl.transform.position.x ? 1f : -1f;
             
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(knockbackForce * dir * enemyKnockBackForce, knockbackForce * enemyKnockBackForce), 
+            rb.AddForce(new Vector2(dir * enemyKnockBackForce, enemyKnockBackForce), 
                 ForceMode2D.Impulse);
             
             yield return new WaitForSeconds(hitDuration);
