@@ -18,11 +18,14 @@ namespace _03_Code.Player.Main
 
         [Header("Settings/Movement")] 
         [SerializeField] private float speed = 8f;
+        [SerializeField] private float dashMultiplier = 1.2f;
         [SerializeField] private float jumpForce;
 
         [field : Header("Settings/Damage")]
         [field : SerializeField] public int Damage { get; private set; } = 5; 
         [field : SerializeField] public int UpperDamage { get; private set; } = 8;
+        [field : SerializeField] public float AttackCoolTime { get; private set; } = 0.2f;
+        [field : SerializeField] public float AttackRadius { get; private set; } = 1.5f;
         
         [Header("Settings/Dash")]
         [SerializeField] private float dashForce = 20f;
@@ -85,7 +88,7 @@ namespace _03_Code.Player.Main
 
 
         private void HandleRun(bool run) {
-            speed *= run ? 3/2f : 2/3f;
+            speed *= run ? dashMultiplier : 1 / dashMultiplier;
         }
 
         private void HandleJump() {
