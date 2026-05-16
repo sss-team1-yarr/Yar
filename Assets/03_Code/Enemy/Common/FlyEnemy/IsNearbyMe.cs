@@ -4,9 +4,9 @@ namespace _03_Code.Enemy.Common.FlyEnemy {
     public class IsNearbyMe : MonoBehaviour {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float mobDistance = 3f;
-        
+
         public Vector2 MoveDir { get; private set; }
-        
+
         private void Reset() {
             rb = GetComponent<Rigidbody2D>();
         }
@@ -17,6 +17,7 @@ namespace _03_Code.Enemy.Common.FlyEnemy {
                 rb.linearVelocity = Vector2.zero;
                 return;
             }
+
             MoveDir = circle.transform.position - transform.position;
         }
 

@@ -24,7 +24,7 @@ namespace _03_Code.Player.Main {
         private void LateUpdate() {
             ani.OnJumpAni(contactChecker.IsGrounded);
         }
-        
+
         public T GetModule<T>() {
             if (_moduleDictionary.TryGetValue(typeof(T), out var module)) return (T)module;
 
@@ -43,12 +43,10 @@ namespace _03_Code.Player.Main {
             StartCoroutine(Dead());
         }
 
-        private IEnumerator Dead()
-        {
+        private IEnumerator Dead() {
             ani.OnDeadAni(true);
             yield return new WaitForSeconds(1f);
             Destroy(gameObject);
         }
-        
     }
 }

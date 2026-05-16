@@ -10,21 +10,20 @@ namespace _03_Code.UI.Pause {
         }
 
         private void Update() {
-            if (gameObject.activeSelf) {
+            if (gameObject.activeSelf)
                 if (Keyboard.current.escapeKey.wasPressedThisFrame) {
                     pauseUI.SetActive(true);
                     gameObject.SetActive(false);
                 }
-            }
         }
-        
+
+        private void OnEnable() {
+            Time.timeScale = 0f;
+        }
+
         public void BackToMenu() {
             gameObject.SetActive(false);
             pauseUI.SetActive(true);
-        }
-        
-        private void OnEnable() {
-            Time.timeScale = 0f;
         }
     }
 }

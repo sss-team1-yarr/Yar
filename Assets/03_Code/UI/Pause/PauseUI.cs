@@ -1,4 +1,3 @@
-using System;
 using _03_Code.Handler;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +19,10 @@ namespace _03_Code.UI.Pause {
             Time.timeScale = 0f;
         }
 
+        private void OnDisable() {
+            Time.timeScale = 1f;
+        }
+
         public void ReturnGame() {
             escHandler.EscPressed();
             gameObject.SetActive(false);
@@ -28,10 +31,6 @@ namespace _03_Code.UI.Pause {
         public void Settings() {
             gameObject.SetActive(false);
             settingsUI.SetActive(true);
-        }
-
-        private void OnDisable() {
-            Time.timeScale = 1f;
         }
 
         public void Exit() {

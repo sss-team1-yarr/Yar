@@ -16,7 +16,5 @@ namespace _03_Code.Player.Components {
         public void SetFlip(bool isRight) {
             playerTransform.transform.eulerAngles = new Vector3(0f, isRight ? 0f : 180f, 0f);
         }
-        
-        
     }
 }

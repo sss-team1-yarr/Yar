@@ -9,25 +9,31 @@ using UnityEngine;
 
 namespace _03_Code.Player.Main {
     public class Attacks : MonoBehaviour, IPlayerModule {
-        
-        [Header("Components")]
-        [SerializeField] private Sword sword;
+        [Header("Components")] [SerializeField]
+        private Sword sword;
+
         [SerializeField] private HpManager hp;
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
-        
-        [Header("VFX")]
-        [SerializeField] private ParticleSystem vfx;
+
+        [Header("VFX")] [SerializeField] private ParticleSystem vfx;
+
         [SerializeField] private GameObject vfxBoom;
         [SerializeField] private CinemachineImpulseSource impulseSource;
-        
-        [Header("Settings")]
-        [SerializeField] private int explosion;
+
+        [Header("Settings")] [SerializeField] private int explosion;
+
         [SerializeField] private float skill3ActiveTime;
-        
-        private Player _owner;
         private InputReceiver _input;
-        
+
+        private Player _owner;
+
         public bool IsFFF { get; private set; }
+
+        private void OnDestroy() {
+            _input.OnAttackInput -= HandleAttackInput;
+            _input.OnSkill1Input -= HandleSkill1Input;
+            _input.OnSkill3Input -= HandleSkill3Input;
+        }
 
         public void Initialize(Player owner) {
             _owner = owner;
@@ -38,12 +44,6 @@ namespace _03_Code.Player.Main {
             HoldingItem?.HoldItem(new ItemUsingContext { User = _owner, Input = 0, Pressed = true });
         }
 
-        private void OnDestroy() {
-            _input.OnAttackInput -= HandleAttackInput;
-            _input.OnSkill1Input -= HandleSkill1Input;
-            _input.OnSkill3Input -= HandleSkill3Input;
-        }
-        
         private void HandleAttackInput(int btn, bool pressed) {
             HoldingItem?.Use(new ItemUsingContext {
                 Input = btn,

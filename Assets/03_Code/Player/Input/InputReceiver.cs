@@ -6,14 +6,6 @@ using UnityEngine.InputSystem;
 namespace _03_Code.Player.Input {
     public class InputReceiver : MonoBehaviour, Controls.IPlayerActions, IPlayerModule {
         public static Controls Controls;
-        public event Action<int, bool> OnAttackInput;
-        public event Action<float> OnMoveInput;
-        public event Action OnJumpInput;
-        public event Action<bool> OnRunInput;
-        public event Action OnSkill1Input;
-        public event Action OnDashInput;
-        public event Action OnSkill3Input;
-        public event Action OnGuardInput;
 
         public Vector2 OnMoveInputVec2 { get; private set; }
 
@@ -22,14 +14,12 @@ namespace _03_Code.Player.Input {
             Controls.Player.Enable();
             Controls.Player.SetCallbacks(this);
         }
-        
+
         private void OnDestroy() {
             Controls.Disable();
             Controls.Dispose();
             Controls = null;
         }
-
-        public void Initialize(Main.Player owner) { }
 
         public void OnMove(InputAction.CallbackContext context) {
             OnMoveInputVec2 = context.ReadValue<Vector2>();
@@ -60,8 +50,7 @@ namespace _03_Code.Player.Input {
                 OnSkill1Input?.Invoke();
         }
 
-        public void OnSkill2(InputAction.CallbackContext context)
-        {
+        public void OnSkill2(InputAction.CallbackContext context) {
             if (context.performed)
                 OnDashInput?.Invoke();
         }
@@ -73,5 +62,15 @@ namespace _03_Code.Player.Input {
         public void OnSkill3(InputAction.CallbackContext context) {
             OnSkill3Input?.Invoke();
         }
+
+        public void Initialize(Main.Player owner) { }
+        public event Action<int, bool> OnAttackInput;
+        public event Action<float> OnMoveInput;
+        public event Action OnJumpInput;
+        public event Action<bool> OnRunInput;
+        public event Action OnSkill1Input;
+        public event Action OnDashInput;
+        public event Action OnSkill3Input;
+        public event Action OnGuardInput;
     }
 }

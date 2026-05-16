@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,17 +6,16 @@ namespace _03_Code.Enemy.Boss.Skill {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ParticleSystem particle;
         [SerializeField] private ParticleSystem tail;
-        
+
         private void OnEnable() {
-            rb.linearVelocity = new Vector2(-9.8f,-19.6f);
+            rb.linearVelocity = new Vector2(-9.8f, -19.6f);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Ground")) {
                 StartCoroutine(Crash());
-            }else if (other.CompareTag("Player")) {
-                
             }
+            else if (other.CompareTag("Player")) { }
         }
 
         private IEnumerator Crash() {
