@@ -21,10 +21,10 @@ namespace _03_Code.Enemy.Boss.Skill {
         }
 
         public void SpawnMeteor() {
-            StartCoroutine(Coroutine());
+            StartCoroutine(Spawn());
         }
 
-        private IEnumerator Coroutine() {
+        private IEnumerator Spawn() {
             _isSpawning = true;
             yield return new WaitForSeconds(3f);
             _isSpawning = false;

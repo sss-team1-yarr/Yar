@@ -14,13 +14,13 @@ namespace _03_Code.Enemy.Boss.Skill {
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Ground")) {
-                StartCoroutine(Boom());
+                StartCoroutine(Crash());
             }else if (other.CompareTag("Player")) {
                 
             }
         }
 
-        private IEnumerator Boom() {
+        private IEnumerator Crash() {
             yield return new WaitForSeconds(0.04f);
             rb.linearVelocity = Vector2.zero;
             tail.Stop(true);
