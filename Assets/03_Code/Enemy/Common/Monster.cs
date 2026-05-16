@@ -71,11 +71,11 @@ namespace _03_Code.Enemy.Common {
         }
 
         public void UpdateHP(int hp) {
-            sHp.UpdateHp(hp);
             if (_enemyHp <= 0) {
                 _enemyHp = 0;
                 IsDead = true;
             }
+            sHp.UpdateHp(hp);
         }
     }
 }
