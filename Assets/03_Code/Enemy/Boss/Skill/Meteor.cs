@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace _03_Code.Enemy.Boss.Skill {
     public class Meteor : MonoBehaviour {
-        [SerializeField] private Rigidbody2D boomTrigger;
+        [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ParticleSystem particle;
         [SerializeField] private ParticleSystem tail;
         
         private void OnEnable() {
-            boomTrigger.linearVelocity = new Vector2(-9.8f,-19.6f);
+            rb.linearVelocity = new Vector2(-9.8f,-19.6f);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -21,7 +21,8 @@ namespace _03_Code.Enemy.Boss.Skill {
         }
 
         private IEnumerator Boom() {
-            boomTrigger.linearVelocity = Vector2.zero;
+            yield return new WaitForSeconds(0.04f);
+            rb.linearVelocity = Vector2.zero;
             tail.Stop(true);
             particle.Play();
             yield return new WaitForSeconds(0.5f);

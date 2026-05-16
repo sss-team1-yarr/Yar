@@ -10,12 +10,12 @@ namespace _03_Code.Damageable {
         [SerializeField] private Monster mob;
         [SerializeField] private EnemyMove em;
         
-        public DamageResult ApplyDamage(DamageInfo info)
+        public DamageResult ApplyDamage(int damageAmount)
         {
             if (mob.IsDead) return new DamageResult();
             
             vfx.Play();
-            em.KnockBack(info.DamageAmount);
+            em.KnockBack(damageAmount);
             return new DamageResult {
                 Hit = true
             };
