@@ -19,8 +19,7 @@ namespace _03_Code.Player.Components {
                 hp = 0;
                 text.SetText("HP: 0");
                 GameManager.Instance.player.HandlePlayerDeath();
-            }
-            else {
+            } else {
                 hp -= damage;
             }
 

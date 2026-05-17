@@ -27,7 +27,7 @@ namespace _03_Code.Enemy.Boss.Components {
             if (PhaseOneHealth <= 0) {
                 PhaseOneHealth = 0;
                 owner.StartPhaseTwo();
-                PhaseTwoHealth = int.MaxValue;//다신 호출 불가능하게 만드는 장치
+                PhaseTwoHealth = int.MaxValue; //다신 호출 불가능하게 만드는 장치
             }
         }
     }
