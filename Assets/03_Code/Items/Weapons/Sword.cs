@@ -1,3 +1,4 @@
+using System.Collections;
 using _03_Code.Enemy.Interface;
 using _03_Code.Player.Main;
 using Unity.Cinemachine;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace _03_Code.Items.Weapons {
     public class Sword : Weapon {
-        private static readonly Vector3 AttackOffset = new(0.3f, 0.3f, 0f);
+        [SerializeField] private Vector3 AttackOffset = new(0.3f, 0.3f, 0f);
 
         [Header("Components")] [SerializeField]
         private Player.Main.Player owner;
@@ -38,7 +39,7 @@ namespace _03_Code.Items.Weapons {
         }
 
         private void Update() {
-            Attack();
+            StartCoroutine(Attack());
             DamageAmountChanged();
         }
 
@@ -62,13 +63,12 @@ namespace _03_Code.Items.Weapons {
             _damageAmount = GameManager.Instance.playerControl.UpperDamage;
         }
 
-        private void Attack() {
-            if (!_isHoldingKey || !CanUse) return;
+        private IEnumerator Attack() {
+            if (!_isHoldingKey || !CanUse) yield break;
 
             _lastAttackTime = Time.time;
-            _isUpperAttack = !_isUpperAttack;
-            handTrm.rotation = Quaternion.Euler(_isUpperAttack ? 180f : 0f, owner.transform.rotation.eulerAngles.y,
-                owner.transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
+                -35f);
 
             var center = transform.position + AttackOffset;
 
@@ -80,8 +80,13 @@ namespace _03_Code.Items.Weapons {
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
                     var result = damageable.ApplyDamage(_damageAmount);
 
-                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.3f);
+                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.1f);
                 }
+            
+            yield return new WaitForSeconds(_cooltime);
+            
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
+                35f);
         }
     }
 }
