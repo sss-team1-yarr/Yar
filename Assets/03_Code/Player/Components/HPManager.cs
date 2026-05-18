@@ -1,29 +1,27 @@
-﻿using TMPro;
+﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _03_Code.Player.Components {
     public class HpManager : MonoBehaviour {
-        [SerializeField] private TextMeshProUGUI text;
-        [SerializeField] private int hp = 10;
-
-        private void Reset() {
-            text = GameObject.Find("HP").GetComponent<TextMeshProUGUI>();
-        }
+        [SerializeField] private Slider hpBar;
+        [SerializeField] private int maxHp = 100;
+        
+        private int _hp;
 
         private void Start() {
-            text.SetText($"HP: {hp}");
+            _hp = maxHp;
         }
 
         public void UpdateHp(int damage) {
-            if (hp - damage <= 0) {
-                hp = 0;
-                text.SetText("HP: 0");
+            if (_hp - damage <= 0) {
+                _hp = 0;
+                
                 GameManager.Instance.player.HandlePlayerDeath();
             } else {
-                hp -= damage;
+                _hp -= damage;
             }
-
-            text.SetText($"HP: {hp}");
+            hpBar.value = (float)_hp / maxHp;
         }
     }
 }

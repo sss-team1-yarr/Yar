@@ -9,7 +9,6 @@ using UnityEngine;
 namespace _03_Code.Player.Main {
     public class Player : MonoBehaviour {
         [SerializeField] private ContactChecker contactChecker;
-        [SerializeField] private HpManager hp;
         [SerializeField] private AnimationControl ani;
 
         private Dictionary<Type, IPlayerModule> _moduleDictionary;
