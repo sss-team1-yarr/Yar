@@ -1,4 +1,5 @@
 using System.Collections;
+using _03_Code.Enemy.Boss;
 using _03_Code.Enemy.Common;
 using _03_Code.Player.VFX;
 using UnityEngine;
@@ -28,6 +29,17 @@ namespace _03_Code.Player.Components {
 
             yield return new WaitForSeconds(em.ApproachTime);
             IsApproach = false;
+        }
+        
+        public IEnumerator Approach() {
+            if (IsApproach) yield break;
+            
+            rb.linearVelocity = Vector2.zero;
+            
+            HpManager.Instance.Damage(5);
+
+            hitParticle.PlayHitEffect();
+            hitVFX.Play();
         }
     }
 }
