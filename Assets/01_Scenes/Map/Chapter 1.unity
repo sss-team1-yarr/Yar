@@ -749,6 +749,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1097130953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7376067957827227365, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+  m_PrefabInstance: {fileID: 560700590536275608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &1120093005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2456,6 +2467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1225291928310296709, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+      propertyPath: expBar
+      value: 
+      objectReference: {fileID: 1097130953}
     - target: {fileID: 6619253271925389892, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_Name
       value: Player
