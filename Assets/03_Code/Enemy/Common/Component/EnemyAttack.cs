@@ -10,9 +10,9 @@ namespace _03_Code.Enemy.Common.Component {
             em = GetComponent<Monster>();
         }
 
-        private void OnCollisionStay2D(Collision2D collision) {
+        private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.CompareTag("Player")) {
-                var direction = -collision.contacts[0].normal;
+                var direction = (collision.transform.position - transform.position).normalized;
                 StartCoroutine(GameManager.Instance.playerHit.Approach(direction, em));
             }
         }

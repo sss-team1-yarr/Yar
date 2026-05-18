@@ -18,7 +18,7 @@ namespace _03_Code.Enemy.Common {
         private RuntimeAnimatorController _animController;
 
         private int _dropExp;
-        private int _enemyHp;
+        private int _health;
 
         private float _scale;
 
@@ -30,11 +30,12 @@ namespace _03_Code.Enemy.Common {
         public float KnockBackForce { get; private set; }
         public float KnockBackTime { get; private set; }
         public bool IsDead { get; private set; }
+        public int MaxHP { get; private set; }
 
         private void Awake() {
             _scale = enemySO.scale;
             Speed = enemySO.speed;
-            _enemyHp = enemySO.health;
+            MaxHP = enemySO.health;
             ApproachForce = enemySO.approachForce;
             ApproachTime = enemySO.approachTime;
             ApproachDamage = enemySO.approachDamage;
@@ -46,8 +47,9 @@ namespace _03_Code.Enemy.Common {
         }
 
         private void Start() {
+            _health = MaxHP;
             transform.localScale = Vector3.one * _scale;
-            UpdateHP(_enemyHp);
+            UpdateHP(_health);
             anim.runtimeAnimatorController = _animController;
         }
 
@@ -68,13 +70,13 @@ namespace _03_Code.Enemy.Common {
         }
 
         public void GetDamage(int damage) {
-            _enemyHp -= damage;
-            UpdateHP(_enemyHp);
+            _health -= damage;
+            UpdateHP(_health);
         }
 
         public void UpdateHP(int hp) {
-            if (_enemyHp <= 0) {
-                _enemyHp = 0;
+            if (_health <= 0) {
+                _health = 0;
                 IsDead = true;
             }
 

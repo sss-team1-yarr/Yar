@@ -16,7 +16,7 @@ namespace _03_Code.Player.Components {
 
         private void Start() {
             _hp = maxHp;
-            hpBar.maxValue = maxHp / 100f;
+            hpBar.value = maxHp / 100f;
         }
 
         public void Damage(int damage) {
