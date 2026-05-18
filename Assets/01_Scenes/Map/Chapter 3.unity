@@ -191,6 +191,19 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2524389157306116482, guid: 6101aeaee2f4ba6458cf801dc1d06134, type: 3}
   m_PrefabInstance: {fileID: 8594910585812596519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &61308856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61308851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cab8cf65ea4b6991b32abe987e4a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Skill.FinalSkill
+  boomParticles: {fileID: 61308853}
 --- !u!1 &78351838
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +545,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2061582385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103853664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+  m_PrefabInstance: {fileID: 1228393797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1103853673 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5765124296430943895, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+  m_PrefabInstance: {fileID: 1228393797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1103853676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103853664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da3aed960bc4973a4daf93c7b971667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Components.BossHpManager
+  bossHealth: 100
+  bossPhaseTwoHealth: 100
+  owner: {fileID: 1103853677}
+--- !u!114 &1103853677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103853664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f1d9d898fc4353a95766e4f916857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Boss
+  meteorSpawner: {fileID: 2061582384}
+  randomTime: 20
+  boom: {fileID: 61308856}
+  rb: {fileID: 1103853673}
+  hp: {fileID: 1103853676}
 --- !u!1 &1107945947
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +694,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1103853677}
+    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1103853676}
     - targetCorrespondingSourceObject: {fileID: 5149257437468465635, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -1253,7 +1314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4205591637309938821, guid: 77228e6297aa08540987e4c869792f31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.8
+      value: -51.27
       objectReference: {fileID: 0}
     - target: {fileID: 4205591637309938821, guid: 77228e6297aa08540987e4c869792f31, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1387,6 +1448,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7025014497530154795, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8973846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025014497530154795, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025014497530154795, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25869226
+      objectReference: {fileID: 0}
     - target: {fileID: 7699891401137540108, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: vfx
       value: 
@@ -1405,7 +1478,7 @@ PrefabInstance:
       objectReference: {fileID: 7490629996214899054}
     - target: {fileID: 9137508805244514260, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.8
+      value: -51.27
       objectReference: {fileID: 0}
     - target: {fileID: 9137508805244514260, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1721,7 +1794,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4132542789461074123, guid: 6101aeaee2f4ba6458cf801dc1d06134, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 61308856}
   m_SourcePrefab: {fileID: 100100000, guid: 6101aeaee2f4ba6458cf801dc1d06134, type: 3}
 --- !u!1001 &8725916829753890044
 PrefabInstance:
@@ -1822,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462920752929977142, guid: 494d9f9ffcae1b043a81951dbe62ef42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.8
+      value: -51.27
       objectReference: {fileID: 0}
     - target: {fileID: 8462920752929977142, guid: 494d9f9ffcae1b043a81951dbe62ef42, type: 3}
       propertyPath: m_LocalPosition.y

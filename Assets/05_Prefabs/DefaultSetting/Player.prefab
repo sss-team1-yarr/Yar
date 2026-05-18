@@ -5202,8 +5202,6 @@ MonoBehaviour:
   handTrm: {fileID: 5743674621062685267}
   vfx: {fileID: 5697683654861823757}
   impulseSource: {fileID: 8488906301601473172}
-  cooldown: 0.2
-  damageRadius: 1.92
   knockbackForce: 2.5
   targetFilter:
     useTriggers: 0
@@ -5335,9 +5333,12 @@ MonoBehaviour:
   contactChecker: {fileID: 5144699074489930235}
   dashVfx: {fileID: 6305737457094758127}
   speed: 8
+  dashMultiplier: 1.2
   jumpForce: 6
   <Damage>k__BackingField: 5
   <UpperDamage>k__BackingField: 8
+  <AttackCoolTime>k__BackingField: 0.5
+  <AttackRadius>k__BackingField: 1.5
   dashForce: 20
   dashDuration: 0.2
   dashCoolTime: 1
@@ -5426,12 +5427,12 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1459458051413904079, guid: 3accdbde4e56f5c4e9cfa311b8cef55f, type: 3}
+  m_Sprite: {fileID: 3447589828770737623, guid: f35102dc8d2fe5a469494aeac0b41294, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.15625, y: 1.375}
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5576,7 +5577,6 @@ GameObject:
   - component: {fileID: 9012321129858126073}
   - component: {fileID: 7025014497530154795}
   - component: {fileID: 1958753315379478515}
-  - component: {fileID: 2801985067318901228}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5710,8 +5710,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.1, y: -0.31}
-  m_Size: {x: 0.8, y: 2}
+  m_Offset: {x: -0.05716133, y: 0.15692282}
+  m_Size: {x: 0.8743477, y: 2.3260393}
   m_Direction: 0
 --- !u!212 &1958753315379478515
 SpriteRenderer:
@@ -5772,28 +5772,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!95 &2801985067318901228
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6619253271925389892}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6debca7b165e1ec4e8f7fbc0006c08e1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7222345347600387183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5841,8 +5819,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 2816
-  size: {x: 0.6, y: 0.28}
-  offset: {x: -0.1, y: -1.33}
+  size: {x: 0.45, y: 0.12}
+  offset: {x: -0.05, y: -1.06}
   rb: {fileID: 4432011487506813273}
 --- !u!1 &8841765753654831153
 GameObject:
