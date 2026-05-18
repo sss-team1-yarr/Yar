@@ -31,7 +31,7 @@ namespace _03_Code.Items.Weapons {
         private float _lastAttackTime;
         private float _radius;
 
-        private bool CanUse => Time.time - _lastAttackTime >= _cooltime;
+        public bool CanUse => Time.time - _lastAttackTime >= _cooltime;
 
         private void Start() {
             _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
@@ -75,6 +75,9 @@ namespace _03_Code.Items.Weapons {
             targetFilter.useTriggers = true;
 
             var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
+            
+            if (cnt == 0)
+                SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
             for (var i = 0; i < cnt; i++)
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
@@ -84,6 +87,7 @@ namespace _03_Code.Items.Weapons {
                 }
             
             yield return new WaitForSeconds(_cooltime);
+            
             
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
                 35f);
