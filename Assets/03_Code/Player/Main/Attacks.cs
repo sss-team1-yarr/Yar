@@ -15,12 +15,7 @@ namespace _03_Code.Player.Main {
         [SerializeField] private HpManager hp;
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
 
-        [Header("VFX")] [SerializeField] private ParticleSystem vfx;
-
-        [SerializeField] private GameObject vfxBoom;
-        [SerializeField] private CinemachineImpulseSource impulseSource;
-
-        [Header("Settings")] [SerializeField] private int explosion;
+        [Header("Settings")] 
 
         [SerializeField] private float skill3ActiveTime;
         private InputReceiver _input;
@@ -53,11 +48,11 @@ namespace _03_Code.Player.Main {
         }
 
         private void HandleSkill1Input() {
-            hp.Damage(explosion);
-            vfxBoom.transform.position = transform.position;
-            impulseSource.GenerateImpulseWithForce(1f);
+            //hp.Damage(explosion);
+            //vfxBoom.transform.position = transform.position;
+            //impulseSource.GenerateImpulseWithForce(1f);
             //for (var i = 0; i < testDam.Length; i++) testDam[i]?.largePush();
-            vfx.Play();
+            //vfx.Play();
         }
 
         private void HandleSkill3Input() {
