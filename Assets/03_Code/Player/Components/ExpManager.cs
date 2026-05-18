@@ -6,7 +6,7 @@ namespace _03_Code.Player.Components {
         [SerializeField] private int expGauge;
         [SerializeField] private int expLevel = 1;
         [SerializeField] private Slider expBar;
-        
+
         public static ExpManager Instance { get; private set; }
 
         private void Awake() {
@@ -14,7 +14,7 @@ namespace _03_Code.Player.Components {
         }
 
         private void Start() {
-            expBar.maxValue = expGauge/100f;
+            expBar.maxValue = expGauge / 100f;
         }
 
         public void ExpAdd() {
@@ -22,7 +22,7 @@ namespace _03_Code.Player.Components {
                 ExpLevelUp();
             else
                 expGauge += 5;
-            expBar.value = expGauge/100f;
+            expBar.value = expGauge / 100f;
         }
 
         private void ExpLevelUp() {

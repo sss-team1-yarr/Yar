@@ -536,88 +536,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2061582385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &935479034
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 935479035}
-  - component: {fileID: 935479037}
-  - component: {fileID: 935479036}
-  m_Layer: 12
-  m_Name: HitPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &935479035
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935479034}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.079, y: -0.573, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1228393800}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &935479036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935479034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29527ef4aec488f813c00a628a9d670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Components.BossAttack
---- !u!70 &935479037
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935479034}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.022521975, y: 0.0056303176}
-  m_Size: {x: 1.2139567, y: 0.8705288}
-  m_Direction: 1
 --- !u!1 &988719629
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,35 +642,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051057178}
   m_CullTransparentMesh: 1
---- !u!1 &1103853664 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-  m_PrefabInstance: {fileID: 1228393797}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1103853673 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 5765124296430943895, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-  m_PrefabInstance: {fileID: 1228393797}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1103853677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103853664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f1d9d898fc4353a95766e4f916857a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Boss
-  meteorSpawner: {fileID: 2061582384}
-  randomTime: 20
-  boom: {fileID: 61308856}
-  rb: {fileID: 1103853673}
-  hp: {fileID: 1228393802}
-  <Speed>k__BackingField: 1
-  <DetectRange>k__BackingField: 1
 --- !u!1 &1107945947
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,30 +717,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 487794169764829398, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 487794169764829398, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 487794169764829398, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 836264855688758397, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: em
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2343950940775625042, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: enemySO
-      value: 
-      objectReference: {fileID: 11400000, guid: c52e4d925ce9be44b906c7c7b80433a2, type: 2}
-    - target: {fileID: 2758541620568426419, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: monster
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -896,99 +761,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7606192053937804300, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+    - target: {fileID: 5468519810442986055, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: boom
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    m_RemovedComponents:
-    - {fileID: 5689139682214896873, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-    - {fileID: 2343950940775625042, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-    - {fileID: 5930410717183660399, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-    - {fileID: 836264855688758397, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-    - {fileID: 2758541620568426419, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      objectReference: {fileID: 61308856}
+    - target: {fileID: 5468519810442986055, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: meteorSpawner
+      value: 
+      objectReference: {fileID: 2061582384}
+    - target: {fileID: 6603859636288161872, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
+      propertyPath: hpBar
+      value: 
+      objectReference: {fileID: 2014977893}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5089040696535505015, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 935479035}
+    m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1103853677}
-    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1228393801}
-    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1228393802}
-    - targetCorrespondingSourceObject: {fileID: 3513901590025629557, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1228393803}
     - targetCorrespondingSourceObject: {fileID: 5149257437468465635, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
---- !u!198 &1228393798 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 934238142073027893, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-  m_PrefabInstance: {fileID: 1228393797}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1228393799 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8044832794396970901, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-  m_PrefabInstance: {fileID: 1228393797}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1228393800 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5089040696535505015, guid: bcbd65f7500c1204eb75adbc647edb64, type: 3}
-  m_PrefabInstance: {fileID: 1228393797}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1228393801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103853664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eddb4102bba4761acc7a762f0e10de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Damageable.BossDA
-  vfx: {fileID: 1228393798}
-  mob: {fileID: 1103853677}
-  em: {fileID: 0}
---- !u!114 &1228393802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103853664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da3aed960bc4973a4daf93c7b971667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Components.BossHpManager
-  bossHealth: 100
-  bossPhaseTwoHealth: 100
-  owner: {fileID: 1103853677}
-  hpBar: {fileID: 2014977893}
---- !u!114 &1228393803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103853664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b508d95ec943fb8663239252b06632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Enemy.Boss.Components.BossMove
-  monster: {fileID: 1103853677}
-  rb: {fileID: 1103853673}
-  sr: {fileID: 1228393799}
 --- !u!1 &1334918416
 GameObject:
   m_ObjectHideFlags: 0

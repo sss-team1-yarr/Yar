@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _03_Code.Damageable {
     public class BossDA : MonoBehaviour, IDamageable {
-        [SerializeField] private ParticleSystem vfx; 
+        [SerializeField] private ParticleSystem vfx;
         [SerializeField] private Boss mob;
         [SerializeField] private EnemyMove em;
 

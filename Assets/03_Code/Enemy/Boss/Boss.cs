@@ -10,9 +10,9 @@ namespace _03_Code.Enemy.Boss {
         [SerializeField] private FinalSkill boom;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private BossHpManager hp;
-        [field:SerializeField] public float Speed{get; private set;} = 1f;
-        [field:SerializeField] public float DetectRange{get; private set;} = 1f;
-        
+        [field: SerializeField] public float Speed { get; private set; } = 1f;
+        [field: SerializeField] public float DetectRange { get; private set; } = 1f;
+
         private int _randomNumber;
 
         private float _timer;

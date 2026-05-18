@@ -13,11 +13,9 @@ namespace _03_Code.Enemy.Boss.Skill {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Ground")) {
+            if (other.CompareTag("Ground"))
                 StartCoroutine(Crash());
-            } else if (other.CompareTag("Player")) {
-                HpManager.Instance.Damage(10);
-            }
+            else if (other.CompareTag("Player")) HpManager.Instance.Damage(10);
         }
 
         private IEnumerator Crash() {
