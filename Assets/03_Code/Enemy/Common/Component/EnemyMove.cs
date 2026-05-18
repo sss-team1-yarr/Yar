@@ -42,6 +42,7 @@ namespace _03_Code.Enemy.Common.Component {
         public void KnockBack(int damageAmount) {
             if (_isKnockedBack || monster.IsDead) return;
 
+            SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Combo);
             monster.GetDamage(damageAmount);
             StartCoroutine(KnockBackRoutine());
         }

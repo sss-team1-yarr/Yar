@@ -36,15 +36,11 @@ namespace _03_Code.Player.Main {
         private bool _isDashing;
         private bool _isDashingCooltime;
         private float _moveInput;
-
-        //private TestDamageable[] testDam;
-
+        
         private Player _owner;
         private Rigidbody2D _rb;
-
-        private bool _rotationRight = true;
-
-
+        
+        public bool RotationRight { get; private set; } = true;
         public float MoveInput { get; private set; }
 
         private void FixedUpdate() {
@@ -52,8 +48,8 @@ namespace _03_Code.Player.Main {
             _rb.linearVelocityX = _moveInput * speed;
             ani.OnMoveAni(Mathf.Abs(_moveInput));
             if (!Mathf.Approximately(_moveInput, 0f)) {
-                _rotationRight = _moveInput > 0f;
-                _owner.transform.rotation = Quaternion.Euler(0f, _rotationRight ? 0f : 180f, 0f);
+                RotationRight = _moveInput > 0f;
+                _owner.transform.rotation = Quaternion.Euler(0f, RotationRight ? 0f : 180f, 0f);
             }
         }
 
@@ -110,7 +106,7 @@ namespace _03_Code.Player.Main {
             _isDashing = true;
             _isDashingCooltime = true;
             ani.OnDashAni(true);
-            var dashDirection = _rotationRight ? 2f : -2f;
+            var dashDirection = RotationRight ? 2f : -2f;
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
 
             yield return new WaitForSeconds(dashDuration);
