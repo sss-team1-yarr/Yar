@@ -53,7 +53,7 @@ namespace _03_Code.Player.Main {
         }
 
         private void HandleSkill1Input() {
-            hp.UpdateHp(explosion);
+            hp.Damage(explosion);
             vfxBoom.transform.position = transform.position;
             impulseSource.GenerateImpulseWithForce(1f);
             //for (var i = 0; i < testDam.Length; i++) testDam[i]?.largePush();

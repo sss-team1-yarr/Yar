@@ -21,7 +21,7 @@ namespace _03_Code.Player.Components {
             IsApproach = true;
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(direction * em.ApproachForce, ForceMode2D.Impulse);
-            GameManager.Instance.hpManager.UpdateHp(em.ApproachDamage);
+            HpManager.Instance.Damage(em.ApproachDamage);
 
             hitParticle.PlayHitEffect();
             hitVFX.Play();

@@ -29,7 +29,7 @@ namespace _03_Code.Enemy.Common.FlyEnemy {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            hp.UpdateHp(damage);
+            hp.Damage(damage);
         }
 
         public IEnumerator Hit() {

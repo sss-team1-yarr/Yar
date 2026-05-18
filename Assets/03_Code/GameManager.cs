@@ -10,9 +10,7 @@ namespace _03_Code {
         public Player.Main.Player player;
         public PlayerControl playerControl;
         public PlayerHit playerHit;
-        public HpManager hpManager;
         public ExpDropManager expDropManager;
-        public ExpManager expManager;
 
         private void Awake() {
             Instance = this;
@@ -22,9 +20,7 @@ namespace _03_Code {
             player = GameObject.FindWithTag("Player").GetComponent<Player.Main.Player>();
             playerControl = GameObject.FindWithTag("Player").GetComponentInChildren<PlayerControl>();
             playerHit = GameObject.FindWithTag("Player").GetComponent<PlayerHit>();
-            hpManager = GameObject.FindWithTag("Player").GetComponent<HpManager>();
             expDropManager = GameObject.Find("ExpDropManager").GetComponent<ExpDropManager>();
-            expManager = GameObject.FindWithTag("Player").GetComponentInChildren<ExpManager>();
         }
     }
 }

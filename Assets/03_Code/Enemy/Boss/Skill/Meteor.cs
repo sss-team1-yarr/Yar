@@ -1,4 +1,5 @@
 using System.Collections;
+using _03_Code.Player.Components;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Boss.Skill {
@@ -14,7 +15,9 @@ namespace _03_Code.Enemy.Boss.Skill {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Ground")) {
                 StartCoroutine(Crash());
-            } else if (other.CompareTag("Player")) { }
+            } else if (other.CompareTag("Player")) {
+                HpManager.Instance.Damage(10);
+            }
         }
 
         private IEnumerator Crash() {

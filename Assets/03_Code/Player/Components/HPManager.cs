@@ -8,13 +8,19 @@ namespace _03_Code.Player.Components {
         [SerializeField] private int maxHp = 100;
         
         private int _hp;
+        
+        public static HpManager Instance { get; private set; }
+
+        private void Awake() {
+            Instance = this;
+        }
 
         private void Start() {
             _hp = maxHp;
             hpBar.maxValue = maxHp/100f;
         }
 
-        public void UpdateHp(int damage) {
+        public void Damage(int damage) {
             if (_hp - damage <= 0) {
                 _hp = 0;
                 
@@ -22,6 +28,12 @@ namespace _03_Code.Player.Components {
             } else {
                 _hp -= damage;
             }
+            hpBar.value = (float)_hp / maxHp;
+        }
+
+        public void Heal(int heal) {
+            if(_hp + heal <= maxHp) return;
+            _hp += heal;
             hpBar.value = (float)_hp / maxHp;
         }
     }

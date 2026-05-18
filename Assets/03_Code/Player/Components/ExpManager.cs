@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace _03_Code.Player.Components {
@@ -7,6 +6,12 @@ namespace _03_Code.Player.Components {
         [SerializeField] private int expGauge;
         [SerializeField] private int expLevel = 1;
         [SerializeField] private Slider expBar;
+        
+        public static ExpManager Instance { get; private set; }
+
+        private void Awake() {
+            Instance = this;
+        }
 
         private void Start() {
             expBar.maxValue = expGauge/100f;
