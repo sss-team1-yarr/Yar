@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.SO.EnemySO
   name: Crab1
   scale: 1
+  animController: {fileID: 22100000, guid: e713501f871096c4e8cd333eb2fe759e, type: 2}
   health: 40
   speed: 5
   dropExp: 5

@@ -284,6 +284,7 @@ MonoBehaviour:
   coll: {fileID: 2385166045087897686}
   sHp: {fileID: 7144444413851053883}
   enemyAnim: {fileID: 5930410717183660399}
+  anim: {fileID: 8016141696168348814}
 --- !u!1 &5149257437468465635
 GameObject:
   m_ObjectHideFlags: 0

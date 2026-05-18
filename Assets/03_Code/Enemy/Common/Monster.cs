@@ -5,19 +5,21 @@ using UnityEngine;
 
 namespace _03_Code.Enemy.Common {
     public class Monster : MonoBehaviour {
-        [Header("EnemySO")] [SerializeField] private EnemySO enemySO;
-
+        [Header("EnemySO")] 
+        [SerializeField] private EnemySO enemySO;
+        
+        [Header("Components")] 
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private Collider2D coll;
-
-
-        [Header("Components")] [SerializeField]
-        private ShowHp sHp;
-
+        [SerializeField] private ShowHp sHp;
         [SerializeField] private EnemyAnimationControl enemyAnim;
+        [SerializeField] private Animator anim;
+        
+        private RuntimeAnimatorController _animController;
+        
         private int _dropExp;
         private int _enemyHp;
-
+        
         private float _scale;
 
         public float ApproachForce { get; private set; }
@@ -40,11 +42,13 @@ namespace _03_Code.Enemy.Common {
             KnockBackForce = enemySO.knockBackForce;
             KnockBackTime = enemySO.knockBackTime;
             _dropExp = enemySO.dropExp;
+            _animController = enemySO.animController;
         }
 
         private void Start() {
             transform.localScale = Vector3.one * _scale;
             UpdateHP(_enemyHp);
+            anim.runtimeAnimatorController = _animController;
         }
 
         private void Update() {
