@@ -82,9 +82,9 @@ namespace _03_Code.Items.Weapons {
 
                     if (result.Hit) impulseSource.GenerateImpulseWithForce(0.1f);
                 }
-            
+
             yield return new WaitForSeconds(_cooltime);
-            
+
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
                 35f);
         }

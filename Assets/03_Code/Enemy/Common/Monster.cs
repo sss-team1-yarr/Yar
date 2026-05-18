@@ -5,21 +5,21 @@ using UnityEngine;
 
 namespace _03_Code.Enemy.Common {
     public class Monster : MonoBehaviour {
-        [Header("EnemySO")] 
-        [SerializeField] private EnemySO enemySO;
-        
-        [Header("Components")] 
-        [SerializeField] private Rigidbody2D rb;
+        [Header("EnemySO")] [SerializeField] private EnemySO enemySO;
+
+        [Header("Components")] [SerializeField]
+        private Rigidbody2D rb;
+
         [SerializeField] private Collider2D coll;
         [SerializeField] private ShowHp sHp;
         [SerializeField] private EnemyAnimationControl enemyAnim;
         [SerializeField] private Animator anim;
-        
+
         private RuntimeAnimatorController _animController;
-        
+
         private int _dropExp;
         private int _enemyHp;
-        
+
         private float _scale;
 
         public float ApproachForce { get; private set; }

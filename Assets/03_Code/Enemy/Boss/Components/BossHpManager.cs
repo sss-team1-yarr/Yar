@@ -24,12 +24,10 @@ namespace _03_Code.Enemy.Boss.Components {
         public void Damage(int damage) {
             if (!owner.IsPhaseTwo) {
                 PhaseOneHealth -= damage;
-                hpBar.value = (float)PhaseOneHealth/bossHealth;
-            }
-            else {
+                hpBar.value = (float)PhaseOneHealth / bossHealth;
+            } else {
                 PhaseTwoHealth -= damage;
-                hpBar.value = (float)PhaseTwoHealth/bossHealth;
-                
+                hpBar.value = (float)PhaseTwoHealth / bossHealth;
             }
 
             if (PhaseOneHealth <= 0) {
