@@ -1,6 +1,7 @@
 using System.Collections;
 using _03_Code.Enemy.Interface;
 using _03_Code.Player.Main;
+using DG.Tweening;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -39,6 +40,8 @@ namespace _03_Code.Items.Weapons {
         private bool _isCharge = false;
         private bool _isFullCharge = false;
         private float _chargingTime = 0;
+
+        private bool _isDownSword = false;
         
 
 
@@ -137,8 +140,9 @@ namespace _03_Code.Items.Weapons {
             if (charge < needChargeTime) yield break;
             
             _lastAttackTime = Time.time;
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
-                -35f);
+            _isDownSword = true;
+
+            transform.DORotate(new Vector3(0,0,-35),.2f);
 
             var center = transform.position + AttackOffset  /*GameManager.Instance.*/;
             targetFilter.useTriggers = true;
@@ -156,9 +160,23 @@ namespace _03_Code.Items.Weapons {
             
             yield return new WaitForSeconds(_cooltime);
             
-            
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
-                35f);
+            transform.DORotate(new Vector3(0,0,35),0.8f);
+            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,35f);
         }
+
+        // private IEnumerator DownSword()
+        // {
+        //     for (float i = 0; i < 1f; i += Time.time)
+        //     {
+        //         float radius = Mathf.Lerp(35, -35, i);
+        //         transform.rotation = Quaternion.Euler(
+        //             transform.rotation.eulerAngles.x,
+        //             transform.rotation.eulerAngles.y,
+        //             radius);
+        //         
+        //         yield return new WaitForSeconds(0.01f);
+        //     }
+        // }
+        
     }
 }
