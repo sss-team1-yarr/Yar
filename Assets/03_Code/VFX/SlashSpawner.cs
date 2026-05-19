@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using _03_Code;
 using _03_Code.Items.Weapons;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class SlashSpawner : MonoBehaviour
