@@ -1,3 +1,4 @@
+using _03_Code.Manager;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Boss.Components {

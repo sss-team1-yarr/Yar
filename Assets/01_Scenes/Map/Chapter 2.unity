@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: baseScale
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5086461693927953011, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+      propertyPath: needChargeTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6619253271925389892, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -15954,6 +15958,10 @@ PrefabInstance:
       propertyPath: expManager
       value: 
       objectReference: {fileID: 112042070}
+    - target: {fileID: 8054964075988839218, guid: 9964e0c05e0b8a445b8d4b3b050e0720, type: 3}
+      propertyPath: dropManager
+      value: 
+      objectReference: {fileID: 577513546}
     - target: {fileID: 8054964075988839218, guid: 9964e0c05e0b8a445b8d4b3b050e0720, type: 3}
       propertyPath: playerControl
       value: 

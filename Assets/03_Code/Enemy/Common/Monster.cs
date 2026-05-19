@@ -1,5 +1,6 @@
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
+using _03_Code.Manager;
 using _03_Code.SO;
 using UnityEngine;
 

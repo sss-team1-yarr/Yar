@@ -1,6 +1,7 @@
 using System.Collections;
 using _03_Code;
 using _03_Code.Items.Weapons;
+using _03_Code.Manager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -54,7 +55,7 @@ public class SlashSpawner : MonoBehaviour
 
             //기억이 안남
             case SlashStyle.Combo:
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     SpawnSlash(baseAngle + Random.Range(-25f, 25f), Random.Range(0.85f, 1.15f));
                     yield return new WaitForSeconds(0.08f);

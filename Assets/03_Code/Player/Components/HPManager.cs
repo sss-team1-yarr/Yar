@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _03_Code.Manager;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace _03_Code.Player.Components {

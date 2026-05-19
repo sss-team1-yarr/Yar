@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _03_Code.Manager;
+using UnityEngine;
 
 namespace _03_Code.DropItem.HealItem {
     public class HealItemDrop : MonoBehaviour {
