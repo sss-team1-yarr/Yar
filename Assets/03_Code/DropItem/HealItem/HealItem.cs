@@ -1,4 +1,5 @@
 ﻿using System;
+using _03_Code.Player.Components;
 using UnityEngine;
 
 namespace _03_Code.DropItem.HealItem {
@@ -17,7 +18,7 @@ namespace _03_Code.DropItem.HealItem {
         }
 
         private void OnUsed() {
-            GameManager.Instance.hpManager.UpdateHp(-5);
+            HpManager.Instance.Heal(5);
             Destroy(gameObject);
         }
     }

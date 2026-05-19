@@ -11,7 +11,7 @@ namespace _03_Code.Exp
         [SerializeField] private float maxOffset;
         [SerializeField] private float minOffset;
 
-        public int expDropCount;        
+        public int expDropCount;
 
         public event Action<GameObject> OnItemDrop;
 
