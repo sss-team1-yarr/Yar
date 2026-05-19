@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using _03_Code.Enemy.Common.Animation;
 using _03_Code.SO;
@@ -6,34 +5,37 @@ using UnityEngine;
 
 namespace _03_Code.Enemy.Common {
     public class Monster : MonoBehaviour {
-        [Header("EnemySO")] 
-        [SerializeField] private EnemySO enemySO;
-        [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private Collider2D coll;
-        
+        [Header("EnemySO")] [SerializeField] private EnemySO enemySO;
 
-        [Header("Components")]
+        [Header("Components")] [SerializeField]
+        private Rigidbody2D rb;
+
+        [SerializeField] private Collider2D coll;
         [SerializeField] private ShowHp sHp;
         [SerializeField] private EnemyAnimationControl enemyAnim;
-        
+        [SerializeField] private Animator anim;
+
+        private RuntimeAnimatorController _animController;
+
+        private int _dropExp;
+        private int _health;
+
+        private float _scale;
+
         public float ApproachForce { get; private set; }
         public float ApproachTime { get; private set; }
         public int ApproachDamage { get; private set; }
         public float Speed { get; private set; }
-        public float DetectRange{ get; private set; }
-        public float KnockBackForce{ get; private set; }
-        public float KnockBackTime{ get; private set; }
-        public bool IsDead { get; private set; } = false;
-        
-        private float _scale;
-        private int _enemyHp;
-        private int _dropExp;
+        public float DetectRange { get; private set; }
+        public float KnockBackForce { get; private set; }
+        public float KnockBackTime { get; private set; }
+        public bool IsDead { get; private set; }
+        public int MaxHP { get; private set; }
 
-        private void Awake()
-        {
+        private void Awake() {
             _scale = enemySO.scale;
             Speed = enemySO.speed;
-            _enemyHp = enemySO.health;
+            MaxHP = enemySO.health;
             ApproachForce = enemySO.approachForce;
             ApproachTime = enemySO.approachTime;
             ApproachDamage = enemySO.approachDamage;
@@ -41,12 +43,14 @@ namespace _03_Code.Enemy.Common {
             KnockBackForce = enemySO.knockBackForce;
             KnockBackTime = enemySO.knockBackTime;
             _dropExp = enemySO.dropExp;
+            _animController = enemySO.animController;
         }
 
-        private void Start()
-        {
+        private void Start() {
+            _health = MaxHP;
             transform.localScale = Vector3.one * _scale;
-            UpdateHP(_enemyHp);
+            UpdateHP(_health);
+            anim.runtimeAnimatorController = _animController;
         }
 
         private void Update() {
@@ -54,29 +58,29 @@ namespace _03_Code.Enemy.Common {
                 StartCoroutine(Dead());
         }
 
-        private IEnumerator Dead()
-        {
+        private IEnumerator Dead() {
             coll.isTrigger = true;
             rb.linearVelocity = Vector2.zero;
             rb.gravityScale = 0f;
-            
+
             enemyAnim.OnDeadAni(true);
             yield return new WaitForSeconds(2f);
-            GameManager.Instance.dropManager.DropItem(gameObject, enemySO.dropExp);
+            GameManager.Instance.expDropManager.DropExp(gameObject, _dropExp);
             gameObject.SetActive(false);
         }
 
         public void GetDamage(int damage) {
-            _enemyHp -=  damage;
-            UpdateHP(_enemyHp);
+            _health -= damage;
+            UpdateHP(_health);
         }
 
         public void UpdateHP(int hp) {
-            sHp.UpdateHp(hp);
-            if (_enemyHp <= 0) {
-                _enemyHp = 0;
+            if (_health <= 0) {
+                _health = 0;
                 IsDead = true;
             }
+
+            sHp.UpdateHp(hp);
         }
     }
 }

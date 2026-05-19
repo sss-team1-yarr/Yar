@@ -1,13 +1,9 @@
-﻿using _03_Code.Player.Components;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace _03_Code.Enemy.Common.Animation
-{
-    public class EnemyAnimationControl : MonoBehaviour
-    {
-        [SerializeField] private EnemyRenderer enemyRenderer;
-        
+namespace _03_Code.Enemy.Common.Animation {
+    public class EnemyAnimationControl : MonoBehaviour {
         private static readonly int IsDeadHash = Animator.StringToHash("IsDead");
+        [SerializeField] private EnemyRenderer enemyRenderer;
 
         public void OnDeadAni(bool isDead) {
             enemyRenderer.SetBoolValue(IsDeadHash, isDead);

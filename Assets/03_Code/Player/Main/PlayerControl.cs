@@ -1,51 +1,66 @@
 using System.Collections;
-using _03_Code.Items;
-using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
 using _03_Code.Player.Input;
 using _03_Code.Player.Interface;
 using UnityEngine;
 
 //hyunwoo don't touch this script
-namespace _03_Code.Player.Main
-{
-    public class PlayerControl : MonoBehaviour, IPlayerModule
-    {
-        [Header("Components")]
-        [SerializeField] private AnimationControl ani;
+namespace _03_Code.Player.Main {
+    public class PlayerControl : MonoBehaviour, IPlayerModule {
+        [Header("Components")] [SerializeField]
+        private AnimationControl ani;
+
         [SerializeField] private ContactChecker contactChecker;
         [SerializeField] private ParticleSystem dashVfx;
 
-        [Header("Settings/Movement")] 
-        [SerializeField] private float speed = 8f;
+        [Header("Settings/Movement")] [SerializeField]
+        private float speed = 8f;
+
         [SerializeField] private float dashMultiplier = 1.2f;
         [SerializeField] private float jumpForce;
 
-        [field : Header("Settings/Damage")]
-        [field : SerializeField] public int Damage { get; private set; } = 5; 
-        [field : SerializeField] public int UpperDamage { get; private set; } = 8;
-        [field : SerializeField] public float AttackCoolTime { get; private set; } = 0.2f;
-        [field : SerializeField] public float AttackRadius { get; private set; } = 1.5f;
-        
-        [Header("Settings/Dash")]
-        [SerializeField] private float dashForce = 20f;
+        [field: Header("Settings/Damage")]
+        [field: SerializeField]
+        public int Damage { get; private set; } = 5;
+
+        [field: SerializeField] public int UpperDamage { get; private set; } = 8;
+        [field: SerializeField] public float AttackCoolTime { get; private set; } = 0.2f;
+        [field: SerializeField] public float AttackRadius { get; private set; } = 1.5f;
+
+        [Header("Settings/Dash")] [SerializeField]
+        private float dashForce = 20f;
+
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float dashCoolTime = 1f;
+        private InputReceiver _input;
+        private bool _isDashing;
+        private bool _isDashingCooltime;
+        private float _moveInput;
         
-        //private TestDamageable[] testDam;
-
         private Player _owner;
         private Rigidbody2D _rb;
-        private InputReceiver _input;
-        private float _moveInput;
-
-
+        
+        public bool RotationRight { get; private set; } = true;
         public float MoveInput { get; private set; }
-        
-        private bool _rotationRight = true;
-        private bool _isDashing; 
-        private bool _isDashingCooltime;
-        
+
+        private void FixedUpdate() {
+            if (_isDashing || GameManager.Instance.playerHit.IsApproach) return;
+            _rb.linearVelocityX = _moveInput * speed;
+            ani.OnMoveAni(Mathf.Abs(_moveInput));
+            if (!Mathf.Approximately(_moveInput, 0f)) {
+                RotationRight = _moveInput > 0f;
+                _owner.transform.rotation = Quaternion.Euler(0f, RotationRight ? 0f : 180f, 0f);
+            }
+        }
+
+        private void OnDestroy() {
+            _input.OnMoveInput -= HandleMoveInput;
+            _input.OnRunInput -= HandleRun;
+            _input.OnJumpInput -= HandleJump;
+            _input.OnDashInput -= HandleDashInput;
+            _input.OnGuardInput -= HandleGuard;
+        }
+
         public void Initialize(Player owner) {
             _owner = owner;
             _rb = owner.GetComponent<Rigidbody2D>();
@@ -57,33 +72,15 @@ namespace _03_Code.Player.Main
             _input.OnDashInput += HandleDashInput;
             _input.OnGuardInput += HandleGuard;
         }
-        
-        private void FixedUpdate() {
-            if(_isDashing || GameManager.Instance.playerHit.IsApproach) return;
-            _rb.linearVelocityX = _moveInput * speed;
-            ani.OnMoveAni(Mathf.Abs(_moveInput));
-            if (!Mathf.Approximately(_moveInput, 0f)) {
-                _rotationRight = _moveInput > 0f;
-                _owner.transform.rotation = Quaternion.Euler(0f, _rotationRight ? 0f : 180f, 0f);
-            }
-        }
-        private void OnDestroy() {
-            _input.OnMoveInput -= HandleMoveInput;
-            _input.OnRunInput -= HandleRun;
-            _input.OnJumpInput -= HandleJump;
-            _input.OnDashInput -= HandleDashInput;
-            _input.OnGuardInput -= HandleGuard;
-        }
 
         private void HandleGuard() {
             //what is this?
             Destroy(gameObject);
             Time.timeScale = 0.2f;
         }
-        
+
         private void HandleMoveInput(float value) {
             _moveInput = value;
-            
         }
 
 
@@ -93,13 +90,12 @@ namespace _03_Code.Player.Main
 
         private void HandleJump() {
             const float multiplier = 3f;
-            if (contactChecker.IsGrounded)
-            {
+            if (contactChecker.IsGrounded) {
                 _rb.linearVelocity = Vector2.zero;
                 _rb.AddForceY(jumpForce * multiplier, ForceMode2D.Impulse);
             }
         }
-        
+
         private void HandleDashInput() {
             if (_isDashingCooltime) return;
             StartCoroutine(Dash());
@@ -110,20 +106,19 @@ namespace _03_Code.Player.Main
             _isDashing = true;
             _isDashingCooltime = true;
             ani.OnDashAni(true);
-            var dashDirection = _rotationRight ? 2f : -2f;
+            var dashDirection = RotationRight ? 2f : -2f;
             _rb.linearVelocity = new Vector2(dashDirection * dashForce, 0f);
 
             yield return new WaitForSeconds(dashDuration);
-            
+
             ani.OnDashAni(false);
             _rb.linearVelocity = Vector2.zero;
             _isDashing = false;
-            
-            float cooltime = dashCoolTime - dashDuration > 0 ? dashCoolTime - dashDuration : 0f;
+
+            var cooltime = dashCoolTime - dashDuration > 0 ? dashCoolTime - dashDuration : 0f;
             yield return new WaitForSeconds(cooltime);
-            
+
             _isDashingCooltime = false;
         }
-
     }
 }

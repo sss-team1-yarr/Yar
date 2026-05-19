@@ -5118,9 +5118,9 @@ Transform:
   m_GameObject: {fileID: 2840208616966416314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.38, y: 0.57, z: 0}
-  m_LocalScale: {x: 0.74845326, y: 0.74845326, z: 0.74845326}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.476, y: 0.01, z: 0}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2261181947875722903}
   - {fileID: 5133061477578163494}
@@ -5175,7 +5175,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1210442683806738584, guid: 7ea3f915db92d71419591869b2625e48, type: 3}
+  m_Sprite: {fileID: 712035800519618848, guid: 560bb753db10dd642806536820a15f99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5184,7 +5184,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &5086461693927953011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5197,13 +5197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddcc26dfda306e43b61d371360ebc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
+  AttackOffset: {x: 0.3, y: 0.3, z: 0}
   owner: {fileID: 6382225862709807250}
   attack: {fileID: 7699891401137540108}
   handTrm: {fileID: 5743674621062685267}
   vfx: {fileID: 5697683654861823757}
   impulseSource: {fileID: 8488906301601473172}
-  cooldown: 0.2
-  damageRadius: 1.92
   knockbackForce: 2.5
   targetFilter:
     useTriggers: 0
@@ -5335,9 +5334,12 @@ MonoBehaviour:
   contactChecker: {fileID: 5144699074489930235}
   dashVfx: {fileID: 6305737457094758127}
   speed: 8
+  dashMultiplier: 1.2
   jumpForce: 6
   <Damage>k__BackingField: 5
   <UpperDamage>k__BackingField: 8
+  <AttackCoolTime>k__BackingField: 0.5
+  <AttackRadius>k__BackingField: 1.5
   dashForce: 20
   dashDuration: 0.2
   dashCoolTime: 1
@@ -5426,12 +5428,12 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1459458051413904079, guid: 3accdbde4e56f5c4e9cfa311b8cef55f, type: 3}
+  m_Sprite: {fileID: 3447589828770737623, guid: f35102dc8d2fe5a469494aeac0b41294, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.15625, y: 1.375}
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5576,7 +5578,6 @@ GameObject:
   - component: {fileID: 9012321129858126073}
   - component: {fileID: 7025014497530154795}
   - component: {fileID: 1958753315379478515}
-  - component: {fileID: 2801985067318901228}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5630,7 +5631,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6382225862709807250
 MonoBehaviour:
@@ -5710,8 +5711,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.1, y: -0.31}
-  m_Size: {x: 0.8, y: 2}
+  m_Offset: {x: -0.039154053, y: 0.13448453}
+  m_Size: {x: 1.3061218, y: 2.370916}
   m_Direction: 0
 --- !u!212 &1958753315379478515
 SpriteRenderer:
@@ -5772,28 +5773,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!95 &2801985067318901228
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6619253271925389892}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6debca7b165e1ec4e8f7fbc0006c08e1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7222345347600387183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5841,8 +5820,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 2816
-  size: {x: 0.6, y: 0.28}
-  offset: {x: -0.1, y: -1.33}
+  size: {x: 0.45, y: 0.12}
+  offset: {x: -0.05, y: -1.06}
   rb: {fileID: 4432011487506813273}
 --- !u!1 &8841765753654831153
 GameObject:

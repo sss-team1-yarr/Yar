@@ -127,14 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1225291928310296709, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
+      propertyPath: expBar
+      value: 
+      objectReference: {fileID: 1413158916}
     - target: {fileID: 6619253271925389892, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9012321129858126073, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
-      propertyPath: text
+      propertyPath: hpBar
       value: 
-      objectReference: {fileID: 1413158916}
+      objectReference: {fileID: 1413158917}
     - target: {fileID: 9137508805244514260, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -16155,15 +16159,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1413158916 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3955204222845253555, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7376067957827227365, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
   m_PrefabInstance: {fileID: 1413158914}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1413158917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 922584774709434564, guid: 3e0012880fa1c1347a8b690e7f9a9172, type: 3}
+  m_PrefabInstance: {fileID: 1413158914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &1824280073
 PrefabInstance:
   m_ObjectHideFlags: 0

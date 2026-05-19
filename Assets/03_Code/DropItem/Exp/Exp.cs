@@ -1,3 +1,4 @@
+using _03_Code.Player.Components;
 using UnityEngine;
 
 namespace _03_Code.Exp {
@@ -23,7 +24,7 @@ namespace _03_Code.Exp {
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
-                GameManager.Instance.expManager.ExpAdd();
+                ExpManager.Instance.ExpAdd();
                 Destroy(gameObject);
             }
         }

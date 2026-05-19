@@ -1,9 +1,7 @@
 using UnityEngine;
 
-namespace _03_Code.Enemy.Common.Animation
-{
-    public class EnemyRenderer : MonoBehaviour
-    {
+namespace _03_Code.Enemy.Common.Animation {
+    public class EnemyRenderer : MonoBehaviour {
         [SerializeField] private Animator animator;
 
         public void SetFloatValue(int hash, float value) {

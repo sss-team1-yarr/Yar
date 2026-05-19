@@ -1,4 +1,3 @@
-using _03_Code.Handler;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,19 +8,17 @@ namespace _03_Code.UI.Title {
         }
 
         private void Update() {
-            if (gameObject.activeSelf) {
-                if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+            if (gameObject.activeSelf)
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)
                     gameObject.SetActive(false);
-                }
-            }
         }
-        
-        public void BackToMenu() {
-            gameObject.SetActive(false);
-        }
-        
+
         private void OnEnable() {
             Time.timeScale = 0f;
+        }
+
+        public void BackToMenu() {
+            gameObject.SetActive(false);
         }
     }
 }
