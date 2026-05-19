@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5518929534550342065}
   - component: {fileID: 4589394517740959171}
   m_Layer: 0
-  m_Name: ExpDropManager
+  m_Name: DropManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

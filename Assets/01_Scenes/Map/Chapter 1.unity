@@ -11434,7 +11434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8439944723450156981, guid: 17f453ffac696674896ee78c5cf1a46c, type: 3}
       propertyPath: m_Name
-      value: ExpDropManager
+      value: DropManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
