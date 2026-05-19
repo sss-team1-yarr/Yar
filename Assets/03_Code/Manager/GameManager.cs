@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _03_Code {
     public class GameManager : MonoBehaviour {
-        public static GameManager Instance;
+        public static GameManager Instance { get; private set; }
 
         public Player.Main.Player player;
         public PlayerControl playerControl;

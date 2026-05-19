@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Rendering;
-using Random = UnityEngine.Random;
 
 namespace _03_Code.Exp
 {

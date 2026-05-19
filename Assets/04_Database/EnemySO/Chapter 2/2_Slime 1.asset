@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Slime_1
   scale: 2.5
   animController: {fileID: 22100000, guid: aeb4574c967cb944a91b046ea63b9164, type: 2}
-  health: 200
+  health: 1
   speed: 2
-  dropExp: 0
+  dropExp: 6
   approachForce: 20
   approachTime: 0.5
   approachDamage: 10
