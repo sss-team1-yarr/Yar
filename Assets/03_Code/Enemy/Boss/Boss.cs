@@ -38,6 +38,7 @@ namespace _03_Code.Enemy.Boss {
         public void StartPhaseTwo() {
             IsPhaseTwo = true;
             StartCoroutine(PhaseTwoStarted());
+            Debug.Log("Starting PhaseTwo");
         }
 
         public void Last() {
@@ -46,7 +47,6 @@ namespace _03_Code.Enemy.Boss {
         }
 
         private IEnumerator PhaseTwoStarted() {
-            Debug.Log("Starting PhaseTwo");
             yield return new WaitForSeconds(3f);
         }
 

@@ -8,7 +8,6 @@ namespace _03_Code.Enemy.Boss.Components {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private SpriteRenderer sr;
         private float _detectRange;
-        private bool _isKnockedBack;
 
         private float _speed;
 
@@ -20,7 +19,7 @@ namespace _03_Code.Enemy.Boss.Components {
         }
 
         private void FixedUpdate() {
-            if (_isKnockedBack || monster.Death) return;
+            if (monster.Death) return;
 
             var target = Physics2D.OverlapCircle(rb.position, _detectRange, LayerMask.GetMask("Player"));
             if (!target) {
