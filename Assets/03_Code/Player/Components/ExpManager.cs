@@ -14,7 +14,7 @@ namespace _03_Code.Player.Components {
         }
 
         private void Start() {
-            expBar.maxValue = expGauge / 100f;
+            expBar.value = expGauge / 100f;
         }
 
         public void ExpAdd() {

@@ -21,10 +21,13 @@ namespace _03_Code.Player.Main {
         [SerializeField] private float jumpForce;
 
         [field: Header("Settings/Damage")]
-        [field: SerializeField] public int Damage { get; private set; } = 5;
+        [field: SerializeField]
+        public int Damage { get; private set; } = 5;
+
         [field: SerializeField] public int UpperDamage { get; private set; } = 8;
-        [field: SerializeField] public float AttackCoolTime { get; private set; } = 0.2f;
+        [field: SerializeField] public float AttackCoolTime { get; private set; } = 0.6f;
         [field: SerializeField] public float AttackRadius { get; private set; } = 1.5f;
+        [field: SerializeField] public float ChargingAttackCoolTime { get; private set; } = 0.9f;
         [field: SerializeField] public float ChargingAttackRadius { get; private set; } = 4.5f;
 
         [Header("Settings/Dash")] [SerializeField]
@@ -36,10 +39,10 @@ namespace _03_Code.Player.Main {
         private bool _isDashing;
         private bool _isDashingCooltime;
         private float _moveInput;
-        
+
         private Player _owner;
         private Rigidbody2D _rb;
-        
+
         public bool RotationRight { get; private set; } = true;
         public float MoveInput { get; private set; }
 

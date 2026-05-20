@@ -5,9 +5,9 @@ using UnityEngine;
 namespace _03_Code.Enemy.Boss.Skill {
     public class HandAttack : MonoBehaviour {
         [SerializeField] private Rigidbody2D rb;
-        
 
-        private readonly WaitForSeconds _skillSeconds = new WaitForSeconds(2f);
+
+        private readonly WaitForSeconds _skillSeconds = new(2f);
 
         private void OnEnable() {
             StartCoroutine(HandLifeCoroutine());

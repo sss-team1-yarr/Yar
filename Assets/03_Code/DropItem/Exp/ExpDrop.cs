@@ -1,5 +1,4 @@
-﻿using System;
-using _03_Code.Manager;
+﻿using _03_Code.Manager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,7 +7,7 @@ namespace _03_Code.Exp {
         [SerializeField] private Exp expPrefab;
         [SerializeField] private float minOffset = -1;
         [SerializeField] private float maxOffset = 1;
-        
+
         private int _expCount;
 
         private void Start() {
@@ -21,7 +20,7 @@ namespace _03_Code.Exp {
 
         public void DropExp(GameObject target) {
             _expCount = GameManager.Instance.dropManager.expDropCount;
-            for (int i = 0; i < _expCount; i++) { 
+            for (var i = 0; i < _expCount; i++) {
                 var exp = Instantiate(expPrefab, target.transform.position, Quaternion.identity);
                 SetPosition(exp);
                 exp.gameObject.SetActive(true);
@@ -29,8 +28,8 @@ namespace _03_Code.Exp {
         }
 
         private void SetPosition(Exp exp) {
-            float x = exp.transform.position.x + Random.Range(minOffset, maxOffset);
-            float y = exp.transform.position.y + Random.Range(minOffset, maxOffset);
+            var x = exp.transform.position.x + Random.Range(minOffset, maxOffset);
+            var y = exp.transform.position.y + Random.Range(minOffset, maxOffset);
             exp.transform.position = new Vector3(x, y, exp.transform.position.z);
         }
     }

@@ -34,8 +34,10 @@ namespace _03_Code.Items.Weapons {
 
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
         private float _cooltime;
+        private float _chargingCooltime;
 
         private int _damageAmount;
+        private int _chargeDamageAmount;
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
@@ -50,19 +52,13 @@ namespace _03_Code.Items.Weapons {
         private ParticleSystem.ShapeModule _chargeCircleShape;
         private bool _wasHoldingKey;
 
-        private void Awake()
-        {
-            _chargeCircleShape = chargingCircleVfx.shape;
-        }
-        
         public bool CanUse => Time.time - _lastAttackTime >= _cooltime;
 
-        private void Start() {
-            _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
-            _radius = GameManager.Instance.playerControl.AttackRadius;
-            _chargingRadius = GameManager.Instance.playerControl.ChargingAttackRadius;
+        private void Start()
+        {
+            Init();
         }
-
+        
         private void Update() {
             Charging();
             DamageAmountChanged();
@@ -79,13 +75,24 @@ namespace _03_Code.Items.Weapons {
             if (context.Input == 0) _isHoldingKey = context.Pressed;
         }
 
+        private void Init()
+        {
+            _chargeCircleShape = chargingCircleVfx.shape;
+            _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
+            _radius = GameManager.Instance.playerControl.AttackRadius;
+            _chargingCooltime = GameManager.Instance.playerControl.ChargingAttackCoolTime;
+            _chargingRadius = GameManager.Instance.playerControl.ChargingAttackRadius;
+        }
+        
         private void DamageAmountChanged() {
             if (!attack.IsFFF) {
                 _damageAmount = GameManager.Instance.playerControl.Damage;
+                _chargeDamageAmount = GameManager.Instance.playerControl.UpperDamage;
                 return;
             }
 
-            _damageAmount = GameManager.Instance.playerControl.UpperDamage;
+            _damageAmount = Mathf.FloorToInt(GameManager.Instance.playerControl.UpperDamage * 1.5f);
+            _chargeDamageAmount = Mathf.FloorToInt(GameManager.Instance.playerControl.UpperDamage * 1.5f);
         }
         
         private void Charging()
@@ -130,12 +137,8 @@ namespace _03_Code.Items.Weapons {
                 _isCharge = false;
 
                 chargingCircleVfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-
-
-                if (_isFullCharge)
-                    StartCoroutine(ChargingAttack());
-                else
-                    StartCoroutine(NormalAttack());
+                
+                StartCoroutine(Attack(_isFullCharge));
                 
                 _chargingTime = 0f;
                 _isFullCharge = false;
@@ -144,87 +147,41 @@ namespace _03_Code.Items.Weapons {
             _wasHoldingKey = _isHoldingKey;
         }
 
-        private IEnumerator NormalAttack()
-        {
-            if (_isAttacking) yield break; 
-            
-            _lastAttackTime = Time.time;
-
-            transform.DOBlendableLocalRotateBy(new Vector3(0,0,-70),.1f).SetEase(Ease.OutExpo).OnComplete(() => 
-                transform.DOBlendableLocalRotateBy(new Vector3(0,0,70),.4f).SetEase(Ease.InQuad)
-            );
-
-            float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
-            var center = transform.position + AttackOffset * dir;
-            targetFilter.useTriggers = true;
-            var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
-
-            slashSpawner.BaseScale = _radius;
-            
-            if (cnt == 0)
-                SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
-
-            for (var i = 0; i < cnt; i++)
-                if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    var result = damageable.ApplyDamage(_damageAmount);
-
-                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.02f);
-                }
-            
-            yield return new WaitForSeconds(_cooltime + 0.1f);
-            
-            _isAttacking = false;
-
-        }
-        
-        private IEnumerator ChargingAttack()
+        private IEnumerator Attack(bool fullCharge)
         {
             if (_isAttacking) yield break; 
             
             _isAttacking = true;
             _lastAttackTime = Time.time;
 
-            transform.DOBlendableLocalRotateBy(new Vector3(0,0,-70),.2f).SetEase(Ease.OutExpo).OnComplete(() => 
-                    transform.DOBlendableLocalRotateBy(new Vector3(0,0,70),.6f).SetEase(Ease.InQuad)
-                );
+            transform.DOBlendableLocalRotateBy(new Vector3(0,0,-70),fullCharge? .2f : .1f).SetEase(Ease.OutExpo).OnComplete(() => 
+                transform.DOBlendableLocalRotateBy(new Vector3(0,0,70),fullCharge? .6f : .4f).SetEase(Ease.InQuad)
+            );
 
             float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
-            var cnt = Physics2D.OverlapCircle(center, _chargingRadius, targetFilter, _hitBuffer);
+            var cnt = Physics2D.OverlapCircle(center, fullCharge? _chargingRadius : _radius, targetFilter, _hitBuffer);
 
-            slashSpawner.BaseScale = _chargingRadius;
+            slashSpawner.BaseScale = fullCharge? _chargingRadius : _radius;
             
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
             for (var i = 0; i < cnt; i++)
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    var result = damageable.ApplyDamage(_damageAmount);
+                    var result = damageable.ApplyDamage(_chargeDamageAmount);
 
-                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.1f);
+                    if (result.Hit)
+                    {
+                        impulseSource.GenerateImpulseWithForce(0.02f);
+                        SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Combo);
+                    }
                 }
             
-            yield return new WaitForSeconds(0.9f);
-            
-            sword.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
+            yield return new WaitForSeconds(fullCharge? _chargingCooltime : _cooltime);
+            sword.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);  
             _isAttacking = false;
-            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,35f);
         }
-
-        // private IEnumerator DownSword()
-        // {
-        //     for (float i = 0; i < 1f; i += Time.time)
-        //     {
-        //         float radius = Mathf.Lerp(35, -35, i);
-        //         transform.rotation = Quaternion.Euler(
-        //             transform.rotation.eulerAngles.x,
-        //             transform.rotation.eulerAngles.y,
-        //             radius);
-        //         
-        //         yield return new WaitForSeconds(0.01f);
-        //     }
-        // }
-        
     }
 }

@@ -4,7 +4,6 @@ using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
 using _03_Code.Player.Input;
 using _03_Code.Player.Interface;
-using Unity.Cinemachine;
 using UnityEngine;
 
 namespace _03_Code.Player.Main {
@@ -15,9 +14,8 @@ namespace _03_Code.Player.Main {
         [SerializeField] private HpManager hp;
         [field: SerializeField] public Weapon HoldingItem { get; private set; }
 
-        [Header("Settings")] 
+        [Header("Settings")] [SerializeField] private float skill3ActiveTime;
 
-        [SerializeField] private float skill3ActiveTime;
         private InputReceiver _input;
 
         private Player _owner;

@@ -1,10 +1,8 @@
 using System;
 using UnityEngine;
 
-namespace _03_Code.Exp
-{
-    public class DropManager : MonoBehaviour
-    {
+namespace _03_Code.Exp {
+    public class DropManager : MonoBehaviour {
         [SerializeField] private int expCount;
         [SerializeField] private float maxOffset;
         [SerializeField] private float minOffset;
