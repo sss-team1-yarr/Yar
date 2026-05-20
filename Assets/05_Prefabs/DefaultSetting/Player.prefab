@@ -5235,6 +5235,7 @@ MonoBehaviour:
   attack: {fileID: 7699891401137540108}
   handTrm: {fileID: 5743674621062685267}
   slashSpawner: {fileID: 3541849886648168151}
+  sword: {fileID: 2840208616966416314}
   attackVfx: {fileID: 5697683654861823757}
   chargingVfx: {fileID: 4685870226483194646}
   chargingCircleVfx: {fileID: 4449860021124063037}

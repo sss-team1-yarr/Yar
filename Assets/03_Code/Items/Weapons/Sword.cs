@@ -16,6 +16,7 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private Attacks attack;
         [SerializeField] private Transform handTrm;
         [SerializeField] private SlashSpawner slashSpawner;
+        [SerializeField] private GameObject sword;
 
         [Header("VFX")] 
         [SerializeField] private ParticleSystem attackVfx;
@@ -118,6 +119,8 @@ namespace _03_Code.Items.Weapons {
 
                     chargingCircleVfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                     chargingCompleteVfx.Play();
+
+                    sword.transform.localScale = new Vector3(0.2f, 0.14f, 0.14f);
                 }
             }
 
@@ -169,6 +172,7 @@ namespace _03_Code.Items.Weapons {
                 }
             
             yield return new WaitForSeconds(_cooltime + 0.1f);
+            
             _isAttacking = false;
 
         }
@@ -202,6 +206,8 @@ namespace _03_Code.Items.Weapons {
                 }
             
             yield return new WaitForSeconds(0.9f);
+            
+            sword.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
             _isAttacking = false;
             //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,35f);
         }
