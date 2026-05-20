@@ -131,14 +131,6 @@ PrefabInstance:
       propertyPath: expBar
       value: 
       objectReference: {fileID: 1413158916}
-    - target: {fileID: 3541849886648168151, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
-      propertyPath: baseScale
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5086461693927953011, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
-      propertyPath: needChargeTime
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6619253271925389892, guid: 849584b796b3aea4f9989372573cb8e7, type: 3}
       propertyPath: m_Name
       value: Player

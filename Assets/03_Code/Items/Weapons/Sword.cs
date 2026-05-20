@@ -15,6 +15,7 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private Player.Main.Player owner;
         [SerializeField] private Attacks attack;
         [SerializeField] private Transform handTrm;
+        [SerializeField] private SlashSpawner slashSpawner;
 
         [Header("VFX")] 
         [SerializeField] private ParticleSystem attackVfx;
@@ -43,6 +44,7 @@ namespace _03_Code.Items.Weapons {
         private bool _isCharge = false;
         private bool _isFullCharge = false;
         private float _chargingTime = 0;
+        private bool _isAttacking = false;
 
         private ParticleSystem.ShapeModule _chargeCircleShape;
         private bool _wasHoldingKey;
@@ -141,15 +143,21 @@ namespace _03_Code.Items.Weapons {
 
         private IEnumerator NormalAttack()
         {
+            if (_isAttacking) yield break; 
+            
             _lastAttackTime = Time.time;
 
-            transform.rotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y,-35f);
+            transform.DOBlendableLocalRotateBy(new Vector3(0,0,-70),.1f).SetEase(Ease.OutExpo).OnComplete(() => 
+                transform.DOBlendableLocalRotateBy(new Vector3(0,0,70),.4f).SetEase(Ease.InQuad)
+            );
 
             float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
             var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
 
+            slashSpawner.BaseScale = _radius;
+            
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
@@ -160,22 +168,28 @@ namespace _03_Code.Items.Weapons {
                     if (result.Hit) impulseSource.GenerateImpulseWithForce(0.02f);
                 }
             
-            yield return new WaitForSeconds(_cooltime);
-            
-            transform.rotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y,35f);
-            
+            yield return new WaitForSeconds(_cooltime + 0.1f);
+            _isAttacking = false;
+
         }
         
         private IEnumerator ChargingAttack()
         {
+            if (_isAttacking) yield break; 
+            
+            _isAttacking = true;
             _lastAttackTime = Time.time;
 
-            transform.DOLocalRotate(new Vector3(transform.localEulerAngles.x,transform.localEulerAngles.y,-35),.2f).SetEase(Ease.OutExpo);
+            transform.DOBlendableLocalRotateBy(new Vector3(0,0,-70),.2f).SetEase(Ease.OutExpo).OnComplete(() => 
+                    transform.DOBlendableLocalRotateBy(new Vector3(0,0,70),.6f).SetEase(Ease.InQuad)
+                );
 
             float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
             var cnt = Physics2D.OverlapCircle(center, _chargingRadius, targetFilter, _hitBuffer);
+
+            slashSpawner.BaseScale = _chargingRadius;
             
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
@@ -187,9 +201,8 @@ namespace _03_Code.Items.Weapons {
                     if (result.Hit) impulseSource.GenerateImpulseWithForce(0.1f);
                 }
             
-            yield return new WaitForSeconds(_cooltime);
-            
-            transform.DOLocalRotate(new Vector3(transform.localEulerAngles.x,transform.localEulerAngles.y,35),.6f).SetEase(Ease.InQuad);
+            yield return new WaitForSeconds(0.9f);
+            _isAttacking = false;
             //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,35f);
         }
 

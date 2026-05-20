@@ -5148,7 +5148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2840208616966416314}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.30070576, w: 0.953717}
   m_LocalPosition: {x: 0.476, y: 0.01, z: 0}
   m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
   m_ConstrainProportionsScale: 1
@@ -5158,7 +5158,7 @@ Transform:
   - {fileID: 619527725887598810}
   - {fileID: 8625634170173238972}
   m_Father: {fileID: 5743674621062685267}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 35}
 --- !u!212 &8417255545035674821
 SpriteRenderer:
   serializedVersion: 2
@@ -5234,13 +5234,14 @@ MonoBehaviour:
   owner: {fileID: 6382225862709807250}
   attack: {fileID: 7699891401137540108}
   handTrm: {fileID: 5743674621062685267}
+  slashSpawner: {fileID: 3541849886648168151}
   attackVfx: {fileID: 5697683654861823757}
   chargingVfx: {fileID: 4685870226483194646}
   chargingCircleVfx: {fileID: 4449860021124063037}
   chargingCompleteVfx: {fileID: 4685870226483194646}
   impulseSource: {fileID: 8488906301601473172}
   knockbackForce: 2.5
-  needChargeTime: 1
+  needChargeTime: 0.5
   startCircleRadius: 2.5
   endCircleRadius: 0.2
   targetFilter:
@@ -10212,6 +10213,7 @@ MonoBehaviour:
   <UpperDamage>k__BackingField: 8
   <AttackCoolTime>k__BackingField: 0.5
   <AttackRadius>k__BackingField: 1.5
+  <ChargingAttackRadius>k__BackingField: 4.5
   dashForce: 20
   dashDuration: 0.2
   dashCoolTime: 1
@@ -10661,9 +10663,8 @@ MonoBehaviour:
   slashPoint: {fileID: 1250331180810459199}
   slashPrefab: {fileID: 8806421942590574278, guid: 3c91577afdcd8e045abda7bd5fa25e3c, type: 3}
   sword: {fileID: 5086461693927953011}
-  baseScale: 7
+  <BaseScale>k__BackingField: 2.3
   slashColor: {r: 1, g: 0, b: 0.057524204, a: 1}
-  style: 0
 --- !u!1 &7222345347600387183
 GameObject:
   m_ObjectHideFlags: 0

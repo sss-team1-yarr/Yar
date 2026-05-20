@@ -22,7 +22,7 @@ public class SlashSpawner : MonoBehaviour
     [SerializeField] private Sword sword;
     
     [Header("Settings")]
-    [SerializeField] private float baseScale = 2.3f;
+    [field : SerializeField] public float BaseScale { get; set; }= 2.3f;
 
     [Header("Color")]
     [SerializeField] private Color slashColor = Color.cyan;
@@ -86,7 +86,7 @@ public class SlashSpawner : MonoBehaviour
         Vector3 pos = slashPoint ? slashPoint.position : transform.position;
 
         SlashEffect slash = Instantiate(slashPrefab, pos, Quaternion.identity);
-        slash.Play(slashColor, angle, baseScale * scaleMultiplier);
+        slash.Play(slashColor, angle, BaseScale * scaleMultiplier);
     }
 
     
