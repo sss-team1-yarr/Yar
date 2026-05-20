@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace _03_Code.VFX
+{
 public class SlashEffect : MonoBehaviour
 {
     [Header("Components")]
@@ -58,4 +60,5 @@ public class SlashEffect : MonoBehaviour
 
         Destroy(gameObject, lifeTime);
     }
+}
 }

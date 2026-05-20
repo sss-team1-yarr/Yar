@@ -1,4 +1,5 @@
 using System.Collections;
+using _03_Code.VFX;
 using UnityEngine;
 
 namespace _03_Code.Enemy.Common.Component {
