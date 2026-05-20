@@ -9904,3 +9904,4 @@ MonoBehaviour:
   rb: {fileID: 4567615872567686006}
   particle: {fileID: 8249690889821408209}
   tail: {fileID: 1241801735152535160}
+  velocityValue: {x: -7.4, y: -16.8}
