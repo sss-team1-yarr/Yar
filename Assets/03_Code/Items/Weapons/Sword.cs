@@ -11,16 +11,15 @@ namespace _03_Code.Items.Weapons {
     public class Sword : Weapon {
         [SerializeField] private Vector3 AttackOffset = new(0.3f, 0.3f, 0f);
 
-        [Header("Components")] [SerializeField]
-        private Player.Main.Player owner;
-
+        [Header("Components")] 
+        [SerializeField] private Player.Main.Player owner;
         [SerializeField] private Attacks attack;
         [SerializeField] private Transform handTrm;
         [SerializeField] private SlashSpawner slashSpawner;
         [SerializeField] private GameObject sword;
 
-        [Header("VFX")] [SerializeField] private ParticleSystem attackVfx;
-
+        [Header("VFX")] 
+        [SerializeField] private ParticleSystem attackVfx;
         [SerializeField] private ParticleSystem chargingVfx;
         [SerializeField] private ParticleSystem chargingCircleVfx;
         [SerializeField] private ParticleSystem chargingCompleteVfx;
@@ -34,35 +33,32 @@ namespace _03_Code.Items.Weapons {
         [SerializeField] private ContactFilter2D targetFilter;
 
         private readonly Collider2D[] _hitBuffer = new Collider2D[10];
-
-        private ParticleSystem.ShapeModule _chargeCircleShape;
-        private float _chargingRadius;
-        private float _chargingTime;
         private float _cooltime;
+        private float _chargingCooltime;
 
         private int _damageAmount;
-        private bool _isAttacking;
-
-        private bool _isCharge;
-        private bool _isFullCharge;
+        private int _chargeDamageAmount;
         private bool _isHoldingKey;
         private bool _isUpperAttack;
         private float _lastAttackTime;
         private float _radius;
+        private float _chargingRadius;
+
+        private bool _isCharge = false;
+        private bool _isFullCharge = false;
+        private float _chargingTime = 0;
+        private bool _isAttacking = false;
+
+        private ParticleSystem.ShapeModule _chargeCircleShape;
         private bool _wasHoldingKey;
 
         public bool CanUse => Time.time - _lastAttackTime >= _cooltime;
 
-        private void Awake() {
-            _chargeCircleShape = chargingCircleVfx.shape;
+        private void Start()
+        {
+            Init();
         }
-
-        private void Start() {
-            _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
-            _radius = GameManager.Instance.playerControl.AttackRadius;
-            _chargingRadius = GameManager.Instance.playerControl.ChargingAttackRadius;
-        }
-
+        
         private void Update() {
             Charging();
             DamageAmountChanged();
@@ -79,20 +75,33 @@ namespace _03_Code.Items.Weapons {
             if (context.Input == 0) _isHoldingKey = context.Pressed;
         }
 
+        private void Init()
+        {
+            _chargeCircleShape = chargingCircleVfx.shape;
+            _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
+            _radius = GameManager.Instance.playerControl.AttackRadius;
+            _chargingCooltime = GameManager.Instance.playerControl.ChargingAttackCoolTime;
+            _chargingRadius = GameManager.Instance.playerControl.ChargingAttackRadius;
+        }
+        
         private void DamageAmountChanged() {
             if (!attack.IsFFF) {
                 _damageAmount = GameManager.Instance.playerControl.Damage;
+                _chargeDamageAmount = GameManager.Instance.playerControl.UpperDamage;
                 return;
             }
 
-            _damageAmount = GameManager.Instance.playerControl.UpperDamage;
+            _damageAmount = Mathf.FloorToInt(GameManager.Instance.playerControl.UpperDamage * 1.5f);
+            _chargeDamageAmount = Mathf.FloorToInt(GameManager.Instance.playerControl.UpperDamage * 1.5f);
         }
-
-        private void Charging() {
-            if (!CanUse) return;
-
+        
+        private void Charging()
+        {
+            if (!CanUse) return; 
+            
             // 누르기 시작한 순간
-            if (_isHoldingKey && !_wasHoldingKey) {
+            if (_isHoldingKey && !_wasHoldingKey)
+            {
                 _isCharge = true;
                 _isFullCharge = false;
                 _chargingTime = 0f;
@@ -102,15 +111,17 @@ namespace _03_Code.Items.Weapons {
             }
 
             // 누르고 있는 동안
-            if (_isHoldingKey && _isCharge && !_isFullCharge) {
+            if (_isHoldingKey && _isCharge && !_isFullCharge)
+            {
                 _chargingTime += Time.deltaTime;
 
-                var charge01 = Mathf.Clamp01(_chargingTime / needChargeTime);
+                float charge01 = Mathf.Clamp01(_chargingTime / needChargeTime);
 
-                var radius = Mathf.Lerp(startCircleRadius, endCircleRadius, charge01);
+                float radius = Mathf.Lerp(startCircleRadius, endCircleRadius, charge01);
                 _chargeCircleShape.radius = radius;
 
-                if (_chargingTime >= needChargeTime) {
+                if (_chargingTime >= needChargeTime)
+                {
                     _isFullCharge = true;
 
                     chargingCircleVfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
@@ -121,17 +132,14 @@ namespace _03_Code.Items.Weapons {
             }
 
             // 키를 뗀 순간
-            if (!_isHoldingKey && _wasHoldingKey) {
+            if (!_isHoldingKey && _wasHoldingKey)
+            {
                 _isCharge = false;
 
                 chargingCircleVfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-
-
-                if (_isFullCharge)
-                    StartCoroutine(ChargingAttack());
-                else
-                    StartCoroutine(NormalAttack());
-
+                
+                StartCoroutine(Attack(_isFullCharge));
+                
                 _chargingTime = 0f;
                 _isFullCharge = false;
             }
@@ -139,83 +147,41 @@ namespace _03_Code.Items.Weapons {
             _wasHoldingKey = _isHoldingKey;
         }
 
-        private IEnumerator NormalAttack() {
-            if (_isAttacking) yield break;
-
-            _lastAttackTime = Time.time;
-
-            transform.DOBlendableLocalRotateBy(new Vector3(0, 0, -70), .1f).SetEase(Ease.OutExpo).OnComplete(() =>
-                transform.DOBlendableLocalRotateBy(new Vector3(0, 0, 70), .4f).SetEase(Ease.InQuad)
-            );
-
-            var dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
-            var center = transform.position + AttackOffset * dir;
-            targetFilter.useTriggers = true;
-            var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
-
-            slashSpawner.BaseScale = _radius;
-
-            if (cnt == 0)
-                SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
-
-            for (var i = 0; i < cnt; i++)
-                if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    var result = damageable.ApplyDamage(_damageAmount);
-
-                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.02f);
-                }
-
-            yield return new WaitForSeconds(_cooltime + 0.1f);
-
-            _isAttacking = false;
-        }
-
-        private IEnumerator ChargingAttack() {
-            if (_isAttacking) yield break;
-
+        private IEnumerator Attack(bool fullCharge)
+        {
+            if (_isAttacking) yield break; 
+            
             _isAttacking = true;
             _lastAttackTime = Time.time;
 
-            transform.DOBlendableLocalRotateBy(new Vector3(0, 0, -70), .2f).SetEase(Ease.OutExpo).OnComplete(() =>
-                transform.DOBlendableLocalRotateBy(new Vector3(0, 0, 70), .6f).SetEase(Ease.InQuad)
+            transform.DOBlendableLocalRotateBy(new Vector3(0,0,-70),fullCharge? .2f : .1f).SetEase(Ease.OutExpo).OnComplete(() => 
+                transform.DOBlendableLocalRotateBy(new Vector3(0,0,70),fullCharge? .6f : .4f).SetEase(Ease.InQuad)
             );
 
-            var dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
+            float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
-            var cnt = Physics2D.OverlapCircle(center, _chargingRadius, targetFilter, _hitBuffer);
+            var cnt = Physics2D.OverlapCircle(center, fullCharge? _chargingRadius : _radius, targetFilter, _hitBuffer);
 
-            slashSpawner.BaseScale = _chargingRadius;
-
+            slashSpawner.BaseScale = fullCharge? _chargingRadius : _radius;
+            
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
             for (var i = 0; i < cnt; i++)
                 if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    var result = damageable.ApplyDamage(_damageAmount);
+                    var result = damageable.ApplyDamage(_chargeDamageAmount);
 
-                    if (result.Hit) impulseSource.GenerateImpulseWithForce(0.1f);
+                    if (result.Hit)
+                    {
+                        impulseSource.GenerateImpulseWithForce(0.02f);
+                        SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Combo);
+                    }
                 }
-
-            yield return new WaitForSeconds(0.9f);
-
-            sword.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
+            
+            yield return new WaitForSeconds(fullCharge? _chargingCooltime : _cooltime);
+            sword.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);  
             _isAttacking = false;
-            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,35f);
         }
-
-        // private IEnumerator DownSword()
-        // {
-        //     for (float i = 0; i < 1f; i += Time.time)
-        //     {
-        //         float radius = Mathf.Lerp(35, -35, i);
-        //         transform.rotation = Quaternion.Euler(
-        //             transform.rotation.eulerAngles.x,
-        //             transform.rotation.eulerAngles.y,
-        //             radius);
-        //         
-        //         yield return new WaitForSeconds(0.01f);
-        //     }
-        // }
     }
 }

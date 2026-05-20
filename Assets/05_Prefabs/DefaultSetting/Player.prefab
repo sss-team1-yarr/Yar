@@ -5230,7 +5230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddcc26dfda306e43b61d371360ebc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Items.Weapons.Sword
-  AttackOffset: {x: 0.3, y: 0.3, z: 0}
+  AttackOffset: {x: 0.08, y: 0.2, z: 0}
   owner: {fileID: 6382225862709807250}
   attack: {fileID: 7699891401137540108}
   handTrm: {fileID: 5743674621062685267}
@@ -10210,11 +10210,12 @@ MonoBehaviour:
   speed: 8
   dashMultiplier: 1.2
   jumpForce: 6
-  <Damage>k__BackingField: 5
+  <Damage>k__BackingField: 2
   <UpperDamage>k__BackingField: 8
   <AttackCoolTime>k__BackingField: 0.5
-  <AttackRadius>k__BackingField: 1.5
-  <ChargingAttackRadius>k__BackingField: 4.5
+  <AttackRadius>k__BackingField: 2
+  <ChargingAttackCoolTime>k__BackingField: 0.9
+  <ChargingAttackRadius>k__BackingField: 4
   dashForce: 20
   dashDuration: 0.2
   dashCoolTime: 1
@@ -10552,7 +10553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_03_Code.Player.Components.HpManager
   hpBar: {fileID: 0}
-  maxHp: 100
+  maxHp: 100000
 --- !u!70 &7025014497530154795
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10563,7 +10564,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d6ce4b838900ba146a9966304bb92e35, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -25,8 +25,9 @@ namespace _03_Code.Player.Main {
         public int Damage { get; private set; } = 5;
 
         [field: SerializeField] public int UpperDamage { get; private set; } = 8;
-        [field: SerializeField] public float AttackCoolTime { get; private set; } = 0.2f;
+        [field: SerializeField] public float AttackCoolTime { get; private set; } = 0.6f;
         [field: SerializeField] public float AttackRadius { get; private set; } = 1.5f;
+        [field: SerializeField] public float ChargingAttackCoolTime { get; private set; } = 0.9f;
         [field: SerializeField] public float ChargingAttackRadius { get; private set; } = 4.5f;
 
         [Header("Settings/Dash")] [SerializeField]
