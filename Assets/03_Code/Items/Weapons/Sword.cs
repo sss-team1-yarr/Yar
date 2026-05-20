@@ -2,6 +2,7 @@ using System.Collections;
 using _03_Code.Enemy.Interface;
 using _03_Code.Manager;
 using _03_Code.Player.Main;
+using _03_Code.VFX;
 using DG.Tweening;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -37,12 +38,12 @@ namespace _03_Code.Items.Weapons {
         private bool _isUpperAttack;
         private float _lastAttackTime;
         private float _radius;
+        private float _chargingRadius;
 
         private bool _isCharge = false;
         private bool _isFullCharge = false;
         private float _chargingTime = 0;
 
-        private bool _isDownSword = false;
         private ParticleSystem.ShapeModule _chargeCircleShape;
         private bool _wasHoldingKey;
 
@@ -56,6 +57,7 @@ namespace _03_Code.Items.Weapons {
         private void Start() {
             _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
             _radius = GameManager.Instance.playerControl.AttackRadius;
+            _chargingRadius = GameManager.Instance.playerControl.ChargingAttackRadius;
         }
 
         private void Update() {
@@ -147,7 +149,7 @@ namespace _03_Code.Items.Weapons {
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
             var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
-            
+
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
@@ -167,14 +169,13 @@ namespace _03_Code.Items.Weapons {
         private IEnumerator ChargingAttack()
         {
             _lastAttackTime = Time.time;
-            _isDownSword = true;
 
             transform.DOLocalRotate(new Vector3(transform.localEulerAngles.x,transform.localEulerAngles.y,-35),.2f).SetEase(Ease.OutExpo);
 
             float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
-            var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
+            var cnt = Physics2D.OverlapCircle(center, _chargingRadius, targetFilter, _hitBuffer);
             
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);

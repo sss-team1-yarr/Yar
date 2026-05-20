@@ -5,7 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TutorialText : MonoBehaviour {
+namespace _03_Code.Text {
+    public class TutorialText : MonoBehaviour {
     [Header("Settings")] [SerializeField] private TextMeshPro text;
 
     [SerializeField] private GameObject wall;
@@ -102,4 +103,5 @@ public class TutorialText : MonoBehaviour {
         wall.SetActive(false);
         gameObject.SetActive(false);
     }
+}
 }
