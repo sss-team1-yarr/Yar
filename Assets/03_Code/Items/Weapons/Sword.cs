@@ -37,6 +37,7 @@ namespace _03_Code.Items.Weapons {
         private bool _isUpperAttack;
         private float _lastAttackTime;
         private float _radius;
+        private float _chargingRadius;
 
         private bool _isCharge = false;
         private bool _isFullCharge = false;
@@ -56,6 +57,7 @@ namespace _03_Code.Items.Weapons {
         private void Start() {
             _cooltime = GameManager.Instance.playerControl.AttackCoolTime;
             _radius = GameManager.Instance.playerControl.AttackRadius;
+            _chargingRadius = GameManager.Instance.playerControl.ChargingAttackRadius;
         }
 
         private void Update() {
@@ -147,7 +149,7 @@ namespace _03_Code.Items.Weapons {
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
             var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
-            
+
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
@@ -174,7 +176,7 @@ namespace _03_Code.Items.Weapons {
             float dir = GameManager.Instance.playerControl.RotationRight ? 1f : -1f;
             var center = transform.position + AttackOffset * dir;
             targetFilter.useTriggers = true;
-            var cnt = Physics2D.OverlapCircle(center, _radius, targetFilter, _hitBuffer);
+            var cnt = Physics2D.OverlapCircle(center, _chargingRadius, targetFilter, _hitBuffer);
             
             if (cnt == 0)
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
