@@ -5,14 +5,19 @@ using UnityEngine;
 
 namespace _03_Code.Damageable {
     public class CommonDA : MonoBehaviour, IDamageable {
-        [SerializeField] private ParticleSystem vfx;
+        [SerializeField] private ParticleSystem chargingVfx;
+        [SerializeField] private ParticleSystem normalVfx;
         [SerializeField] private Monster mob;
         [SerializeField] private EnemyMove em;
 
-        public DamageResult ApplyDamage(int damageAmount) {
+        public DamageResult ApplyDamage(int damageAmount, bool isCharge) {
             if (mob.IsDead) return new DamageResult();
-
-            vfx.Play();
+            
+            if (isCharge)
+                chargingVfx.Play();
+            else
+                normalVfx.Play();
+            
             em.KnockBack(damageAmount);
             return new DamageResult {
                 Hit = true

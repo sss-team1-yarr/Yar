@@ -16346,7 +16346,7 @@ PrefabInstance:
     - target: {fileID: 1507189273513396934, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
       propertyPath: enemySO
       value: 
-      objectReference: {fileID: 11400000, guid: 636aace2b85ed41468b9909eac34c7eb, type: 2}
+      objectReference: {fileID: 11400000, guid: 5294a3df903c0d34885e0a40527302ff, type: 2}
     - target: {fileID: 1848927922415046634, guid: f13046ee2f74be7428a075c89c1bb519, type: 3}
       propertyPath: m_Name
       value: Crab

@@ -169,12 +169,13 @@ namespace _03_Code.Items.Weapons {
                 SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Single);
 
             for (var i = 0; i < cnt; i++)
-                if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable)) {
-                    var result = damageable.ApplyDamage(_chargeDamageAmount);
+                if (_hitBuffer[i].TryGetComponent<IDamageable>(out var damageable))
+                {
+                    var result = damageable.ApplyDamage(fullCharge ? _chargeDamageAmount : _damageAmount, fullCharge);
 
                     if (result.Hit)
                     {
-                        impulseSource.GenerateImpulseWithForce(0.02f);
+                        impulseSource.GenerateImpulseWithForce(fullCharge? 0.1f : 0.02f);
                         SlashSpawner.Instance.Attack(SlashSpawner.SlashStyle.Combo);
                     }
                 }
