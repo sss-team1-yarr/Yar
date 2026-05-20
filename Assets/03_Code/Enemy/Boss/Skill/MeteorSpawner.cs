@@ -7,7 +7,7 @@ namespace _03_Code.Enemy.Boss.Skill {
         [SerializeField] private GameObject[] spawnPoints;
         [SerializeField] private float spawnDuration;
 
-        private float _durationManager;
+        private float _durationManager = 0.1f;
         private bool _isSpawning;
         private float _time;
 
