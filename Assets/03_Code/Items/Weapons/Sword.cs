@@ -2,6 +2,7 @@ using System.Collections;
 using _03_Code.Enemy.Interface;
 using _03_Code.Manager;
 using _03_Code.Player.Main;
+using _03_Code.VFX;
 using DG.Tweening;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -42,7 +43,6 @@ namespace _03_Code.Items.Weapons {
         private bool _isFullCharge = false;
         private float _chargingTime = 0;
 
-        private bool _isDownSword = false;
         private ParticleSystem.ShapeModule _chargeCircleShape;
         private bool _wasHoldingKey;
 
@@ -167,7 +167,6 @@ namespace _03_Code.Items.Weapons {
         private IEnumerator ChargingAttack()
         {
             _lastAttackTime = Time.time;
-            _isDownSword = true;
 
             transform.DOLocalRotate(new Vector3(transform.localEulerAngles.x,transform.localEulerAngles.y,-35),.2f).SetEase(Ease.OutExpo);
 

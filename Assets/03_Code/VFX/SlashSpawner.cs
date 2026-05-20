@@ -5,6 +5,8 @@ using _03_Code.Manager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+namespace _03_Code.VFX
+{
 public class SlashSpawner : MonoBehaviour
 {
     public static SlashSpawner Instance;
@@ -25,8 +27,7 @@ public class SlashSpawner : MonoBehaviour
     [Header("Color")]
     [SerializeField] private Color slashColor = Color.cyan;
 
-    [Header("SlashStyle")]
-    [SerializeField] private SlashStyle style = SlashStyle.Single;
+
 
     //테스트하느라 enum으로 만들었음
     public enum SlashStyle
@@ -115,4 +116,5 @@ public class SlashSpawner : MonoBehaviour
             }
         }
     }
+}
 }

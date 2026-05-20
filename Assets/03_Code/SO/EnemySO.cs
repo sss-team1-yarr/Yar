@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace _03_Code.SO {
     [CreateAssetMenu(fileName = "Enemy data", menuName = "SO/Enemy", order = 0)]
     public class EnemySO : ScriptableObject {
-        [Header("Enemy default")] public string name;
+        [Header("Enemy default")] public new string name;
 
         public float scale;
         public RuntimeAnimatorController animController;
