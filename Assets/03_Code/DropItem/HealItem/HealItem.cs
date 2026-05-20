@@ -1,5 +1,4 @@
-﻿using System;
-using _03_Code.Player.Components;
+﻿using _03_Code.Player.Components;
 using UnityEngine;
 
 namespace _03_Code.DropItem.HealItem {
@@ -8,11 +7,9 @@ namespace _03_Code.DropItem.HealItem {
 
         private void FixedUpdate() {
             var circle = Physics2D.OverlapCircle(transform.position, range, LayerMask.GetMask("Player"));
-            if (circle) {
-                OnUsed();
-            }
+            if (circle) OnUsed();
         }
-        
+
         private void OnDrawGizmos() {
             Gizmos.DrawWireSphere(transform.position, range);
         }

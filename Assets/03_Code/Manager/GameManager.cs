@@ -5,12 +5,11 @@ using UnityEngine;
 
 namespace _03_Code.Manager {
     public class GameManager : MonoBehaviour {
-        public static GameManager Instance { get; private set; }
-
         public Player.Main.Player player;
         public PlayerControl playerControl;
         public PlayerHit playerHit;
         public DropManager dropManager;
+        public static GameManager Instance { get; private set; }
 
         private void Awake() {
             Instance = this;

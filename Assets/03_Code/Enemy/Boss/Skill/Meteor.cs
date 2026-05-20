@@ -7,7 +7,7 @@ namespace _03_Code.Enemy.Boss.Skill {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private ParticleSystem particle;
         [SerializeField] private ParticleSystem tail;
-        [SerializeField] private Vector2 velocityValue = new Vector2(-9.8f, -19.6f);
+        [SerializeField] private Vector2 velocityValue = new(-9.8f, -19.6f);
 
         private bool _isNotGround = true;
 

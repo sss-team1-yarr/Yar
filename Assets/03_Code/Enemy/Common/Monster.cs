@@ -72,15 +72,15 @@ namespace _03_Code.Enemy.Common {
 
         public void GetDamage(int damage) {
             _health -= damage;
-            UpdateHP(_health);
-        }
-
-        public void UpdateHP(int hp) {
             if (_health <= 0) {
                 _health = 0;
                 IsDead = true;
             }
 
+            UpdateHP(_health);
+        }
+
+        public void UpdateHP(int hp) {
             sHp.UpdateHp(hp);
         }
     }

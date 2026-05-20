@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +15,8 @@ namespace _03_Code.Enemy.Boss.Components {
             InitHealth();
         }
 
-        private void Start()
-        {
-            hpBar.value = (float)PhaseOneHealth/bossHealth;
+        private void Start() {
+            hpBar.value = (float)PhaseOneHealth / bossHealth;
         }
 
         private void InitHealth() {
@@ -40,6 +38,7 @@ namespace _03_Code.Enemy.Boss.Components {
                 owner.StartPhaseTwo();
                 PhaseOneHealth = int.MaxValue; //다신 호출 불가능하게 만드는 장치
             }
+
             if (PhaseTwoHealth <= 0) {
                 PhaseOneHealth = 0;
                 owner.Last();

@@ -6,8 +6,8 @@ namespace _03_Code.Enemy.Boss.Skill {
         [SerializeField] private GameObject willUse;
         [SerializeField] private HandAttack handAttack;
         [SerializeField] private Transform[] spawnPoint;
-        
-        private WaitForSeconds _skillSeconds = new WaitForSeconds(1f);
+
+        private readonly WaitForSeconds _skillSeconds = new(1f);
         private int _spawnIndex;
 
         [ContextMenu("Spawn")]
@@ -16,11 +16,12 @@ namespace _03_Code.Enemy.Boss.Skill {
         }
 
         private IEnumerator SpawnCoroutine() {
-            GameObject hi = Instantiate(willUse);
+            var hi = Instantiate(willUse);
             yield return _skillSeconds;
             Destroy(hi);
-            
-            GameObject hand = Instantiate(handAttack.gameObject, spawnPoint[_spawnIndex].position, spawnPoint[_spawnIndex].rotation);
+
+            var hand = Instantiate(handAttack.gameObject, spawnPoint[_spawnIndex].position,
+                spawnPoint[_spawnIndex].rotation);
             hand.GetComponent<Rigidbody2D>().linearVelocityX = _spawnIndex == 0 ? 100 : -100;
             _spawnIndex = _spawnIndex == 0 ? 1 : 0;
         }
