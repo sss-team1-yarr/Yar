@@ -15,7 +15,6 @@ namespace _03_Code.Enemy.Boss.Skill {
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) HpManager.Instance.Damage(10);
-            
         }
 
         private IEnumerator HandLifeCoroutine() {
