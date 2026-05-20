@@ -19,8 +19,8 @@ MonoBehaviour:
   speed: 5
   dropExp: 6
   approachForce: 10
-  approachTime: 1
-  approachDamage: 1
+  approachTime: 0.2
+  approachDamage: 5
   detectRange: 8
   knockBackForce: 40
   knockBackTime: 0.1

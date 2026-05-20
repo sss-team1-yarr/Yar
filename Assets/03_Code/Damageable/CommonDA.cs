@@ -18,7 +18,7 @@ namespace _03_Code.Damageable {
             else
                 normalVfx.Play();
             
-            em.KnockBack(damageAmount);
+            em.KnockBack(damageAmount, isCharge);
             return new DamageResult {
                 Hit = true
             };

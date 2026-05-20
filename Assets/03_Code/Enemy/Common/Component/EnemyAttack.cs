@@ -12,7 +12,7 @@ namespace _03_Code.Enemy.Common.Component {
             em = GetComponent<Monster>();
         }
 
-        private void OnTriggerEnter2D(Collider2D collision) {
+        private void OnTriggerStay2D(Collider2D collision) {
             if (em.IsDead) return;
             
             if (collision.gameObject.CompareTag("Player")) {
