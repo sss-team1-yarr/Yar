@@ -60,7 +60,6 @@ namespace _03_Code.Enemy.Common {
         }
 
         private IEnumerator Dead() {
-            coll.isTrigger = true;
             rb.linearVelocity = Vector2.zero;
             rb.gravityScale = 0f;
 
@@ -76,7 +75,7 @@ namespace _03_Code.Enemy.Common {
                 _health = 0;
                 IsDead = true;
             }
-
+            Debug.Log(damage);
             UpdateHP(_health);
         }
 

@@ -1,16 +1,22 @@
 using _03_Code.Exp;
+using _03_Code.Items.Weapons;
 using _03_Code.Player.Components;
 using _03_Code.Player.Main;
 using UnityEngine;
 
 namespace _03_Code.Manager {
     public class GameManager : MonoBehaviour {
+        public static GameManager Instance { get; private set; }
+        
+        [Header("Player")]
         public Player.Main.Player player;
         public PlayerControl playerControl;
         public PlayerHit playerHit;
-        public DropManager dropManager;
-        public static GameManager Instance { get; private set; }
+        public Sword sword;
 
+        [Header("Manager")]
+        public DropManager dropManager;
+        
         private void Awake() {
             Instance = this;
         }
@@ -19,6 +25,7 @@ namespace _03_Code.Manager {
             player = GameObject.FindWithTag("Player").GetComponent<Player.Main.Player>();
             playerControl = GameObject.FindWithTag("Player").GetComponentInChildren<PlayerControl>();
             playerHit = GameObject.FindWithTag("Player").GetComponent<PlayerHit>();
+            sword = GameObject.Find("Sword").GetComponent<Sword>();
             dropManager = GameObject.Find("DropManager").GetComponent<DropManager>();
         }
     }

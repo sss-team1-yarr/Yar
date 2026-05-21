@@ -40,11 +40,13 @@ namespace _03_Code.Enemy.Common.Component {
                 Gizmos.DrawWireSphere(rb.position, _detectRange);
         }
 
-        public void KnockBack(int damageAmount) {
+        public void KnockBack(int damageAmount, bool isCharge) {
             if (_isKnockedBack || monster.IsDead) return;
 
             monster.GetDamage(damageAmount);
-            StartCoroutine(KnockBackRoutine());
+            
+            if (isCharge)
+                StartCoroutine(KnockBackRoutine());
         }
 
         private IEnumerator KnockBackRoutine() {
